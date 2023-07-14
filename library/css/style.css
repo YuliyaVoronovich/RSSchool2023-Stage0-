@@ -89,5 +89,31 @@
   .header_container .icon_profile {
     display: block;
     object-fit: contain;
-    padding: 31px 31px 31px 40px;
+    padding: 31px 20px 31px 40px;
+  }
+
+  .welcome_container {
+    height: 600px;
+    background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url(../assets/image/Welcome.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 220px 840px 160px 0;
+  }
+  .welcome_container_text {
+    width: 600px;
+    height: 220px;
+    
+    background: #0C0C0E;
+  }
+  .welcome_text {
+    color: #ffffff;
+  text-align: center;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px; /* 125% */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 35px 40px;
   }
