@@ -107,15 +107,15 @@
   }
   .welcome_text {
     color: #ffffff;
-  text-align: center;
-  font-family: Forum;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 50px; /* 125% */
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 35px 40px;
+    text-align: center;
+    font-family: Forum;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px; /* 125% */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 35px 40px;
   }
   .about_container,
   .favorites_container {
@@ -164,32 +164,33 @@
     flex:1;
     padding: 20px 20px 0 20px;
   }
-  .about-list {
+  .about_list {
     display: flex;
     gap: 25px;
     justify-content: center;
     list-style: none;
   }
-  .about-list .about-item {
+  .about_list .about-item {
     flex-shrink: 1;
     width: 450px;
     height: 100%;
   }
-  .about-list .about-item  img{
+  .about_list .about-item  img{
     display: block;
   }
-  .about-list .about-item_hidden {
+  .about_list .about-item_hidden {
     display: none;
   }
-  .about_carousel {
+  .about_carousel_list {
     display: flex;
     justify-content: center;
+    list-style: none;
     padding: 35px 0;
   }
   .about_carousel .about_carousel_output {
     padding: 5px;
   }
-  .about_carousel .about_carousel_output span{
+  .about_carousel .about_carousel_output a{
     display: block;
     padding: 5px;
     border: 1px solid;
@@ -199,13 +200,26 @@
     background: #0c0c0e;
     color: #0c0c0e;
   }
-  .about_carousel .about_carousel_output:first-child span{
+  .about_carousel .about_carousel_output:first-child a{
     background: #bb945f;
     color: #bb945f;
   }
   .favorites_container .paragraf_text {
     font-weight: 700;
     text-align: left;
-    padding-top: 40px;
-    padding-left: 20px;
+    padding: 51px 0 0 20px; /*проверить еще раз почему 51*/
   }
+  .winter_section {
+    display: flex;
+    flex-wrap: wrap;
+    gap:260px;
+    padding: 40px 20px;
+    justify-content: space-between;
+  }
+  .winter_section_element {
+  width: 550px;
+  height: 100%;
+  flex-shrink: 0;  
+  border: 1px solid #000000;
+  background: #ffffff;
+}
