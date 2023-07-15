@@ -118,11 +118,13 @@
     padding: 35px 40px;
   }
   .about_container,
-  .favorites_container {
+  .favorites_container,
+  .coffee_shop_container {
     padding-top: 20px;
   }
   .about_text,
-  .favorites_text {
+  .favorites_text,
+  .coffee_shop_text {
     color: #0C0C0E;
     font-family: Forum;
     font-size: 40px;
@@ -136,7 +138,8 @@
   }
 
   .about_text::after,
-  .favorites_text::after {
+  .favorites_text::after,
+  .coffee_shop_text::after {
     content: "";
     position: absolute;
     margin: 0 auto;
@@ -149,7 +152,8 @@
   }
 
   .about_container .paragraf_text,
-  .favorites_container .paragraf_text {
+  .favorites_container .paragraf_text,
+  .coffee_shop_container .paragraf_text {
     color: #000;
     text-align: center;
     font-family: Inter;
@@ -157,8 +161,11 @@
     font-style: normal;
     font-weight: 400;
     line-height: 40px;
-    text-align: center;
+    padding: 0 20px;
     padding-top: 61px; /*+1px element :: after*/
+  }
+  .coffee_shop_container .paragraf_text {
+    letter-spacing: 2px;
   }
   .about_pictures {
     flex:1;
@@ -314,4 +321,75 @@
   color: #BB945F;
   cursor: unset;
   pointer-events: none; 
+}
+.coffee_shop_price {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 20px;
+}
+.coffee_shop_price_title {
+  color: #BB945F;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 100% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  text-align: left;
+}
+.coffee_shop_desserts .coffee_shop_price_title {
+  text-align: right;
+}
+.coffee_shop_drinks,
+.coffee_shop_desserts {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.coffee_shop_price_drink,
+.coffee_shop_price_dessert {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  justify-content: space-between;
+  gap:220px;
+}
+.coffee_shop_price_dessert {
+  text-align: right;
+}
+.drink_title,
+.dessert_title {
+  flex-grow: 1;
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 200% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.drink_price,
+.dessert_price {
+  position: relative;
+  color: #000;
+  font-family: Forum;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 200% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.drink_price::before,
+.dessert_price::before {
+    content: "";
+    position: absolute;
+    margin: 0 auto;
+    top: 50%;
+    right: 85px;
+    width: 100px;
+    height: 1px; 
+    background-color: #BB945F;;
 }
