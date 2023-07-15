@@ -117,3 +117,82 @@
   text-transform: uppercase;
   padding: 35px 40px;
   }
+  .about_container {
+    padding-top: 20px;
+  }
+  .about_text {
+    color: #0C0C0E;
+    font-family: Forum;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px; /* 100% */
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    text-align: center;
+    position: relative;
+  }
+
+  .about_text::after {
+    content: "";
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 50px;
+    height: 1px;
+    bottom: -20px; 
+    background-color: #0c0c0e;
+  }
+
+  .about_container .paragraf_text {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    text-align: center;
+    padding-top: 60px;
+  }
+  .about_pictures {
+    flex:1;
+    padding: 20px 20px 0 20px;
+  }
+  .about-list {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    list-style: none;
+  }
+  .about-list .about-item {
+    flex-shrink: 1;
+    width: 450px;
+    height: 100%;
+  }
+  .about-list .about-item_hidden {
+    display: none;
+  }
+  .about_carousel {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 40px 0;
+  }
+  .about_carousel .about_carousel_output {
+    padding: 5px;
+  }
+  .about_carousel .about_carousel_output span{
+    display: block;
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background: #0c0c0e;
+    color: #0c0c0e;
+  }
+  .about_carousel .about_carousel_output:first-child span{
+    background: #bb945f;
+    color: #bb945f;
+  }
