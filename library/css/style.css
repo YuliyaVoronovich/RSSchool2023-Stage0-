@@ -209,17 +209,109 @@
     text-align: left;
     padding: 51px 0 0 20px; /*проверить еще раз почему 51*/
   }
-  .winter_section {
+  .favorites_btn {
+    height: 98px;
+  }
+  .book_section {
     display: flex;
     flex-wrap: wrap;
-    gap:260px;
-    padding: 40px 20px;
+    gap: 40px 260px;
+    padding: 0 60px 40px 20px;
     justify-content: space-between;
   }
-  .winter_section_element {
-  width: 550px;
-  height: 100%;
-  flex-shrink: 0;  
-  border: 1px solid #000000;
-  background: #ffffff;
+  .book_section_element {
+   width: 550px;
+   height: 5100%;
+   height: 100%;
+   flex-shrink: 0;
+   position: relative;  
+   border: 1px solid #000000;
+   background: #ffffff;
+}
+.book_staff_picks {
+  position: relative;
+  padding: 15px 0 0 20px;
+  color: #000;
+  font-family: Forum;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 200% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.book_staff_picks::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    right: 0;
+    width: 60px;
+    height: 1px;
+    bottom: 0px; 
+    background-color: #BB945F;
+  }
+.book_title {
+  padding: 20px 0 0 20px;
+  color: #000;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px; /* 266.667% */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.book_title_bottom {
+  text-transform: capitalize;
+}
+.book_desc {
+  margin: 20px 0 0 20px;
+  width: 355px;
+  height: 320px;
+  color: #000;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 266.667% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.book_image {
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  bottom: -1px;
+  left: 71%;
+  transition: 0.3s;
+}
+
+.btn {
+  width: 75px;
+  height: 30px;
+  border-radius: 2px;
+  margin: 15px 0 15px 20px;
+  padding: 0;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.btn_buy {  
+  border: 1px solid #0C0C0E;
+  background-color: #ffffff;
+  color: #0C0C0E;  
+  transition: 0.3s;
+}
+.btn_buy:hover {
+  border: 1px solid #BB945F;
+  background: #BB945F; 
+}
+.btn_buy.btn_own {  
+  border: 1px solid #BB945F;
+  color: #BB945F;
+  cursor: unset;
+  pointer-events: none; 
 }
