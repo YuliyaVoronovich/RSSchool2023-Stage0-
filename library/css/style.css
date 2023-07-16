@@ -119,12 +119,16 @@
   }
   .about_container,
   .favorites_container,
-  .coffee_shop_container {
+  .coffee_shop_container,
+  .contacts_container,
+  .digital_container {
     padding-top: 20px;
   }
   .about_text,
   .favorites_text,
-  .coffee_shop_text {
+  .coffee_shop_text,
+  .contacts_text,
+  .digital_text {
     color: #0C0C0E;
     font-family: Forum;
     font-size: 40px;
@@ -139,7 +143,9 @@
 
   .about_text::after,
   .favorites_text::after,
-  .coffee_shop_text::after {
+  .coffee_shop_text::after,
+  .contacts_text::after,
+  .digital_text::after {
     content: "";
     position: absolute;
     margin: 0 auto;
@@ -217,8 +223,63 @@
     padding: 51px 0 0 20px; /*проверить еще раз почему 51*/
   }
   .favorites_btn {
-    height: 98px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px;
+    padding: 30px 0 33px 20px;
+    justify-content: flex-start;
   }
+  .favorites_radiobutton {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+  }
+  .radio {
+      display: none;
+  }
+  .fake_radio {
+    position: relative;
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.fake_radio::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  background-color: #000000;
+  opacity: 0;
+  transition: 0.2s;
+}
+.radio:checked +.fake_radio::before {
+  opacity: 1;
+}
+.radio:hover ~ .text ,
+.radio:checked ~ .text {
+  font-weight: 700;
+}
+.favorites_label {
+  cursor: pointer;
+}
+.favorites_label .text {
+  color: #000000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+
+
   .book_section {
     display: flex;
     flex-wrap: wrap;
@@ -228,7 +289,7 @@
   }
   .book_section_element {
    width: 550px;
-   height: 5100%;
+   height: 100%;
    height: 100%;
    flex-shrink: 0;
    position: relative;  
@@ -272,8 +333,8 @@
   text-transform: capitalize;
 }
 .book_desc {
-  margin: 20px 0 0 20px;
-  width: 355px;
+  margin: 20px 0 15px 20px;
+  width: 358px;
   height: 320px;
   color: #000;
   font-family: Inter;
@@ -297,7 +358,7 @@
   width: 75px;
   height: 30px;
   border-radius: 2px;
-  margin: 15px 0 15px 20px;
+  margin: auto 0 15px 20px;
   padding: 0;
   text-align: center;
   font-family: Inter;
@@ -392,4 +453,10 @@
     width: 100px;
     height: 1px; 
     background-color: #BB945F;;
+}
+.contacts_section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 201px;
+    justify-content: space-between;
 }
