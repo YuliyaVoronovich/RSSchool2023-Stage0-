@@ -224,13 +224,18 @@
   }
   .favorites_btn {
     display: flex;
-    flex-wrap: wrap;
-    gap: 80px;
+    flex-wrap: wrap;    
+    gap: 55px;
     padding: 30px 0 33px 20px;
     justify-content: flex-start;
   }
+
+  .favorites_btn .favorites_radiobutton:last-child {/*марджин для совпадения с макетом Перфект Пиксель*/
+    margin-left: 15px;
+   }
   .favorites_radiobutton {
     display: flex;
+    min-width: 135px;
     align-items: center;
     padding: 5px;
   }
