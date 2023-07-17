@@ -94,7 +94,7 @@
 
   .welcome_container {
     height: 600px;
-    background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url(../assets/image/Welcome.jpg);
+    background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url(../assets/image/Welcome.png);
     background-repeat: no-repeat;
     background-size: cover;
     padding: 220px 840px 160px 0;
