@@ -339,7 +339,7 @@
 }
 .book_desc {
   margin: 20px 0 15px 20px;
-  width: 358px;
+  max-width: 358px;
   height: 320px;
   color: #000;
   font-family: Inter;
@@ -525,4 +525,86 @@
 .map {
   width: 696px;
   height: 414px;
+}
+
+.digital_section {
+  display: flex;
+  justify-content: space-between;
+  padding: 59px 20px 41px 20px;
+}
+.form_text {
+  color: #000000;
+  font-family: Inter;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.6px;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.form_find_card {
+  max-width: 600px;
+  max-height: 386px;
+  padding: 20px 20px 0 20px;
+  border: 3px solid #BB945F;
+  text-align: center;
+  box-shadow: 0px 3px 43px 0px rgba(0, 0, 0, 0.25);
+}
+.form_find_card_data {
+  display: flex;
+  flex-direction: column;
+  min-width: 560px; 
+  gap: 20px;
+  background: #BB945F;
+}
+.form_data_text {
+  text-align: left;
+  padding: 20px 20px 0 20px;
+  color: #000;
+  font-family: Forum;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px; /* 166.667% */
+  letter-spacing: 0.6px;
+}
+.form_data_input {
+  max-width: 520px;
+  margin: 0 0 5px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #FFF;  
+  padding: 8px 20px;  
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+  color: #8E8E8E;
+  font-family: Forum;
+  font-style: normal;
+  font-weight: 400;
+}
+.form_data_input:last-child {
+  margin-bottom: 25px;
+}
+.form_data_input:focus,
+.form_data_input:active {
+  color: #BB945F;
+  outline: 1px solid #000000;
+}
+
+.form_card_btn {
+  margin: 18px 0 30px 0;
+  padding: 10px 40px;
+  border-radius: 2px;
+  border: 1px solid #0C0C0E;
+  color: #0C0C0E;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
 }
