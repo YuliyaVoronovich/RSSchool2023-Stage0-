@@ -285,6 +285,7 @@
 
 
 
+
   .book_section {
     display: flex;
     flex-wrap: wrap;
@@ -300,6 +301,9 @@
    position: relative;  
    border: 1px solid #000000;
    background: #ffffff;
+}
+.book_section_hidden {
+  display:none;
 }
 .book_staff_picks {
   position: relative;
