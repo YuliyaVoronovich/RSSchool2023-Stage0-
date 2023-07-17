@@ -592,10 +592,11 @@
 .form_data_input:active {
   color: #BB945F;
   outline: 1px solid #000000;
+  outline-offset: 1px;
 }
 
 .form_card_btn {
-  margin: 18px 0 30px 0;
+  margin: 20px 0 30px 0;
   padding: 10px 40px;
   border-radius: 2px;
   border: 1px solid #0C0C0E;
@@ -607,4 +608,35 @@
   font-weight: 700;
   line-height: normal;
   letter-spacing: 1px;
+}
+.digital_cards_reader {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  max-width: 456px;
+  gap:35px;
+}
+.card_title {
+  color: #000;
+  font-family: Forum;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.6px;
+}
+.card_text {
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 200% */
+  letter-spacing: 0.4px;
+}
+.btn_card{
+  display: inline-block;
+}
+.btn_card:last-child {
+  margin-left: 20px;
 }
