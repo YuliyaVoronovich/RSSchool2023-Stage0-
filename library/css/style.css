@@ -73,19 +73,38 @@
     list-style: none;
   }
   .nav-item {
+    position: relative;
     color: #ffffff;
     font-family: Inter;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 50px;
+    cursor: pointer;
   }
-  
+   
   .nav-item .nav-link {  
     color: #ffffff;
     text-decoration: none; 
-    transition: 0.3s;
+    transition: 0.5s;
   }
+  .nav-item:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+    width: 0;/*задаём длинну линии до наведения курсора*/
+    height: 1px; /*задаём ширину линии*/
+    bottom: 10px;
+    background-color: #ffffff; /*задаём цвет линии*/
+    transition: width 0.5s ease-out; /*задаём время анимации*/
+  }
+  
+  .nav-item:hover:after,
+  .nav-item:focus:after {
+    width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+  }
+
   .header_container .icon_profile {
     display: block;
     object-fit: contain;
