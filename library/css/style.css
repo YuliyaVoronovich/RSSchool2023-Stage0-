@@ -221,6 +221,7 @@
   }
   .about_carousel .about_carousel_output {
     padding: 5px;
+    cursor:pointer;
   }
   .about_carousel .about_carousel_output a{
     display: block;
@@ -392,14 +393,14 @@
   font-family: Inter;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 1px;
-  cursor: pointer;
+  letter-spacing: 1px;  
 }
 .btn_buy {  
   border: 1px solid #0C0C0E;
   background-color: #ffffff;
   color: #0C0C0E;  
-  transition: 0.3s;
+  transition: 0.5s;
+  cursor: pointer;
 }
 .btn_buy:hover {
   border: 1px solid #BB945F;
