@@ -288,8 +288,8 @@
             <form class="form_find_card" action="#" method="post">
               <div class="form_find_card_data">
                 <p class="form_data_text">Brooklyn Public Library</p>
-                <input class="form_data_input" type="text" id="name" placeholder="Reader's name">
-                <input class="form_data_input" type="text" id="card" placeholder="Card number">
+                <input class="form_data_input" type="text" id="name" placeholder="Reader's name" pattern="^[0-9A-Za-z\-\s]+$">
+                <input class="form_data_input" type="text" id="card" placeholder="Card number" pattern="^[0-9A-Za-z\-\s]+$">
               </div>
               <button class="btn_buy form_card_btn" type="submit">Check the card</button>
             </form>
@@ -327,5 +327,6 @@
         </div>
       </div>
     </footer>
+    <script src="./js/index.js"></script>
   </body>
   </html>
