@@ -38,7 +38,11 @@
     padding: 0;
   }
   body {
-    background: #aca7a7;
+    background: #ffffff;
+  }
+  .header,
+  .footer {
+    background: #0C0C0E;
   }
   .container {
     max-width: 1440px;
@@ -49,7 +53,7 @@
   .header_container {
     display: flex;
     justify-content: space-between;
-    background: #0C0C0E;
+    background: #0c0c0e;
     color: #ffffff;
   }
   .main_header_text {
@@ -62,79 +66,10 @@
     line-height: 50px;
     letter-spacing: 0.6px;    
   }
-  .nav {
-    flex:1;
-    padding: 20px 0;
-  }
-  .nav-list {
-    display: flex;
-    gap: 30px;
-    justify-content: flex-end;
-    list-style: none;
-  }
-  .nav-item {
-    position: relative;
-    color: #ffffff;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 50px;
-    cursor: pointer;
-  }
-   
-  .nav-item .nav-link {  
-    color: #ffffff;
-    text-decoration: none; 
-    transition: 0.5s;
-  }
-  .nav-item:after {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
-    width: 0;/*задаём длинну линии до наведения курсора*/
-    height: 1px; /*задаём ширину линии*/
-    bottom: 10px;
-    background-color: #ffffff; /*задаём цвет линии*/
-    transition: width 0.5s ease-out; /*задаём время анимации*/
-  }
-  
-  .nav-item:hover:after,
-  .nav-item:focus:after {
-    width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
-  }
-
   .header_container .icon_profile {
     display: block;
     object-fit: contain;
     padding: 31px 20px 31px 40px;
-  }
-
-  .welcome_container {
-    height: 600px;
-    background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url(../assets/image/Welcome.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 220px 840px 160px 0;
-  }
-  .welcome_container_text {
-    width: 600px;
-    height: 220px;
-    
-    background: #0C0C0E;
-  }
-  .welcome_text {
-    color: #ffffff;
-    text-align: center;
-    font-family: Forum;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 50px; /* 125% */
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 35px 40px;
   }
   .about_container,
   .favorites_container,
@@ -187,11 +122,95 @@
     font-weight: 400;
     line-height: 40px;
     padding: 0 20px;
-    padding-top: 61px; /*-1px element :: after*/
+    padding-top: 60px; /*-1px element :: after*/
   }
-  .coffee_shop_container .paragraf_text {
-    letter-spacing: 2px;
+  
+  /* Start Nav*/
+  .nav {
+    flex:1;
+    padding: 20px 0;
   }
+
+  .nav-list {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
+    list-style: none;
+  }
+
+  .nav-item {
+    position: relative;
+    color: #ffffff;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px;
+    cursor: pointer;
+  }
+   
+  .nav-item .nav-link {  
+    color: #ffffff;
+    text-decoration: none; 
+    transition: 0.5s;
+  }
+
+  .nav-item:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+    width: 0;/*задаём длинну линии до наведения курсора*/
+    height: 1px; /*задаём ширину линии*/
+    bottom: 10px;
+    background-color: #ffffff; /*задаём цвет линии*/
+    transition: width 0.5s ease-out; /*задаём время анимации*/
+  }
+ 
+  .nav-item:hover:after,
+  .nav-item:focus:after {
+    width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+  }
+/* Finish Nav*/
+
+
+
+  /* Start section Welcome */
+  .welcome_wrapper {
+    background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url(../assets/image/Welcome.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+   }
+  .welcome_container {
+    margin-top: -1px;
+    height: 601px;
+    padding: 220px 840px 160px 0;
+    background: none;
+  }
+  .welcome_container_text {
+    width: 600px;
+    height: 220px;
+    
+    background: #0C0C0E;
+  }
+  .welcome_text {
+    color: #ffffff;
+    text-align: center;
+    font-family: Forum;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px; /* 125% */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 35px 40px;
+  }
+    /* Finish section Welcome */
+
+
+
+  /*Start section About*/
   .about_pictures {
     flex:1;
     padding: 20px 20px 0 20px;
@@ -237,16 +256,19 @@
     background: #bb945f;
     color: #bb945f;
   }
+    /*Finish section About*/
+
+    /*Start section Favorites*/
   .favorites_container .paragraf_text {
     font-weight: 700;
     text-align: left;
-    padding: 51px 0 0 20px; /*проверить еще раз почему 51*/
+    padding: 52px 0 0 20px; /*проверить еще раз почему 51*/
   }
   .favorites_btn {
     display: flex;
     flex-wrap: wrap;    
     gap: 55px;
-    padding: 30px 0 32px 20px;
+    padding: 29px 0 33px 20px;
     justify-content: flex-start;
   }
 
@@ -302,7 +324,6 @@
   font-weight: 400;
   line-height: normal;
 }
-
 
 
 
@@ -412,6 +433,14 @@
   cursor: unset;
   pointer-events: none; 
 }
+  
+ /*Finish section Favorites*/
+
+ 
+ /*Start section Coffee Shop*/
+.coffee_shop_container .paragraf_text {
+  letter-spacing: 2px;
+}
 .coffee_shop_price {
   display: flex;
   justify-content: space-between;
@@ -477,12 +506,15 @@
     content: "";
     position: absolute;
     margin: 0 auto;
-    top: 50%;
+    bottom: 50%;
     right: 85px;
     width: 100px;
     height: 1px; 
     background-color: #BB945F;;
 }
+/*Finish section Coffee Shop*/
+
+/*Start section Contacts*/
 .contacts_section {
   display: flex;
   justify-content: space-between;
@@ -554,11 +586,13 @@
   width: 696px;
   height: 414px;
 }
+/*Finish section Contacts*/
 
+/*Start section Digital Card*/
 .digital_section {
   display: flex;
   justify-content: space-between;
-  padding: 59px 20px 41px 20px;
+  padding: 60px 20px 41px 20px;
 }
 .form_text {
   color: #000000;
@@ -624,7 +658,7 @@
 }
 
 .form_card_btn {
-  margin: 20px 0 30px 0;
+  margin: 18px 0 25px 0;
   padding: 10px 40px;
   border-radius: 2px;
   border: 1px solid #0C0C0E;
@@ -666,8 +700,12 @@
   display: inline-block;
 }
 .btn_card:last-child {
-  margin-left: 20px;
+  margin-left:15px;
 }
+
+/*Finish section Digital Card*/
+
+/*Start Footer*/
 .footer_container {
   background: #0C0C0E;
   color: #ffffff;
@@ -684,7 +722,7 @@
   margin: 0 auto;
     left: 20px;
     right: 20px;
-    bottom: -10px;
+    bottom: -11px;
     height: 1px; 
     background-color: #ffffff;
 }
@@ -719,7 +757,7 @@ line-height: 20px; /* 133.333% */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 55px 20px 44px 20px;
+  padding: 57px 20px 44px 20px;
   text-align: center;
 font-family: Inter;
 font-size: 20px;
@@ -736,3 +774,4 @@ letter-spacing: 2px;
   text-decoration: none;
   transition: 0.3s;
 }
+/*Finish Footer*/
