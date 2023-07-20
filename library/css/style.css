@@ -177,7 +177,7 @@
 
   /* Start section Welcome */
   .welcome_wrapper {
-    background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url(../assets/image/Welcome.png);
+    background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url(../assets/image/welcome_.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -789,15 +789,16 @@ letter-spacing: 2px;
 }
 /*Finish Footer*/
 
-@media (max-width: 768px) {    
-  .welcome_wrapper {
-    background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url(../assets/image/Welcome_768.png);
-   }
+@media (max-width: 768px) {     
    .digital_section {
     justify-content: center;
    }
    .digital_cards_reader {
     min-width: 600px;
     text-align: center;
+   }
+   .about-item:nth-child(2),
+   .about-item:nth-child(3) {
+      display: none;
    }
 }
