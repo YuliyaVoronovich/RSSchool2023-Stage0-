@@ -184,8 +184,9 @@
    }
   .welcome_container {
     margin-top: -1px;
+    margin-left: auto;
     height: 601px;
-    padding: 220px 840px 160px 0;
+    padding: 220px 0 160px 0;
     background: none;
   }
   .welcome_container_text {
@@ -332,7 +333,7 @@
     flex-wrap: wrap;
     gap: 40px 260px;
     padding: 0 60px 40px 20px;
-    justify-content: space-between;
+    justify-content: center;
   }
   .book_section_element {
    width: 550px;
@@ -443,7 +444,9 @@
 }
 .coffee_shop_price {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  row-gap: 40px;
   padding: 40px 20px;
 }
 .coffee_shop_price_title {
@@ -465,6 +468,9 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+.coffee_shop_desserts {
+  margin-left: auto;
 }
 .coffee_shop_price_drink,
 .coffee_shop_price_dessert {
@@ -517,9 +523,13 @@
 /*Start section Contacts*/
 .contacts_section {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  /*gap: 190px;*/
+  row-gap: 100px;
   padding: 61px 20px 40px 20px;
+}
+.contacts {
+  flex-grow: 1;
 }
 .contacts_title {
   color: #000000;
@@ -583,6 +593,7 @@
   font-weight: 700;
 }
 .map {
+  margin: 0 auto;
   width: 696px;
   height: 414px;
 }
@@ -591,7 +602,9 @@
 /*Start section Digital Card*/
 .digital_section {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  row-gap: 21px;
   padding: 60px 20px 41px 20px;
 }
 .form_text {
@@ -775,3 +788,16 @@ letter-spacing: 2px;
   transition: 0.3s;
 }
 /*Finish Footer*/
+
+@media (max-width: 768px) {    
+  .welcome_wrapper {
+    background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url(../assets/image/Welcome_768.png);
+   }
+   .digital_section {
+    justify-content: center;
+   }
+   .digital_cards_reader {
+    min-width: 600px;
+    text-align: center;
+   }
+}
