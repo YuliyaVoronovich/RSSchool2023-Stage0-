@@ -50,13 +50,13 @@
     margin: 0 auto;
     background: #ffffff;
   }
-  .header_container {
+  .header-container {
     display: flex;
     justify-content: space-between;
     background: #0c0c0e;
     color: #ffffff;
   }
-  .main_header_text {
+  .main-title {
     margin: 0;
     padding: 20px 0 20px 20px;
     font-family: Forum;
@@ -66,23 +66,14 @@
     line-height: 50px;
     letter-spacing: 0.6px;    
   }
-  .header_container .icon_profile {
+  .profile-icon {
     display: block;
     object-fit: contain;
     padding: 31px 20px 31px 40px;
   }
-  .about_container,
-  .favorites_container,
-  .coffee_shop_container,
-  .contacts_container,
-  .digital_container {
+  .title {
+    position: relative;
     padding-top: 20px;
-  }
-  .about_text,
-  .favorites_text,
-  .coffee_shop_text,
-  .contacts_text,
-  .digital_text {
     color: #0C0C0E;
     font-family: Forum;
     font-size: 40px;
@@ -91,15 +82,10 @@
     line-height: 40px; /* 100% */
     letter-spacing: 2px;
     text-transform: capitalize;
-    text-align: center;
-    position: relative;
+    text-align: center;  
   }
 
-  .about_text::after,
-  .favorites_text::after,
-  .coffee_shop_text::after,
-  .contacts_text::after,
-  .digital_text::after {
+  .title::after {
     content: "";
     position: absolute;
     margin: 0 auto;
@@ -111,8 +97,7 @@
     background-color: #0c0c0e;
   }
 
-  .about_container .paragraf_text,
-  .favorites_container .paragraf_text,
+  .subject,
   .coffee_shop_container .paragraf_text {
     color: #000;
     text-align: center;
@@ -176,20 +161,20 @@
 
 
   /* Start section Welcome */
-  .welcome_wrapper {
+  .welcome-wrapper {
     background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 100%), url(../assets/image/welcome_.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
    }
-  .welcome_container {
+  .welcome-container {
     margin-top: -1px;
     margin-left: auto;
     height: 601px;
     padding: 220px 0 160px 0;
     background: none;
   }
-  .welcome_container_text {
+  .welcome-container-title{
     width: 600px;
     height: 220px;
     
@@ -212,38 +197,38 @@
 
 
   /*Start section About*/
-  .about_pictures {
+  .about-pictures {
     flex:1;
     padding: 20px 20px 0 20px;
   }
-  .about_list {
+  .about-list {
     display: flex;
     gap: 25px;
     justify-content: center;
     list-style: none;
   }
-  .about_list .about-item {
+  .about-list .about-item {
     flex-shrink: 1;
     width: 450px;
     height: 100%;
   }
-  .about_list .about-item  img{
+  .about-item-img{
     display: block;
   }
-  .about_list .about-item_hidden {
+ .about-item-hidden {
     display: none;
   }
-  .about_carousel_list {
+  .carousel-list {
     display: flex;
     justify-content: center;
     list-style: none;
     padding: 35px 0;
   }
-  .about_carousel .about_carousel_output {
+  .carousel-item {
     padding: 5px;
     cursor:pointer;
   }
-  .about_carousel .about_carousel_output a{
+  .carousel-link {
     display: block;
     padding: 5px;
     border: 1px solid;
@@ -253,19 +238,19 @@
     background: #0c0c0e;
     color: #0c0c0e;
   }
-  .about_carousel .about_carousel_output:first-child a{
+  .carousel-link-active {
     background: #bb945f;
     color: #bb945f;
   }
     /*Finish section About*/
 
     /*Start section Favorites*/
-  .favorites_container .paragraf_text {
+  .favorites-subject {
     font-weight: 700;
     text-align: left;
     padding: 52px 0 0 20px; /*проверить еще раз почему 51*/
   }
-  .favorites_btn {
+  .radiobutton-section {
     display: flex;
     flex-wrap: wrap;    
     gap: 55px;
@@ -273,10 +258,10 @@
     justify-content: flex-start;
   }
 
-  .favorites_btn .favorites_radiobutton:last-child {/*марджин для совпадения с макетом Перфект Пиксель*/
-    margin-left: 15px;
+  .radiobutton-section .radiobutton:last-child {/*марджин для совпадения с макетом Перфект Пиксель*/
+    margin-left: 17px;
    }
-  .favorites_radiobutton {
+  .radiobutton {
     display: flex;
     min-width: 135px;
     align-items: center;
@@ -285,7 +270,7 @@
   .radio {
       display: none;
   }
-  .fake_radio {
+  .fake-radio {
     position: relative;
     display: inline-block;
     width: 17px;
@@ -294,48 +279,46 @@
     border-radius: 50%;
     margin-right: 15px;
 }
-.fake_radio::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  border-radius: 50%;
-  background-color: #000000;
-  opacity: 0;
-  transition: 0.2s;
-}
-.radio:checked +.fake_radio::before {
-  opacity: 1;
-}
-.radio:hover ~ .text ,
-.radio:checked ~ .text {
-  font-weight: 700;
-}
-.favorites_label {
-  cursor: pointer;
-}
-.favorites_label .text {
-  color: #000000;
-  font-family: Inter;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
+  .fake-radio::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    background-color: #000000;
+    opacity: 0;
+    transition: 0.2s;
+  }
+  .radio:checked +.fake-radio::before {
+    opacity: 1;
+  }
+  .radio:hover ~ .text ,
+  .radio:checked ~ .text {
+    font-weight: 700;
+  }
+  .label {
+    cursor: pointer;
+  }
+  .label .text {
+    color: #000000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 
-
-
-  .book_section {
+  .book-section {
     display: flex;
     flex-wrap: wrap;
     gap: 40px 260px;
     padding: 0 60px 40px 20px;
     justify-content: center;
   }
-  .book_section_element {
+  .book-section-element {
    width: 550px;
    height: 100%;
    height: 100%;
@@ -343,23 +326,23 @@
    position: relative;  
    border: 1px solid #000000;
    background: #ffffff;
-}
-.book_section_hidden {
-  display:none;
-}
-.book_staff_picks {
-  position: relative;
-  padding: 15px 0 0 20px;
-  color: #000;
-  font-family: Forum;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 40px; /* 200% */
-  letter-spacing: 2px;
-  text-transform: capitalize;
-}
-.book_staff_picks::after {
+  }
+  .book-section-hidden {
+    display:none;
+  }
+  .book-staff-picks {
+    position: relative;
+    padding: 15px 0 0 20px;
+    color: #000;
+    font-family: Forum;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px; /* 200% */
+    letter-spacing: 2px;
+    text-transform: capitalize;
+  }
+  .book-staff-picks::after {
     content: "";
     position: absolute;
     left: 20px;
@@ -369,21 +352,22 @@
     bottom: 0px; 
     background-color: #BB945F;
   }
-.book_title {
-  padding: 20px 0 0 20px;
-  color: #000;
-  font-family: Inter;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 40px; /* 266.667% */
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-.book_title_bottom {
-  text-transform: capitalize;
-}
-.book_desc {
+  .book-title {
+    padding: 20px 0 0 20px;
+    color: #000;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px; /* 266.667% */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .book-title-bottom {
+    text-transform: capitalize;
+  }
+
+.book-desc {
   margin: 20px 0 15px 20px;
   max-width: 358px;
   height: 320px;
@@ -396,7 +380,7 @@
   letter-spacing: 2px;
   text-transform: capitalize;
 }
-.book_image {
+.book-image {
   position: absolute;
   width: 200px;
   height: 300px;
@@ -417,18 +401,18 @@
   font-weight: 700;
   letter-spacing: 1px;  
 }
-.btn_buy {  
+.btn-buy {  
   border: 1px solid #0C0C0E;
   background-color: #ffffff;
   color: #0C0C0E;  
   transition: 0.5s;
   cursor: pointer;
 }
-.btn_buy:hover {
+.btn-buy:hover {
   border: 1px solid #BB945F;
   background: #BB945F; 
 }
-.btn_buy.btn_own {  
+.btn-buy.btn-own {  
   border: 1px solid #BB945F;
   color: #BB945F;
   cursor: unset;
@@ -439,17 +423,17 @@
 
  
  /*Start section Coffee Shop*/
-.coffee_shop_container .paragraf_text {
+.coffee-shop-subject {
   letter-spacing: 2px;
 }
-.coffee_shop_price {
+.shop-price {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 40px;
   padding: 40px 20px;
 }
-.coffee_shop_price_title {
+.shop-price-title {
   color: #BB945F;
   font-family: Forum;
   font-size: 40px;
@@ -460,31 +444,31 @@
   text-transform: capitalize;
   text-align: left;
 }
-.coffee_shop_desserts .coffee_shop_price_title {
+.price-desserts .shop-price-title {
   text-align: right;
 }
-.coffee_shop_drinks,
-.coffee_shop_desserts {
+.price-drinks,
+.price-desserts {
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
-.coffee_shop_desserts {
+.price-desserts {
   margin-left: auto;
 }
-.coffee_shop_price_drink,
-.coffee_shop_price_dessert {
+.price-drink,
+.price-dessert {
   display: flex;
   flex-flow: row;
   width: 100%;
   justify-content: space-between;
   gap:220px;
 }
-.coffee_shop_price_dessert {
+.price-dessert {
   text-align: right;
 }
-.drink_title,
-.dessert_title {
+.drink-title,
+.dessert-title {
   flex-grow: 1;
   color: #000;
   font-family: Inter;
@@ -495,8 +479,8 @@
   letter-spacing: 2px;
   text-transform: capitalize;
 }
-.drink_price,
-.dessert_price {
+.drink-price,
+.dessert-price {
   position: relative;
   color: #000;
   font-family: Forum;
@@ -507,8 +491,8 @@
   letter-spacing: 2px;
   text-transform: capitalize;
 }
-.drink_price::before,
-.dessert_price::before {
+.drink-price::before,
+.dessert-price::before {
     content: "";
     position: absolute;
     margin: 0 auto;
@@ -521,7 +505,7 @@
 /*Finish section Coffee Shop*/
 
 /*Start section Contacts*/
-.contacts_section {
+.contacts-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -531,7 +515,7 @@
 .contacts {
   flex-grow: 1;
 }
-.contacts_title {
+.subtitle {
   color: #000000;
   text-align: left;
   font-family: Inter;
@@ -542,7 +526,7 @@
   letter-spacing: 2px;
   text-transform: capitalize;
 }
-.contacts_phones {
+.contacts-phones {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -559,27 +543,18 @@
   letter-spacing: 2px;
   text-transform: capitalize;
 }
-.contact_link {
+.contacts-link {
   color: #000000;
   text-decoration: none;
 }
-.contacts_staff {
+.contacts-staff {
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: flex-start;
 }
-.staff_title {
-  color: #000000;
-  font-family: Inter;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 40px; /* 200% */
-  letter-spacing: 2px;
-  text-transform: capitalize;
-}
-.staff_name {
+
+.staff-name {
   color: #000;
   font-family: Inter;
   font-size: 20px;
@@ -589,7 +564,7 @@
   letter-spacing: 2px;
   text-transform: capitalize;
 }
-.staff_name .name {
+.staff-name .name {
   font-weight: 700;
 }
 .map {
@@ -600,14 +575,14 @@
 /*Finish section Contacts*/
 
 /*Start section Digital Card*/
-.digital_section {
+.digital-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 21px;
   padding: 60px 20px 41px 20px;
 }
-.form_text {
+.heading {
   color: #000000;
   font-family: Inter;
   font-size: 30px;
@@ -619,7 +594,7 @@
   padding-bottom: 30px;
 }
 
-.form_find_card {
+.form-card {
   max-width: 600px;
   max-height: 386px;
   padding: 20px 20px 0 20px;
@@ -627,14 +602,14 @@
   text-align: center;
   box-shadow: 0px 3px 43px 0px rgba(0, 0, 0, 0.25);
 }
-.form_find_card_data {
+.form-card-data {
   display: flex;
   flex-direction: column;
   min-width: 560px; 
   gap: 20px;
   background: #BB945F;
 }
-.form_data_text {
+.form-caption {
   text-align: left;
   padding: 20px 20px 0 20px;
   color: #000;
@@ -645,7 +620,7 @@
   line-height: 50px; /* 166.667% */
   letter-spacing: 0.6px;
 }
-.form_data_input {
+.form-input {
   max-width: 520px;
   margin: 0 0 5px 20px;
   border: none;
@@ -660,17 +635,17 @@
   font-style: normal;
   font-weight: 400;
 }
-.form_data_input:last-child {
+.form-input:last-child {
   margin-bottom: 25px;
 }
-.form_data_input:focus,
-.form_data_input:active {
+.form-input:focus,
+.form-input:active {
   color: #BB945F;
   outline: 1px solid #000000;
   outline-offset: 1px;
 }
 
-.form_card_btn {
+.btn-card {
   margin: 18px 0 25px 0;
   padding: 10px 40px;
   border-radius: 2px;
@@ -684,14 +659,14 @@
   line-height: normal;
   letter-spacing: 1px;
 }
-.digital_cards_reader {
+.card-reader {
   display: flex;
   flex-direction: column;
   text-align: right;
   max-width: 456px;
   gap:35px;
 }
-.card_title {
+.card-heading {
   color: #000;
   font-family: Forum;
   font-size: 30px;
@@ -700,7 +675,7 @@
   line-height: normal;
   letter-spacing: 0.6px;
 }
-.card_text {
+.card-text {
   color: #000;
   font-family: Inter;
   font-size: 20px;
@@ -719,73 +694,79 @@
 /*Finish section Digital Card*/
 
 /*Start Footer*/
-.footer_container {
+.footer-container {
   background: #0C0C0E;
   color: #ffffff;
 }
-.footer_container_top {
+.footer-above-line {
   display: flex;
   justify-content: space-between;
   position: relative;
   padding: 20px;
 }
-.footer_container_top:after {
+.footer-above-line:after {
   content: "";
   position: absolute;
   margin: 0 auto;
-    left: 20px;
-    right: 20px;
-    bottom: -11px;
-    height: 1px; 
-    background-color: #ffffff;
+  left: 20px;
+  right: 20px;
+  bottom: -11px;
+  height: 1px; 
+  background-color: #ffffff;
 }
-.footer_address {
+
+.footer-address {
   text-align: left;
   color: #FFF;
-font-family: Inter;
-font-size: 15px;
-font-style: normal;
-font-weight: 400;
-line-height: 20px; /* 133.333% */
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 133.333% */
 }
-.footer_social {
+.social-list {
   display: flex;
   gap: 15px;
   justify-content: flex-start;
   margin-top: 20px;
   list-style: none;
 }
-.footer_time {
+
+.footer-time {
   text-align: right;
-font-family: Inter;
-font-size: 15px;
-font-style: normal;
-font-weight: 400;
-line-height: 20px; /* 133.333% */
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 133.333% */
 }
-.footer_time p:last-child {
+.footer-time p:last-child {
   margin-top:10px;
 }
-.footer_container_bottom {
+.footer-under-line {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 57px 20px 44px 20px;
   text-align: center;
-font-family: Inter;
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: 20px; /* 100% */
-letter-spacing: 2px;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  letter-spacing: 2px;
 }
-.footer_bottom_text:nth-child(2) {
+.under-line-text:nth-child(2) {
   margin-left: 20px;
 }
-.footer_link {
+.footer-link {
   color:#ffffff;
   text-decoration: none;
   transition: 0.3s;
+}
+
+.footer-link:hover {
+  color:#BB945F;
 }
 /*Finish Footer*/
 
