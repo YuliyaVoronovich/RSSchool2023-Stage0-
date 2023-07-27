@@ -322,6 +322,7 @@
   .book-section-element {
    width: 550px;
    min-height: 555px;
+   padding: 15px 0 0 20px;
    flex-shrink: 0;
    position: relative;  
    border: 1px solid #000000;
@@ -332,7 +333,6 @@
   }
   .book-staff-picks {
     position: relative;
-    padding: 15px 0 0 20px;
     color: #000;
     font-family: Forum;
     font-size: 20px;
@@ -345,7 +345,7 @@
   .book-staff-picks::after {
     content: "";
     position: absolute;
-    left: 20px;
+    left: 0;
     right: 0;
     width: 60px;
     height: 1px;
@@ -353,7 +353,7 @@
     background-color: #BB945F;
   }
   .book-title {
-    padding: 20px 0 0 20px;
+    padding: 20px 0 0 0;
     color: #000;
     font-family: Inter;
     font-size: 15px;
@@ -368,7 +368,7 @@
   }
 
 .book-desc {
-  margin: 20px 0 15px 20px;
+  margin: 20px 0 15px 0;
   max-width: 358px;
   min-height: 320px;
   color: #000;
@@ -393,7 +393,7 @@
   width: 75px;
   height: 30px;
   border-radius: 2px;
-  margin: auto 0 15px 20px;
+  margin: auto 0 14px 0;
   padding: 0;
   text-align: center;
   font-family: Inter;
@@ -580,7 +580,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 20px;
-  padding: 60px 20px 40px 20px;
+  padding: 62px 20px 40px 20px;
 }
 .heading {
   color: #000000;
@@ -747,7 +747,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 56px 20px 44px 20px;
+  padding: 58px 20px 44px 20px;
   text-align: center;
   font-family: Inter;
   font-size: 20px;
