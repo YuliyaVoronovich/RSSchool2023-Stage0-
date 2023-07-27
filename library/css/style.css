@@ -469,7 +469,7 @@
 }
 .drink-title,
 .dessert-title {
-  flex-grow: 1;
+  /* flex-grow: 1; */ 
   color: #000;
   font-family: Inter;
   font-size: 20px;
@@ -478,6 +478,9 @@
   line-height: 40px; /* 200% */
   letter-spacing: 2px;
   text-transform: capitalize;
+}
+.dessert-title {
+  min-width: 240px;
 }
 .drink-price,
 .dessert-price {
