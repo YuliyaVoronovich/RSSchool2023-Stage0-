@@ -180,7 +180,7 @@
     
     background: #0C0C0E;
   }
-  .welcome_text {
+  .welcome-text {
     color: #ffffff;
     text-align: center;
     font-family: Forum;
@@ -393,7 +393,7 @@
   width: 75px;
   height: 30px;
   border-radius: 2px;
-  margin: auto 0 14px 0;
+  margin-top: auto;
   padding: 0;
   text-align: center;
   font-family: Inter;
@@ -469,7 +469,7 @@
 }
 .drink-title,
 .dessert-title {
-  flex-grow: 1;
+  /* flex-grow: 1; */ 
   color: #000;
   font-family: Inter;
   font-size: 20px;
@@ -478,6 +478,9 @@
   line-height: 40px; /* 200% */
   letter-spacing: 2px;
   text-transform: capitalize;
+}
+.dessert-title {
+  min-width: 240px;
 }
 .drink-price,
 .dessert-price {
