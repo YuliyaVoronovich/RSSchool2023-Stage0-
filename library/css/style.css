@@ -770,6 +770,10 @@
 
 .footer-link:hover {
   color:#BB945F;
+ 
+}
+.footer-link svg:hover {
+  transform: scale(1.5);
 }
 /*Finish Footer*/
 
