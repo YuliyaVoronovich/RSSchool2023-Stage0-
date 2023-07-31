@@ -72,6 +72,7 @@
     display: block;
     object-fit: contain;
     padding: 30px 20px 30px 40px;
+    cursor: pointer;
   }
   .title {
     position: relative;
@@ -549,6 +550,10 @@
 .contacts-link {
   color: #000000;
   text-decoration: none;
+  cursor: pointer;
+}
+.contacts-link:hover {
+  text-decoration: underline;
 }
 .contacts-staff {
   display: flex;
@@ -760,7 +765,7 @@
   letter-spacing: 2px;
 }
 .under-line-text:nth-child(2) {
-  margin-left: 20px;
+  margin: auto;
 }
 .footer-link {
   color:#ffffff;
