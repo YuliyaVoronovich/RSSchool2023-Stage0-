@@ -258,7 +258,7 @@
   .radiobutton-section {
     display: flex;
     flex-wrap: wrap;    
-    gap: 57px;
+    gap: 5px 57px;
     padding: 28px 0 34px 20px;
     justify-content: flex-start;
   }
@@ -320,9 +320,9 @@
   .book-section {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px 260px;
+    gap: 40px;
     padding: 0 60px 40px 20px;
-    justify-content: center;
+    justify-content: space-between;
   }
   .book-section-element {
    width: 550px;
@@ -333,6 +333,10 @@
    border: 1px solid #000000;
    background: #ffffff;
   }
+  .book-section-element:nth-child(odd) {
+    margin-right: auto;
+  }
+
   .book-section-hidden {
     display:none;
   }
@@ -769,8 +773,8 @@
   letter-spacing: 2px;
 }
 .under-line-text:nth-child(2) {
-  /*margin: auto;*/
-  margin-left: 20px;
+  margin: auto;
+  /* margin-left: 20px; */
 }
 .footer-link {
   color:#ffffff;
@@ -787,30 +791,54 @@
 }
 /*Finish Footer*/
 
-@media (max-width: 1440px) and (min-width: 1024px) {  
+@media (max-width: 1024px) {     
+
+  .about-item:nth-child(2),
+  .about-item:nth-child(3) {
+     display: none;
+  }
+  .carousel-item:nth-child(4),
+  .carousel-item:nth-child(5) {
+     display: block;
+  }
+  .nav {
+    display: none;
+  }
+  .carousel-list {
+    padding-top: 20px;
+  }
+  .card-reader {
+    gap: 40px;
+  }
+  .coffee-shop-subject {
+    letter-spacing: 1.9px;
+   }
+}
+@media (max-width: 1280px) {     
+
+  .digital-section {
+    justify-content: center;
+   }
+  .card-reader {
+    min-width: 600px;
+    text-align: center;
+  } 
+ 
+  .book-section {
+    justify-content: center;
+  }
+  .book-section-element {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1439px) and (min-width: 1024px) {  
   .about-item:nth-child(3) {
       display: none;
   } 
   .carousel-item:nth-child(4) {
-      display:block;
-  }
-  .digital_section {
-    justify-content: center;
-   }
-   .digital_cards_reader {
-    min-width: 600px;
-    text-align: center;
-   }
-}
-
-@media (max-width: 1024px) {     
-
-   .about-item:nth-child(2),
-   .about-item:nth-child(3) {
-      display: none;
-   }
-   .carousel-item:nth-child(4),
-   .carousel-item:nth-child(5) {
       display: block;
-   }
 }
+
+}
+
