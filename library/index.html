@@ -22,11 +22,14 @@
                 <li class="nav-item"><a class="nav-link" href="#library-card">Library Card</a></li>
             </ul>
             </nav>
-            <div class="profile-icon">
+            <button class="profile-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14ZM18.6667 7.77778C18.6667 10.3551 16.5774 12.4444 14.0001 12.4444C11.4227 12.4444 9.33339 10.3551 9.33339 7.77778C9.33339 5.20045 11.4227 3.11111 14.0001 3.11111C16.5774 3.11111 18.6667 5.20045 18.6667 7.77778ZM19.4998 16.2781C20.9584 17.7367 21.7778 19.715 21.7778 21.7778H14L6.22225 21.7778C6.22225 19.715 7.0417 17.7367 8.50031 16.2781C9.95893 14.8194 11.9372 14 14 14C16.0628 14 18.0411 14.8194 19.4998 16.2781Z" fill="white"/>
                 </svg>
-            </div>
+            </button>
+            <button class="nav-burger">
+              <span class="nav-burger-border"></span>
+            </button>
         </div>
       </div>
     </header>
@@ -43,30 +46,33 @@
       
       <section class="section-about" id="about">
         <div class="container">
-          <h2 class="title">About</h2>
-          <p class="subject">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside</p>
-            <div class="about-pictures">        
-              <ul class="about-list">
-                <li class="about-item"><img class="about-item-img" src="./assets/image/carousel.png" alt="Carousel Image"></li>
-                <li class="about-item"><img class="about-item-img" src="./assets/image/carousel2.png" alt="Carousel Image"></li>
-                <li class="about-item"><img class="about-item-img" src="./assets/image/carousel3.png" alt="Carousel Image"></li>
-                <li class="about-item about-item-hidden"><img class="about-item-img" src="./assets/image/carousel4.png" alt="Carousel Image"></li>
-                <li class="about-item about-item-hidden"><img class="about-item-img" src="./assets/image/carousel5.png" alt="Carousel Image"></li>
-              </ul>         
-            </div>
-            <div class="carousel">
-              <ul class="carousel-list">
-                <li class="carousel-item"><a class="carousel-link carousel-link-active" href="#"></a></li>
-                <li class="carousel-item"><a class="carousel-link" href="#"></a></li>
-                <li class="carousel-item"><a class="carousel-link" href="#"></a></li>
-                <li class="carousel-item"><a class="carousel-link" href="#"></a></li>
-                <li class="carousel-item"><a class="carousel-link" href="#"></a></li>
-              </ul>
-            </div>
+          <div class="wrap">
+            <h2 class="title">About</h2>
+            <p class="subject">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside</p>
+              <div class="about-pictures">        
+                <ul class="about-list">
+                  <li class="about-item"><img class="about-item-img" src="./assets/image/carousel.png" alt="Carousel Image"></li>
+                  <li class="about-item"><img class="about-item-img" src="./assets/image/carousel2.png" alt="Carousel Image"></li>
+                  <li class="about-item"><img class="about-item-img" src="./assets/image/carousel3.png" alt="Carousel Image"></li>
+                  <li class="about-item about-item-hidden"><img class="about-item-img" src="./assets/image/carousel4.png" alt="Carousel Image"></li>
+                  <li class="about-item about-item-hidden"><img class="about-item-img" src="./assets/image/carousel5.png" alt="Carousel Image"></li>
+                </ul>         
+              </div>
+              <div class="carousel">
+                <ul class="carousel-list">
+                  <li class="carousel-item"><a class="carousel-link carousel-link-active" href="#"></a></li>
+                  <li class="carousel-item"><a class="carousel-link" href="#"></a></li>
+                  <li class="carousel-item"><a class="carousel-link" href="#"></a></li>
+                  <li class="carousel-item"><a class="carousel-link" href="#"></a></li>
+                  <li class="carousel-item"><a class="carousel-link" href="#"></a></li>
+                </ul>
+              </div>
+          </div>
         </div>
       </section>
       <section class="section-favorites" id="favorites">
         <div class="container">
+          <div class="wrap">
           <h2 class="title">Favorites</h2>
           <p class="subject favorites-subject">Pick favorites of season</p>
           <div class="radiobutton-section">
@@ -215,10 +221,12 @@
               <img class="book-image" src="./assets/image/autumn_book4.png" alt="The fours autumn book">
             </div>
           </div>
+          </div>
         </div>
       </section>
       <section class="section-coffe-shop" id="coffee-shop">
         <div class="container">
+          <div class="wrap">
           <h2 class="title">Coffee shop</h2>
           <p class="subject coffee-shop-subject">In our library, we have of cozy coffee shop, welcoming in customers with frothy cappuccinos and friendly conversation. You can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and also you can try desserts from bakery.</p>
           <div class="shop-price">
@@ -277,10 +285,12 @@
               </div>
             </div>
           </div>
+         </div>
       </div>
       </section>
       <section class="section-contacts" id="contacts">
         <div class="container contacts-container">
+          <div class="wrap">
           <h2 class="title">Our Contacts</h2>
           <div class="contacts-section">
             <div class="contacts">
@@ -297,11 +307,13 @@
             </div>
             <div class="map"><img src="./assets/image/map.png" alt="Address library on the map"></div>
           </div>
+          </div>
         </div>
       </section>
 
         <section class="container digital-container" id="library-card">
           <div class="container digital-container">
+            <div class="wrap">
             <h2 class="title">Digital Library Cards</h2>
             <div class="digital-section">
               <div class="digital-form-card">
@@ -324,11 +336,13 @@
                 </div>
               </div>
             </div>
+            </div>
           </div>
         </section>
     </main>
     <footer class="footer">
       <div class="container footer-container">
+        <div class="wrap">
         <div class="footer-above-line">
           <div class="footer-address"><a class="footer-link" href="https://google.com/maps/search/286+Cadman+Plaza,+New+York,+%3Cbr%3ENY+11238,+United+States/@40.6957765,-73.9928274,17z/data=!3m1!4b1?entry=ttu" target="_blank">286 Cadman Plaza, New York, <br>NY 11238, United States</a>
             <ul class="social-list">
@@ -358,6 +372,7 @@
           <span class="under-line-text">2023</span>
           <span class="under-line-text"><a class="footer-link" href="https://rs.school/js-stage0/" target="_blank">The Rolling Scopes School</a></span>
           <span class="under-line-text"><a class="footer-link" href="https://github.com/YuliyaVoronovich" target="_blank">Julia V</a></span>
+        </div>
         </div>
       </div>
     </footer>
