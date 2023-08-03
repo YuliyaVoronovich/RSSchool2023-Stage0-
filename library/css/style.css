@@ -79,6 +79,7 @@ section {
   display: flex;
   align-items: center;
   padding-left: 40px;
+  margin-left: auto;
   cursor: pointer;
   background: none;
   border: none;
@@ -141,11 +142,13 @@ section {
   transition: 0.5s;
 }
 
-.nav-item:after {
+.nav-item a:after {
   content: "";
   display: block;
   position: absolute;
-  left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+  margin: 0 auto;
+  left: 0;
+  right: 0;
   width: 0;/*задаём длинну линии до наведения курсора*/
   height: 1px; /*задаём ширину линии*/
   bottom: 10px;
@@ -153,40 +156,57 @@ section {
   transition: width 0.5s ease-out; /*задаём время анимации*/
 }
 
-.nav-item:hover:after,
-.nav-item:focus:after {
+.nav-item a:hover:after,
+.nav-item a:focus:after {
   width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
 }
 
-.nav-burger {
-    display: none;
-}
-/*  display: flex;
+.button-burger {
+  display: none;
   align-items: center;
   width: 45px;
   height: 20px;
   cursor: pointer;
   z-index: 1;
-  /* margin-left: 40px;
+  margin-left: 40px;
   background: #0C0C0E;
   border: none;
+  outline: none;
+  margin: auto 0 auto 40px;
 }
-.nav-burger > span,
-.nav-burger > span::before,
-.nav-burger > span::after {
+
+.button-burger > span,
+.button-burger::before,
+.button-burger::after { 
   display: block;
-  width: 100%;
+  position: absolute;
+  width: 45px;
   height: 2px;
   background-color: #fff;
+  transition: 0.5s;
+  will-change: transform;
 }
-.nav-burger > span::before {
+ .button-burger::before {
   content: '';
-  margin-top: 10px;
+  transform: translateY(-10px);
 }
-.nav-burger > span::after {
+.button-burger::after {
   content: '';
-  margin-top: 7px;
-}*/
+  transform: translateY(10px);
+} 
+/* Крестик */
+.header.open .button-burger > span {
+  transform: scale(0);
+}
+.header.open .button-burger::before {
+  content: '';
+  transform: translateY(0) rotate(45deg);
+}
+.header.open .button-burger::after {
+  content: '';
+  transform: translateY(0) rotate(-45deg);
+}  
+
 /* Finish Nav*/
 
 
@@ -229,7 +249,7 @@ section {
 /*Start section About*/
 .about-pictures {
   flex:1;
-  padding: 20px 20px 0 20px;
+  padding-top: 20px;
 }
 
 .about-list {
@@ -794,6 +814,9 @@ transform: scale(1.5);
 }
 /*Finish Footer*/
 
+
+
+
 @media (max-width: 1024px) {     
 
 .about-item:nth-child(2),
@@ -826,8 +849,36 @@ transform: scale(1.5);
   width: 24px;
 }
 .nav {
-  display: none;
+  position: absolute;
+  right: 0;
+  top: -300px;
+  width: 332px;
+  /* height: 570px; */
+  background: #0c0c0e;
+  transition: transform 0.5s, visibility 0.5s;
+  transform: translateY(-100%);
+  will-change: transform;
 }
+.nav-list {
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  text-align: center;
+  padding: 10px 0;
+}
+.nav-item {
+  width: 100%
+}
+.button-burger { 
+  display: block;
+}
+
+.header.open .nav {
+  transform: translateY(100%);
+  visibility: visible;
+  opacity: 1;
+}
+
 .carousel-list {
   padding-top: 20px;
 }
