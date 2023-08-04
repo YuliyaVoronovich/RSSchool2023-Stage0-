@@ -15,7 +15,7 @@ document.getElementById('burger').addEventListener('click', event => {
 document.body.addEventListener('click', event => {
     if (event._isClickWithMenu) return;
 
-    document.querySelector('.header').classList.remove('open')
+    document.querySelector('.header').classList.remove('open');
 });
 
 // Код для закрытия меню при нажатии на ссылку

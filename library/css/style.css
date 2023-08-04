@@ -195,6 +195,10 @@ section {
   transform: translateY(10px);
 } 
 /* Крестик */
+.header.open .button-burger {/*временно до замены отступов в макете*/
+  margin-left: 27px;
+  padding-left: 4px;
+}
 .header.open .button-burger > span {
   transform: scale(0);
 }
@@ -813,128 +817,3 @@ color:#BB945F;
 transform: scale(1.5);
 }
 /*Finish Footer*/
-
-
-
-
-@media (max-width: 1024px) {     
-
-.about-item:nth-child(2),
-.about-item:nth-child(3) {
-   display: none;
-}
-.carousel-item:nth-child(4),
-.carousel-item:nth-child(5) {
-   display: block;
-}
-.about-list {
-  gap: 58px;
-}
-.about-list:before {
-  display: inline;
-  content: '';
-  background-image: url('../assets/image/svg/arrow_left.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-top: 290px;
-  height: 24px;
-  width: 24px;
-}
-.about-list::after {
-  display: inline-flex;
-  content: '';
-  background-image: url('../assets/image/svg/arrow_right.svg');
-  margin-top: 290px;
-  height: 24px;
-  width: 24px;
-}
-.nav {
-  position: absolute;
-  right: 0;
-  top: -300px;
-  width: 332px;
-  /* height: 570px; */
-  background: #0c0c0e;
-  transition: transform 0.5s, visibility 0.5s;
-  transform: translateY(-100%);
-  will-change: transform;
-}
-.nav-list {
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  text-align: center;
-  padding: 10px 0;
-}
-.nav-item {
-  width: 100%
-}
-.button-burger { 
-  display: block;
-}
-
-.header.open .nav {
-  transform: translateY(100%);
-  visibility: visible;
-  opacity: 1;
-}
-
-.carousel-list {
-  padding-top: 20px;
-}
-.card-reader {
-  gap: 40px;
-}
-.coffee-shop-subject {
-  letter-spacing: 1.9px;
- }
-}
-
-
-@media (max-width: 1280px) {     
-
-.digital-section {
-  justify-content: center;
- }
-.card-reader {
-  min-width: 600px;
-  text-align: center;
-} 
-
-.book-section {
-  justify-content: center;
-}
-.book-section-element {
-  margin: 0 auto;
-}
-}
-
-@media (max-width: 1439px) and (min-width: 1024px) {  
-.about-item:nth-child(3) {
-    display: none;
-} 
-.carousel-item:nth-child(4) {
-    display: block;
-}
-
-}
-
- @media (max-width: 730px) { 
-  .map {
-    height: 100%;
-    text-align: center;
-  }
-  .map img {
-    width: 90%;
-  }
-  .form-card {
-    max-width: 500px;
-  }
-  .form-card-data {
-    min-width: 300px; 
-    max-width: 360px;
-  }
-  .form-input {
-    max-width: 320px;
-  }
-}
