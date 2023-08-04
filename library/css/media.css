@@ -1,0 +1,135 @@
+@media (max-width: 1439px) and (min-width: 1024px) {
+
+  .about-item:nth-child(3) {
+    display: none;
+  } 
+  .carousel-item:nth-child(4) {
+    display: block;
+  }
+        
+}
+
+@media (max-width: 1280px) {     
+    
+  .digital-section {
+    justify-content: center;
+  }
+  .card-reader {
+    min-width: 600px;
+    text-align: center;
+  } 
+    
+  .book-section {
+     justify-content: center;
+   }
+  .book-section-element {
+     margin: 0 auto;
+   }
+}
+
+@media (max-width: 1024px) {     
+
+  .about-item:nth-child(2),
+  .about-item:nth-child(3) {
+     display: none;
+   }
+  .carousel-item:nth-child(4),
+  .carousel-item:nth-child(5) {
+    display: block;
+   }
+  .about-list {
+     gap: 58px;
+   }
+  .about-list:before {
+     display: inline;
+     content: '';
+     background-image: url('../assets/image/svg/arrow_left.svg');
+     background-repeat: no-repeat;
+     background-position: center;
+     margin-top: 290px;
+     height: 24px;
+     width: 24px;
+   }
+  .about-list::after {
+     display: inline-flex;
+     content: '';
+     background-image: url('../assets/image/svg/arrow_right.svg');
+     margin-top: 290px;
+     height: 24px;
+     width: 24px;
+   }
+  .nav {
+     position: absolute;
+     right: -332px;
+     top: 90px;
+     width: 332px;
+     height: 480px;
+     background: #0c0c0e;
+     transition: transform 0.5s, visibility 0.5s;
+     /* transform: translateX(-100%); */
+     will-change: transform;
+   }
+  .nav-list {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+    padding-top: 10px;
+   }    
+  .nav-item {
+    width: 100%
+   }
+  .button-burger { 
+     display: block;
+   }    
+  .header.open .nav {
+    transform: translateX(-100%);
+    visibility: visible;
+    opacity: 1;
+   }    
+  .carousel-list {
+    padding-top: 20px;
+   }
+  .card-reader {
+    gap: 40px;
+   }
+  .coffee-shop-subject {
+    letter-spacing: 1.9px;
+   }
+}
+
+@media (max-width: 760px) {
+
+   .radiobutton-section {
+      gap: 5px;
+    }
+    .map {
+      height: 100%;
+      text-align: center;
+    }
+    .map img {
+      width: 90%;
+    }
+    .form-card {
+      max-width: 500px;
+    }
+    .form-card-data {
+      min-width: 300px; 
+      max-width: 360px;
+    }
+    .form-input {
+      max-width: 320px;
+    }
+    .book-section-element {
+        max-width: 300px;
+     }
+    .book-desc {
+       max-width: 250px;
+    }
+    .card-reader {
+        min-width: 100px;
+    }
+    .price-drink, .price-dessert {
+        gap: 10px;
+    }
+}
