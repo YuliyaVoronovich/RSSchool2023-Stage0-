@@ -60,13 +60,13 @@
    }
   .nav {
      position: absolute;
-     right: 0;
-     top: -390px;
+     right: -332px;
+     top: 90px;
      width: 332px;
      height: 480px;
      background: #0c0c0e;
      transition: transform 0.5s, visibility 0.5s;
-     transform: translateY(-100%);
+     /* transform: translateX(-100%); */
      will-change: transform;
    }
   .nav-list {
@@ -83,7 +83,7 @@
      display: block;
    }    
   .header.open .nav {
-    transform: translateY(100%);
+    transform: translateX(-100%);
     visibility: visible;
     opacity: 1;
    }    
@@ -119,5 +119,17 @@
     }
     .form-input {
       max-width: 320px;
+    }
+    .book-section-element {
+        max-width: 300px;
+     }
+    .book-desc {
+       max-width: 250px;
+    }
+    .card-reader {
+        min-width: 100px;
+    }
+    .price-drink, .price-dessert {
+        gap: 10px;
     }
 }
