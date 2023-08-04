@@ -3,7 +3,7 @@
   .about-item:nth-child(3) {
     display: none;
   } 
-  .carousel-item:nth-child(4) {
+  .carousel-item:last-child {
     display: block;
   }
         
@@ -33,10 +33,19 @@
   .about-item:nth-child(3) {
      display: none;
    }
-  .carousel-item:nth-child(4),
-  .carousel-item:nth-child(5) {
+  .carousel-item:first-child,
+  .carousel-item:last-child {
     display: block;
    }
+   .carousel-item:first-child a {
+    background: #bb945f;
+    color: #bb945f;
+  }
+  .carousel-item:nth-child(2) a {
+    background: #000000;
+    color: #000000;
+  }
+
   .about-list {
      gap: 58px;
    }

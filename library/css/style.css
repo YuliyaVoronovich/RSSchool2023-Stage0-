@@ -295,8 +295,8 @@ section {
   padding: 5px;
   cursor:pointer;
 }
-.carousel-item:nth-child(4),
-.carousel-item:nth-child(5) {
+.carousel-item:first-child,
+.carousel-item:last-child {
     display: none;
 }
 .carousel-link {
@@ -309,7 +309,7 @@ section {
   background: #0c0c0e;
   color: #0c0c0e;
 }
-.carousel-link-active {
+.carousel-item:nth-child(2) a {
   background: #bb945f;
   color: #bb945f;
 }
