@@ -70,9 +70,10 @@
   .nav {
      position: absolute;
      right: -332px;
-     top: 90px;
+     top: 0;
      width: 332px;
-     height: 480px;
+     height: 570px;
+     padding-top: 90px;
      background: #0c0c0e;
      transition: transform 0.5s, visibility 0.5s;
      /* transform: translateX(-100%); */

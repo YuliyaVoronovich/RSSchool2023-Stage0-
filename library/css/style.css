@@ -88,6 +88,7 @@ section {
   cursor: pointer;
   background: none;
   border: none;
+  z-index: 10;
 }
 .title {
   position: relative;
@@ -178,6 +179,7 @@ section {
   border: none;
   outline: none;
   margin: auto 0 auto 40px;
+  z-index: 10;
 }
 
 .button-burger > span,
