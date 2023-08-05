@@ -44,7 +44,7 @@ body {
   font-style: normal;
   font-weight: 400;
 }
-.body-wrapper {
+ .body-wrapper {
   overflow: hidden;
   width: 100%;
   position: relative;
@@ -190,7 +190,7 @@ section {
   width: 45px;
   height: 2px;
   background-color: #fff;
-  transition: 0.5s;
+  transition: 0.3s;
   will-change: transform;
 }
  .button-burger::before {
@@ -202,10 +202,10 @@ section {
   transform: translateY(10px);
 } 
 /* Крестик */
-.header.open .button-burger {/*временно до замены отступов в макете*/
-  margin-left: 27px;
+/* .header.open .button-burger {/*временно до замены отступов в макете*/
+/*  margin-left: 27px;
   padding-left: 6px;
-}
+} */
 .header.open .button-burger > span {
   transform: scale(0);
 }
