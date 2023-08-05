@@ -44,7 +44,7 @@ body {
   font-style: normal;
   font-weight: 400;
 }
-.body-wrapper {
+ .body-wrapper {
   overflow: hidden;
   width: 100%;
   position: relative;
@@ -88,6 +88,7 @@ section {
   cursor: pointer;
   background: none;
   border: none;
+  z-index: 1;
 }
 .title {
   position: relative;
@@ -178,6 +179,7 @@ section {
   border: none;
   outline: none;
   margin: auto 0 auto 40px;
+  z-index: 10;
 }
 
 .button-burger > span,
@@ -188,7 +190,7 @@ section {
   width: 45px;
   height: 2px;
   background-color: #fff;
-  transition: 0.5s;
+  transition: 0.3s;
   will-change: transform;
 }
  .button-burger::before {
@@ -200,10 +202,10 @@ section {
   transform: translateY(10px);
 } 
 /* Крестик */
-.header.open .button-burger {/*временно до замены отступов в макете*/
-  margin-left: 27px;
+/* .header.open .button-burger {/*временно до замены отступов в макете*/
+/*  margin-left: 27px;
   padding-left: 6px;
-}
+} */
 .header.open .button-burger > span {
   transform: scale(0);
 }
@@ -256,31 +258,30 @@ section {
 
 
 /*Start section About*/
-.about-pictures {
-  flex:1;
+.about-wrap {
+  display: flex;
+  justify-content: center;
   padding-top: 20px;
+  position: relative;
+}
+.about-picture {
+  position: relative;
 }
 
 .about-list {
-  position: relative;
   display: flex;
   gap: 25px;
   justify-content: center;
   list-style: none;
 }
-.about-list:before {
+.about-button {
   display: none;
 }
-.about-list::after {
-  display: none;
-}
-.about-list .about-item {
-  flex-shrink: 1;
-  width: 450px;
-  height: 100%;
-}
+
 .about-item-img{
   display: block;
+  max-width: 450px;
+  width: 100%;
 }
 .about-item-hidden {
   display: none;
@@ -295,8 +296,8 @@ section {
   padding: 5px;
   cursor:pointer;
 }
-.carousel-item:nth-child(4),
-.carousel-item:nth-child(5) {
+.carousel-item:first-child,
+.carousel-item:last-child {
     display: none;
 }
 .carousel-link {
@@ -309,7 +310,7 @@ section {
   background: #0c0c0e;
   color: #0c0c0e;
 }
-.carousel-link-active {
+.carousel-item:nth-child(2) a {
   background: #bb945f;
   color: #bb945f;
 }
