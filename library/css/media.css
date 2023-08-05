@@ -45,8 +45,23 @@
     background: #000000;
     color: #000000;
   }
+  .about-button {
+    display: block;
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    top: 288px;
+    background: none;
+    border: none;
+  }
+  .about-button-left {
+    left: -82px;
+  }
+  .about-button-right {
+    right: -82px;
+  }
 
-  .about-list {
+  /* .about-list {
      gap: 58px;
    }
   .about-list:before {
@@ -66,7 +81,7 @@
      margin-top: 290px;
      height: 24px;
      width: 24px;
-   }
+   } */
   .nav {
      position: absolute;
      right: -332px;
@@ -96,7 +111,11 @@
     transform: translateX(-100%);
     visibility: visible;
     opacity: 1;
-   }    
+   }  
+   
+  .nav-item a:after {
+    display: none;
+  }
   .carousel-list {
     padding-top: 20px;
    }

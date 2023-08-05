@@ -88,7 +88,7 @@ section {
   cursor: pointer;
   background: none;
   border: none;
-  z-index: 10;
+  z-index: 1;
 }
 .title {
   position: relative;
@@ -258,31 +258,30 @@ section {
 
 
 /*Start section About*/
-.about-pictures {
-  flex:1;
+.about-wrap {
+  display: flex;
+  justify-content: center;
   padding-top: 20px;
+  position: relative;
+}
+.about-picture {
+  position: relative;
 }
 
 .about-list {
-  position: relative;
   display: flex;
   gap: 25px;
   justify-content: center;
   list-style: none;
 }
-.about-list:before {
+.about-button {
   display: none;
 }
-.about-list::after {
-  display: none;
-}
-.about-list .about-item {
-  flex-shrink: 1;
-  width: 450px;
-  height: 100%;
-}
+
 .about-item-img{
   display: block;
+  max-width: 450px;
+  width: 100%;
 }
 .about-item-hidden {
   display: none;
