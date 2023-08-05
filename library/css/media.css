@@ -84,14 +84,14 @@
    } */
   .nav {
      position: absolute;
-     right: 0;
+     right: -332px;
      top: 0;
      width: 332px;
      height: 570px;
      padding-top: 90px;
      background: #0c0c0e;
-     transition: transform 0.8s;
-     transform: translateX(332px);
+     transition: transform 0.5s;
+     /* transform: translateX(332px); */
      will-change: transform;
    }
   .nav-list {
@@ -108,7 +108,7 @@
      display: block;
    }    
   .header.open .nav {
-    transform: translateX(0);
+    transform: translateX(-100%);
     visibility: visible;
     opacity: 1;
    }  
