@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('burger').addEventListener('click', function() {    
         document.querySelector('.header').classList.toggle('open');
+        document.querySelector('body').classList.toggle('body-overflow');
     })
 });
 
@@ -16,6 +17,7 @@ document.body.addEventListener('click', event => {
     if (event._isClickWithMenu) return;
 
     document.querySelector('.header').classList.remove('open');
+    document.querySelector('body').classList.remove('body-overflow');
 });
 
 // Код для закрытия меню при нажатии на ссылку
@@ -29,4 +31,5 @@ const links = Array.from(document.getElementById('nav-list').children);
 // // Закрытие попапа при клике на меню
 function closeOnClick() {
      document.querySelector('.header').classList.remove('open');
+     document.querySelector('body').classList.remove('body-overflow');
  }
