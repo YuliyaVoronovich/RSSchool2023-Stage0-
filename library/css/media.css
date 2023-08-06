@@ -85,10 +85,10 @@
   .nav {
      position: absolute;
      right: -332px;
-     top: 0;
+     top: 90px;
      width: 332px;
-     height: 570px;
-     padding-top: 90px;
+     height: 480px;
+     /* padding-top: 90px; */
      background: #0c0c0e;
      transition: transform 0.5s;
      /* transform: translateX(332px); */
@@ -111,11 +111,8 @@
     transform: translateX(-100%);
     visibility: visible;
     opacity: 1;
-   }  
-   
-  .nav-item a:after {
-    display: none;
-  }
+   }   
+ 
   .carousel-list {
     padding-top: 20px;
    }
@@ -161,4 +158,9 @@
     .price-drink, .price-dessert {
         gap: 10px;
     }
+}
+@media (hover: none) {
+  .nav-item a:after {
+    display: none;
+  }
 }
