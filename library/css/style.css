@@ -47,11 +47,6 @@ body {
 .body-overflow {
   overflow: hidden;
 }
- .body-wrapper {
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-}
 .header,
 .footer {
   /* background: #0C0C0E; */
