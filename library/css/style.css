@@ -809,8 +809,8 @@ line-height: 20px; /* 100% */
 letter-spacing: 2px;
 }
 .under-line-text:nth-child(2) {
-margin: auto;
-/* margin-left: 20px; */
+/* margin: auto; */
+margin-left: 20px;
 }
 .footer-link {
 color:#ffffff;

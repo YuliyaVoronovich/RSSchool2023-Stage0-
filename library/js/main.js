@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Закрыть при клике вне меню
 document.getElementById('nav').addEventListener('click', event => {
-    event._isClickWithMenu = true;
+    event._isClickMenu = true;
 });
 document.getElementById('burger').addEventListener('click', event => {
-    event._isClickWithMenu = true;
+    event._isClickMenu = true;
 });
 document.body.addEventListener('click', event => {
-    if (event._isClickWithMenu) return;
+    if (event._isClickMenu) return;
 
     document.querySelector('.header').classList.remove('open');
     document.querySelector('body').classList.remove('body-overflow');

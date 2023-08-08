@@ -122,6 +122,10 @@
   .coffee-shop-subject {
     letter-spacing: 1.9px;
    }
+   .under-line-text:nth-child(2) {
+    margin-left: 0;
+    margin-right: 35px;
+}
 }
 
 @media (max-width: 760px) {
@@ -156,7 +160,12 @@
         min-width: 100px;
     }
     .price-drink, .price-dessert {
-        gap: 10px;
+      gap: 120px;
+    }
+
+    .drink-price::before, .dessert-price::before {
+      width: 50px;
+      right: 60px;
     }
 }
 @media (hover: none) {
