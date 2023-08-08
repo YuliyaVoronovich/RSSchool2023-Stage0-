@@ -83,7 +83,7 @@
      width: 24px;
    } */
   .nav {
-     position: absolute;
+     position: fixed;
      right: -332px;
      top: 90px;
      width: 332px;
