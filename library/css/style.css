@@ -227,7 +227,7 @@ section {
   margin-left: auto;
   height: 600px;
   padding: 220px 0 160px 0;
-  background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 50%, transparent 50%), url(../assets/image/welcome_.png);
+  background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 50%, transparent 50%), url(../assets/image/welcome_.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

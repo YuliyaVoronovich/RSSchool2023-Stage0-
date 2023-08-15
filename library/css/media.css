@@ -11,7 +11,7 @@
 
 @media (max-width: 1280px) {     
     
-  .digital-section {
+  .digital-section { 
     justify-content: center;
   }
   .card-reader {
@@ -21,13 +21,15 @@
     
   .book-section {
      justify-content: center;
+     column-gap: 50px;
    }
+   
   .book-section-element {
      margin: 0 auto;
    }
 }
 
-@media (max-width: 1024px) {     
+@media (max-width: 1024px) { 
 
   .about-item:nth-child(2),
   .about-item:nth-child(3) {
