@@ -263,14 +263,15 @@ section {
   position: relative;
 }
 .about-pictures {
-  position: relative;
+  max-width: 1400px;
+  overflow: hidden;
 }
-
 .about-list {
   display: flex;
   gap: 25px;
-  justify-content: center;
+  justify-content: space-between;
   list-style: none;
+  transition: 0.3s;
 }
 .about-button {
   display: none;
@@ -278,7 +279,7 @@ section {
 
 .about-item-img{
   display: block;
-  max-width: 450px;
+  min-width: 450px;
   width: 100%;
 }
 .about-item-hidden {
@@ -287,18 +288,17 @@ section {
 .carousel-list {
   display: flex;
   justify-content: center;
-  list-style: none;
   padding: 35px 0;
 }
 .carousel-item {
   padding: 5px;
   cursor:pointer;
 }
-.carousel-item:first-child,
-.carousel-item:last-child {
+.carousel-item:nth-child(4),
+.carousel-item:nth-child(5) {
     display: none;
 }
-.carousel-link {
+.carousel-button {
   display: block;
   padding: 5px;
   border: 1px solid;
@@ -307,6 +307,7 @@ section {
   height: 16px;
   background: #0c0c0e;
   color: #0c0c0e;
+  cursor: pointer;
 }
 .carousel-item:nth-child(2) a {
   background: #bb945f;

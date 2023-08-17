@@ -1,14 +1,8 @@
 @media (max-width: 1439px) and (min-width: 1024px) {
-
-  .about-item:nth-child(3) {
-    display: none;
-  } 
-  .carousel-item:last-child {
-    display: block;
-  }
-        
+  .carousel-item:nth-child(4) {
+      display: block;
+  }        
 }
-
 @media (max-width: 1280px) {     
     
   .digital-section { 
@@ -30,19 +24,21 @@
 }
 
 @media (max-width: 1024px) { 
+  
+  .about-pictures {
+    max-width: 450px;
+  }
 
-  .about-item:nth-child(2),
+  /* .about-item:nth-child(2),
   .about-item:nth-child(3) {
      display: none;
-   }
-  .carousel-item:first-child,
-  .carousel-item:last-child {
-    display: block;
-   }
-   .carousel-item:first-child a {
-    background: #bb945f;
-    color: #bb945f;
+   } */
+
+   .carousel-item:nth-child(4),
+   .carousel-item:nth-child(5) {
+      display: block;
   }
+
   .carousel-item:nth-child(2) a {
     background: #000000;
     color: #000000;
@@ -52,21 +48,22 @@
     position: absolute;
     height: 24px;
     width: 24px;
-    top: 288px;
+    top:308px;
     background: none;
     border: none;
   }
   .about-button-left {
-    left: -82px;
+    left: 58px;
   }
   .about-button-right {
-    right: -82px;
+    right: 58px;
   }
 
-  /* .about-list {
-     gap: 58px;
+  .about-list {
+    max-width: 450px;
+    gap: 0;
    }
-  .about-list:before {
+   /*.about-list:before {
      display: inline;
      content: '';
      background-image: url('../assets/image/svg/arrow_left.svg');
