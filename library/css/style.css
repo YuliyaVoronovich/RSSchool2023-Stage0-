@@ -325,7 +325,8 @@ section {
   display: flex;
   flex-wrap: wrap;    
   gap: 5px 57px;
-  padding: 28px 0 34px 0;
+  padding: 10px 0;
+  margin: 18px 0  24px 0;
   justify-content: flex-start;
 }
 
@@ -382,12 +383,47 @@ section {
 }
 
 .book-section {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   gap: 40px;
   padding: 0 40px 40px 0;
   justify-content: space-between;
 }
+.active-tab {
+  display: block;
+}
+.active {
+  display: flex;
+  opacity: 0;
+  transition: opacity 1s;
+}
+/* .active-fade-in {
+  opacity: 1;
+}
+.active-fade-out {
+  animation: fadeOut 2s ease-in;
+}
+.no-active {
+  display: none;
+}
+ @keyframes fadeIn {  
+  from {  
+      opacity:0;  
+  }  
+
+  to {  
+      opacity:1;  
+  }  
+} 
+@keyframes fadeOut {  
+  from {  
+      opacity:1;  
+  }  
+
+  to {  
+      opacity:0;  
+  }  
+}  */
 .book-section-element {
  width: 550px;
  min-height: 555px;
@@ -401,9 +437,6 @@ section {
   margin-right: auto;
 }
 
-.book-section-hidden {
-  display:none;
-}
 .book-staff-picks {
   position: relative;
   color: #000;

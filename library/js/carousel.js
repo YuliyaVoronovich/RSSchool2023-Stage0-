@@ -99,7 +99,7 @@ function removeActiveButton(button) {
     button.querySelector('.carousel-button').style.background = '#000000';
 }
 
-buttons.forEach((button) => {
+buttons.forEach((button,) => {
     
     button.addEventListener ('click', event => {
 

@@ -28,12 +28,6 @@
   .about-pictures {
     max-width: 450px;
   }
-
-  /* .about-item:nth-child(2),
-  .about-item:nth-child(3) {
-     display: none;
-   } */
-
    .carousel-item:nth-child(4),
    .carousel-item:nth-child(5) {
       display: block;
@@ -63,24 +57,7 @@
     max-width: 450px;
     gap: 0;
    }
-   /*.about-list:before {
-     display: inline;
-     content: '';
-     background-image: url('../assets/image/svg/arrow_left.svg');
-     background-repeat: no-repeat;
-     background-position: center;
-     margin-top: 290px;
-     height: 24px;
-     width: 24px;
-   }
-  .about-list::after {
-     display: inline-flex;
-     content: '';
-     background-image: url('../assets/image/svg/arrow_right.svg');
-     margin-top: 290px;
-     height: 24px;
-     width: 24px;
-   } */
+
   .nav {
      position: fixed;
      right: -332px;
@@ -114,6 +91,13 @@
  
   .carousel-list {
     padding-top: 20px;
+   }
+
+   .radiobutton-section {
+    position: sticky;
+    top:0;
+    background: #d6d6d6;
+    z-index: 99;
    }
   .card-reader {
     gap: 40px;
