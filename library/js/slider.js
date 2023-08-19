@@ -13,15 +13,18 @@ function tabs (headerSelector, tabSelector, contentSelector, activeClass)  {
             if (target &&
                 (target.classList.contains(tabSelector.replace(/\./, "")) || 
                     target.parentNode.classList.contains(tabSelector.replace(/\./, "")))) {
+
                     tab.forEach((item, i) => {
                         if (target == item || target.parentNode == item) {  
                          
                           hideTabContent(init, currentItem);
-
-                          setTimeout(() => {   
-                            showTabContent(init, i);
+                       //  showTabContent(init, i);
                             currentItem = i;
-                          }, 300); 
+
+                           setTimeout(() => {   
+                             showTabContent(init, i);
+                             currentItem = i;
+                           }, 400); 
                         }
                         init = false;
                 });
@@ -31,7 +34,7 @@ function tabs (headerSelector, tabSelector, contentSelector, activeClass)  {
 function hideTabContent(init, currentItem) {
 
     if (!init) {
-        fadeOut (content[currentItem], 300);
+        fadeOut (content[currentItem], 400);
     }
     tab.forEach(item => {
         item.classList.remove(activeClass);
@@ -51,9 +54,13 @@ function fadeOut (el, timeout)  {
     el.style.transition = `opacity ${timeout}ms ease-in-out`; 
     el.style.opacity = 0;
 
-    setTimeout(() => {   
-       el.style.display = 'none';
-    }, timeout);
+    //  el.addEventListener('transitionend', () => {
+    //      el.style.display = 'none';
+    //  });
+
+      setTimeout(() => {   
+         el.style.display = 'none';
+      }, timeout);
     
   };
 
@@ -62,10 +69,15 @@ function fadeOut (el, timeout)  {
     el.style.display = 'flex';
     el.style.opacity = 0;   
     el.style.transition = `opacity ${timeout}ms ease-in-out`; 
+    console.log(el);
 
-     setTimeout(() => {
-        el.style.opacity = 1
-     }, timeout);
+    // el.addEventListener('transitionend', () => {
+    //     console.log(el);
+    //     el.style.opacity = 1
+    // });
+      setTimeout(() => {
+         el.style.opacity = 1;
+      }, timeout);
   };
 
 hideTabContent(init);

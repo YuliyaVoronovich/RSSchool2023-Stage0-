@@ -3,7 +3,13 @@
       display: block;
   }        
 }
-@media (max-width: 1280px) {     
+@media (max-width: 1280px) {   
+  .radiobutton-section {
+    position: sticky;
+    top:0;
+    background: #d6d6d6;
+    z-index: 99;
+  }  
     
   .digital-section { 
     justify-content: center;
@@ -24,6 +30,12 @@
 }
 
 @media (max-width: 1024px) { 
+  
+  .drop-menu-auth, 
+  .drop-menu-noauth {
+    right: 105px;
+  }
+
   
   .about-pictures {
     max-width: 450px;
@@ -91,13 +103,6 @@
  
   .carousel-list {
     padding-top: 20px;
-   }
-
-   .radiobutton-section {
-    position: sticky;
-    top:0;
-    background: #d6d6d6;
-    z-index: 99;
    }
   .card-reader {
     gap: 40px;
