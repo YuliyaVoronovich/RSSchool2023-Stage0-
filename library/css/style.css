@@ -79,11 +79,14 @@ section {
   line-height: 50px;
   letter-spacing: 0.6px;    
 }
+.header-profile-wrap {
+  position: relative;
+  margin-left: auto;
+  align-self: center;
+  padding-left: 40px;
+}
 .profile-icon {
   display: flex;
-  align-items: center;
-  padding-left: 40px;
-  margin-left: auto;
   cursor: pointer;
   background: none;
   border: none;

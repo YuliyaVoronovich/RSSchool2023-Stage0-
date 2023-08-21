@@ -24,7 +24,7 @@ function tabs (headerSelector, tabSelector, contentSelector, activeClass)  {
                            setTimeout(() => {   
                              showTabContent(init, i);
                              currentItem = i;
-                           }, 400); 
+                           }, 500); 
                         }
                         init = false;
                 });
@@ -34,7 +34,7 @@ function tabs (headerSelector, tabSelector, contentSelector, activeClass)  {
 function hideTabContent(init, currentItem) {
 
     if (!init) {
-        fadeOut (content[currentItem], 400);
+        fadeOut (content[currentItem], 500);
     }
     tab.forEach(item => {
         item.classList.remove(activeClass);
@@ -43,7 +43,7 @@ function hideTabContent(init, currentItem) {
 
 function showTabContent(init, i = 0) {
     if (!init) {
-        fadeIn (content[i], 400);
+        fadeIn (content[i], 500);
     } else content[i].style.display = 'flex';
 
     tab[i].classList.add(activeClass);
@@ -69,7 +69,6 @@ function fadeOut (el, timeout)  {
     el.style.display = 'flex';
     el.style.opacity = 0;   
     el.style.transition = `opacity ${timeout}ms ease-in-out`; 
-    console.log(el);
 
     // el.addEventListener('transitionend', () => {
     //     console.log(el);

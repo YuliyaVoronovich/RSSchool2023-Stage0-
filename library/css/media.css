@@ -31,12 +31,6 @@
 
 @media (max-width: 1024px) { 
   
-  .drop-menu-auth, 
-  .drop-menu-noauth {
-    right: 105px;
-  }
-
-  
   .about-pictures {
     max-width: 450px;
   }

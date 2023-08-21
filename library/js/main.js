@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('burger').addEventListener('click', function() {    
+
         document.querySelector('.header').classList.toggle('open');
         document.querySelector('body').classList.toggle('body-overflow');
 
-        document.querySelector('.drop-menu-auth').classList.remove('open-auth');
+        document.querySelector('.drop-menu-auth').classList.remove('open');
         
     })
 });
@@ -17,6 +18,7 @@ document.getElementById('burger').addEventListener('click', event => {
     event._isClickMenu = true;
 });
 document.body.addEventListener('click', event => {
+   
     if (event._isClickMenu) return;
 
     document.querySelector('.header').classList.remove('open');
@@ -41,7 +43,7 @@ function closeOnClick() {
 
  // открытие меню авторизации
  document.querySelector('.profile-icon').addEventListener('click', event => {
-    document.querySelector('.drop-menu-auth').classList.toggle('open-auth');
+    document.querySelector('.drop-menu-auth').classList.toggle('open');
 });
 
 document.querySelector('.profile-icon').addEventListener('click', event => {
@@ -56,5 +58,37 @@ document.querySelector('.drop-menu-list').addEventListener('click', event => {
 document.body.addEventListener('click', event => {
     if (event._isClickProfile) return;
 
-    document.querySelector('.drop-menu-auth').classList.remove('open-auth');
+    document.querySelector('.drop-menu-auth').classList.remove('open');
+});
+
+ // открытие поп-ап register
+ document.querySelector('#button-register').addEventListener('click', event => {
+
+    document.querySelector('.modal-register').classList.add('open');
+    document.querySelector('.drop-menu-auth').classList.remove('open');
+    document.querySelector('.modal-login-wrap').classList.toggle('open');
+     
+});
+document.querySelector('#sign-up').addEventListener('click', event => {
+
+    document.querySelector('.modal-register').classList.add('open');
+    document.querySelector('.modal-login-wrap').classList.toggle('open');
+     
+});
+ // закрытие поп-ап register
+document.querySelector('#close-register').addEventListener('click', event => {
+
+    document.querySelector('.modal-register').classList.remove('open');
+    document.querySelector('.modal-login-wrap').classList.toggle('open');
+     
+});
+
+//кнопка Check the card
+document.querySelector('#button-check-card').addEventListener('click', event => {
+    event.preventDefault();
+
+    console.log(event.target);
+
+    return false;
+     
 });

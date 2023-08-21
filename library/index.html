@@ -24,31 +24,34 @@
                 <li class="nav-item"><a class="nav-link" href="#library-card">Library Card</a></li>
             </ul>
             </nav>
-            <button class="profile-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14ZM18.6667 7.77778C18.6667 10.3551 16.5774 12.4444 14.0001 12.4444C11.4227 12.4444 9.33339 10.3551 9.33339 7.77778C9.33339 5.20045 11.4227 3.11111 14.0001 3.11111C16.5774 3.11111 18.6667 5.20045 18.6667 7.77778ZM19.4998 16.2781C20.9584 17.7367 21.7778 19.715 21.7778 21.7778H14L6.22225 21.7778C6.22225 19.715 7.0417 17.7367 8.50031 16.2781C9.95893 14.8194 11.9372 14 14 14C16.0628 14 18.0411 14.8194 19.4998 16.2781Z" fill="white"/>
-                </svg>
-            </button>
+            <div class="header-profile-wrap">
+              <button class="profile-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14ZM18.6667 7.77778C18.6667 10.3551 16.5774 12.4444 14.0001 12.4444C11.4227 12.4444 9.33339 10.3551 9.33339 7.77778C9.33339 5.20045 11.4227 3.11111 14.0001 3.11111C16.5774 3.11111 18.6667 5.20045 18.6667 7.77778ZM19.4998 16.2781C20.9584 17.7367 21.7778 19.715 21.7778 21.7778H14L6.22225 21.7778C6.22225 19.715 7.0417 17.7367 8.50031 16.2781C9.95893 14.8194 11.9372 14 14 14C16.0628 14 18.0411 14.8194 19.4998 16.2781Z" fill="white"/>
+                  </svg>
+              </button>
+              <!--Modal NoAuth-->
+              <div class="drop-menu-auth">
+                <h3 class="drop-menu-title">Profile</h3>
+                <div class="drop-menu-list">
+                    <button class="drop-menu-item">Log In</button>
+                    <button id="button-register" class="drop-menu-item">Register</button>
+                </div>
+              </div>
+              <!--End Modal NoAuth-->
+            </div>
             <button class="button-burger" id="burger">
               <span class="button-burger-border"></span>
             </button>  
-            <!--Modal NoAuth-->
-              <div class="drop-menu-auth">
-                <h3 class="drop-menu-title">Profile</h3>
-                <ul class="drop-menu-list">
-                    <li class="drop-menu-item">Log In</li>
-                    <li class="drop-menu-item">Register</li>
-                </ul>
-              </div>
-              <!--End Modal NoAuth-->
+            
 
               <!--Modal Auth-->
               <div class="drop-menu-noauth">
                 <h3 class="drop-menu-title">Profile</h3>
-                <ul class="drop-menu-list">
-                    <li class="drop-menu-item">My profile</li>
-                    <li class="drop-menu-item">Log Out</li>
-                </ul>
+                <div class="drop-menu-list">
+                    <button class="drop-menu-item">My profile</button>
+                    <button class="drop-menu-item">Log Out</button>
+                </div>
             </div>
               <!--End Modal Auth-->          
         </div>
@@ -353,21 +356,21 @@
             <div class="digital-section">
               <div class="digital-form-card">
                 <h3 class="heading">Find your Library card</h3>
-                <form class="form-card" action="#" method="post">
+                <form class="form-card" method="post">
                   <div class="form-card-data">
                     <p class="form-caption">Brooklyn Public Library</p>
                     <input class="form-input" type="text" id="name" placeholder="Reader's name" pattern="^[A-Za-z\-\s]+$">
                     <input class="form-input" type="text" id="card" placeholder="Card number" pattern="^[A-Z]{1}[0-9\-\s]+$">
                   </div>
-                  <button class="btn-buy btn-card" type="submit">Check the card</button>
+                  <button id="button-check-card" class="btn-buy btn-card" type="submit">Check the card</button>
                 </form>
               </div>
               <div class="card-reader">
                 <h3 class="card-heading">Get a reader card</h3>
                 <p class="card-text">You will be able to see a reader card after logging into account or you can register a new account</p>
                 <div>
-                  <button class="btn btn-buy btn-reader-card">Sign Up</button>
-                  <button class="btn btn-buy btn-reader-card">Log in</button>
+                  <button id="sign-up" class="btn btn-buy btn-reader-card">Sign Up</button>
+                  <button id="log-in" class="btn btn-buy btn-reader-card">Log in</button>
                 </div>
               </div>
             </div>
@@ -439,30 +442,31 @@
 
 
     <!--Modal Register-->
-    <div class="modal-login">
-      <button class="close-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-              <path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/>
-              <path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/>
-          </svg>
-      </button>
-      <div class="login-form-wrap">
-          <h3 class="login-title">Register</h3>
-          <form class="login-form">
-              <label class="label-login-form">First name</label>
-              <input class="input-login-form" type="text">
-              <label class="label-login-form">Last name</label>
-              <input class="input-login-form" type="text">
-              <label class="label-login-form">E-mail</label>
-              <input class="input-login-form" type="text">
-              <label class="label-login-form">Password</label>
-              <input class="input-login-form" type="text">
-              <button class="button-login-form" type="submit">Sign Up</button>
-          </form>
-          <span class="span-form">Already have an account?</span> <span class="span-form span-form-register"><a href="#">Login</a></span>
-      </div>
-
-  </div>
+    <div class="modal-login-wrap">
+      <div class="modal-register">
+        <button id="close-register" class="close-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                <path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/>
+                <path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/>
+            </svg>
+        </button>
+        <div class="login-form-wrap">
+            <h3 class="login-title">Register</h3>
+            <form class="login-form" action="#" method="post">
+                <label class="label-login-form">First name</label>
+                <input class="input-login-form" type="text">
+                <label class="label-login-form">Last name</label>
+                <input class="input-login-form" type="text">
+                <label class="label-login-form">E-mail</label>
+                <input class="input-login-form" type="text">
+                <label class="label-login-form">Password</label>
+                <input class="input-login-form" type="text">
+                <button class="button-login-form" type="submit">Sign Up</button>
+            </form>
+            <span class="span-form">Already have an account?</span> <span class="span-form span-form-register"><a href="#">Login</a></span>
+        </div>
+    </div>
+    </div>
     <!--End Modal Register-->
 
     <!--Modal BuyCard-->
