@@ -18,8 +18,7 @@ function tabs (headerSelector, tabSelector, contentSelector, activeClass)  {
                         if (target == item || target.parentNode == item) {  
                          
                           hideTabContent(init, currentItem);
-                       //  showTabContent(init, i);
-                            currentItem = i;
+                          currentItem = i;
 
                            setTimeout(() => {   
                              showTabContent(init, i);
@@ -57,7 +56,6 @@ function fadeOut (el, timeout)  {
     //  el.addEventListener('transitionend', () => {
     //      el.style.display = 'none';
     //  });
-
       setTimeout(() => {   
          el.style.display = 'none';
       }, timeout);
@@ -69,7 +67,6 @@ function fadeOut (el, timeout)  {
     el.style.display = 'flex';
     el.style.opacity = 0;   
     el.style.transition = `opacity ${timeout}ms ease-in-out`; 
-
     // el.addEventListener('transitionend', () => {
     //     console.log(el);
     //     el.style.opacity = 1

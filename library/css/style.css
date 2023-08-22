@@ -83,6 +83,7 @@ section {
   position: relative;
   margin-left: auto;
   align-self: center;
+  padding: 30px 0;
   padding-left: 40px;
 }
 .profile-icon {
@@ -390,6 +391,7 @@ section {
   display: none;
   flex-wrap: wrap;
   gap: 40px;
+  min-height: 1190px;
   padding: 0 40px 40px 0;
   justify-content: space-between;
 }

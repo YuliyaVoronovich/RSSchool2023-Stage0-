@@ -35,7 +35,7 @@
                 <h3 class="drop-menu-title">Profile</h3>
                 <div class="drop-menu-list">
                     <button class="drop-menu-item">Log In</button>
-                    <button id="button-register" class="drop-menu-item">Register</button>
+                    <button class="drop-menu-item register">Register</button>
                 </div>
               </div>
               <!--End Modal NoAuth-->
@@ -369,7 +369,7 @@
                 <h3 class="card-heading">Get a reader card</h3>
                 <p class="card-text">You will be able to see a reader card after logging into account or you can register a new account</p>
                 <div>
-                  <button id="sign-up" class="btn btn-buy btn-reader-card">Sign Up</button>
+                  <button class="btn btn-buy btn-reader-card register">Sign Up</button>
                   <button id="log-in" class="btn btn-buy btn-reader-card">Log in</button>
                 </div>
               </div>
@@ -427,7 +427,7 @@
       </button>
       <div class="login-form-wrap">
           <h3 class="login-title">Login</h3>
-          <form class="login-form">
+          <form class="login">
               <label class="label-login-form">E-mail or readers card</label>
               <input class="input-login-form" type="text">
               <label class="label-login-form">Password</label>
@@ -452,16 +452,16 @@
         </button>
         <div class="login-form-wrap">
             <h3 class="login-title">Register</h3>
-            <form class="login-form" action="#" method="post">
+            <form name="register" class="login-form">
                 <label class="label-login-form">First name</label>
-                <input class="input-login-form" type="text">
+                <input class="input-login-form" type="text" name="first_name" onchange="return validation(this.form)">
                 <label class="label-login-form">Last name</label>
-                <input class="input-login-form" type="text">
+                <input class="input-login-form" type="text" name="last_name" onchange="return validation(this.form)">
                 <label class="label-login-form">E-mail</label>
-                <input class="input-login-form" type="text">
+                <input class="input-login-form" type="text" name="email" onchange="return validation(this.form)">
                 <label class="label-login-form">Password</label>
-                <input class="input-login-form" type="text">
-                <button class="button-login-form" type="submit">Sign Up</button>
+                <input class="input-login-form" type="text" name="password" onchange="return validation(this.form)">
+                <button class="button-login-form btn-buy" type="submit">Sign Up</button>
             </form>
             <span class="span-form">Already have an account?</span> <span class="span-form span-form-register"><a href="#">Login</a></span>
         </div>
@@ -482,7 +482,7 @@
       </div>
       <div class="buy-card-main">
           <div class="buy-card-form-wrap">
-              <form class="buy-card-form">
+              <form id="login" class="buy-card-form">
                   <label class="label-buy-card-form">Bank card number</label>
                   <input class="input-buy-card-form" type="text">
                   <label class="label-buy-card-form">Expiration code</label>
@@ -578,5 +578,6 @@
   <script src="./js/main.js"></script>
   <script src="./js/carousel.js"></script>
   <script src="./js/slider.js"></script>
+  <script src="./js/popup.js"></script>
   </body>
   </html>

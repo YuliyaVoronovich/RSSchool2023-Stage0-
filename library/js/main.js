@@ -22,7 +22,7 @@ document.body.addEventListener('click', event => {
     if (event._isClickMenu) return;
 
     document.querySelector('.header').classList.remove('open');
-    document.querySelector('body').classList.remove('body-overflow');
+ //   document.querySelector('body').classList.remove('body-overflow');
 });
 
 // Код для закрытия меню при нажатии на ссылку
@@ -33,12 +33,11 @@ const links = Array.from(document.getElementById('nav-list').children);
     link.addEventListener("click", closeOnClick);
 });
 
-// // Закрытие попапа при клике на меню
+// // Закрытие бургера при клике на меню
 function closeOnClick() {
      document.querySelector('.header').classList.remove('open');
      document.querySelector('body').classList.remove('body-overflow');
  }
-
 
 
  // открытие меню авторизации
@@ -61,27 +60,6 @@ document.body.addEventListener('click', event => {
     document.querySelector('.drop-menu-auth').classList.remove('open');
 });
 
- // открытие поп-ап register
- document.querySelector('#button-register').addEventListener('click', event => {
-
-    document.querySelector('.modal-register').classList.add('open');
-    document.querySelector('.drop-menu-auth').classList.remove('open');
-    document.querySelector('.modal-login-wrap').classList.toggle('open');
-     
-});
-document.querySelector('#sign-up').addEventListener('click', event => {
-
-    document.querySelector('.modal-register').classList.add('open');
-    document.querySelector('.modal-login-wrap').classList.toggle('open');
-     
-});
- // закрытие поп-ап register
-document.querySelector('#close-register').addEventListener('click', event => {
-
-    document.querySelector('.modal-register').classList.remove('open');
-    document.querySelector('.modal-login-wrap').classList.toggle('open');
-     
-});
 
 //кнопка Check the card
 document.querySelector('#button-check-card').addEventListener('click', event => {
@@ -90,5 +68,5 @@ document.querySelector('#button-check-card').addEventListener('click', event => 
     console.log(event.target);
 
     return false;
-     
+ 
 });
