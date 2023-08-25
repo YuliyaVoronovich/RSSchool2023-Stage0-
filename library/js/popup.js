@@ -2,6 +2,7 @@
 const registers = document.querySelectorAll('.register');
 const logins = document.querySelectorAll('.login');
 const profiles = document.querySelectorAll('.profile');
+const closes = document.querySelectorAll('.close-icon');
 const body = document.querySelector('body');
 
 let unlock = true;
@@ -39,10 +40,13 @@ profiles.forEach((profile, i) => {
     });    
 });
 
-// закрытие поп-ап register
-document.querySelector('.close-register').addEventListener('click', event => {
-    closePopUp(event.target.closest('.modal-wrap'));  
-    event.preventDefault();  
+// закрытие поп-ап
+
+closes.forEach((close, i) => {
+    close.addEventListener('click', event => {
+        closePopUp(event.target.closest('.modal-wrap'));  
+        event.preventDefault();  
+    });
 });
 
 function openPopUp(popUp) {
