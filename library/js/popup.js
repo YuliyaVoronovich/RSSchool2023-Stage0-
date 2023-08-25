@@ -1,9 +1,9 @@
-// открытие поп-ап register
+const body = document.querySelector('body');
 const registers = document.querySelectorAll('.register');
 const logins = document.querySelectorAll('.login');
 const profiles = document.querySelectorAll('.profile');
 const closes = document.querySelectorAll('.close-icon');
-const body = document.querySelector('body');
+
 
 let unlock = true;
 
@@ -33,7 +33,10 @@ profiles.forEach((profile, i) => {
     
     profile.addEventListener('click', event => {   
         const currentPopUp = document.querySelector('#modal-profile-popup');
-        openPopUp(currentPopUp);  
+        openPopUp(currentPopUp);
+        if (activeCardNumber) {
+          document.querySelector('.card-info-number').innerHTML = activeCardNumber;   
+        }      
         event.preventDefault();       
         document.querySelector('.drop-menu-noauth').classList.remove('open');        
         

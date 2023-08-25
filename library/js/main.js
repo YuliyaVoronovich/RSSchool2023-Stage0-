@@ -3,7 +3,7 @@ let activeProfile = '';
 let activeCardNumber = '';
 let activeProfileMenu = '.drop-menu-noauth';
 
-let visited = 0;
+const visiteds = document.querySelectorAll('.item-count-visited');
 let books = 0;
 
 let _isClickProfile = false;
@@ -12,7 +12,6 @@ window.onload= function(event) {
 
    activeCardNumber = localStorage.getItem(ACTIVE);
    activeProfile = getProfile (activeCardNumber);
-   console.log(activeProfile);
 
     if (activeProfile) {
         showProfileIcon();
@@ -107,16 +106,9 @@ document.body.addEventListener('click', event => {
     document.querySelector(activeProfileMenu).classList.remove('open');
 });
 
-
-//кнопка Check the card
-// document.querySelector('#button-check-card').addEventListener('click', event => {
-//     event.preventDefault();
-//     return false;
- 
-// });
-
-//форма Register
-const formRegister = document.forms.register;
+//формы
+const formLogin = document.forms.login_form;
+const formRegister = document.forms.register_form;
 const EMAIL_REGEXP = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 function validation (form) {  
@@ -176,6 +168,47 @@ formRegister.addEventListener('submit', event => {
     }
 });
 
+formLogin.addEventListener('submit', event => {
+
+    event.preventDefault();
+
+    if (validation(event.target)) {
+   
+        const formData = new FormData(formLogin);
+        const cardNumberOrEmail = formData.get('card_number_email');
+        const password = formData.get('password');
+
+        const profile = getProfile(cardNumberOrEmail);//поиск по номеру карты
+
+        if (profile && profile.password === password) {
+
+            localStorage.setItem('active', cardNumberOrEmail);
+            activeProfile = profile;
+            activeCardNumber = cardNumberOrEmail;
+        } else {
+            //поиск по email
+            let keys = Object.keys(localStorage);
+                for(let key of keys) {   
+
+                    const profileJson = JSON.parse(localStorage.getItem(key));
+
+                     if (profileJson.hasOwnProperty("email") && profileJson.email === cardNumberOrEmail 
+                        && profileJson.password === password)  {
+
+                            localStorage.setItem('active', profileJson.card);
+                            activeProfile = profileJson;
+                            activeCardNumber = profileJson.card;                            
+                    }                           
+            }
+        }    
+        showProfileMenu();
+        showProfileIcon();
+        changeInfoCard();
+        countVisited(); 
+        closePopUp(document.querySelector('#modal-login-popup'));   
+    }
+});
+
 function saveToLocalStorage (form) {
 
     const formData = new FormData(form);
@@ -186,7 +219,7 @@ function saveToLocalStorage (form) {
     const password = formData.get('password');
     const activeCardNumber = [...Array(9)].map(() => Math.floor(Math.random() * 16).toString(16)).join('').toUpperCase();
 
-    activeProfile = {"name":name, "surname":surname, "email":email, "password":password, "visited": 1, "books":[], "bonuses": 1250};
+    activeProfile = {"card":activeCardNumber, "name":name, "surname":surname, "email":email, "password":password, "visited": 1, "books":[], "bonuses": 1250};
 
     localStorage.setItem(activeCardNumber, JSON.stringify(activeProfile));
     localStorage.setItem('active', activeCardNumber);
@@ -194,7 +227,6 @@ function saveToLocalStorage (form) {
     showProfileMenu();
     showProfileIcon();
     changeInfoCard();
-    countVisited();
     closePopUp(document.querySelector('#modal-register-popup'));       
 }
 
@@ -231,7 +263,11 @@ function  showProfileMenu () {
 
 function countVisited() {
 
+   activeProfile.visited +=1;
+   localStorage.setItem(activeCardNumber, JSON.stringify(activeProfile));
+   changeInfoCard();
 }
+
 // digital cards
 const formCard = document.forms.formcard;
 formCard.addEventListener('submit', event => {
@@ -271,13 +307,19 @@ function changeInfoCard() {
 
 function showInfoCard() {
 
-    document.querySelector('#button-check-card').style.display='none';
-    document.querySelector('.profile-info-card').style.display='flex';
+    
     if (activeProfile) {
         document.querySelector('[name="nameProfile"]').value = activeProfile.name;
         document.querySelector('[name="cardProfile"]').value = activeProfile.surname;
         document.querySelector('.card-reader').style.display='none';
         document.querySelector('.card-reader-login').style.display='flex';
+
+        document.querySelector('#button-check-card').style.display='none';
+        document.querySelector('.profile-info-card').style.display='flex';
+        visiteds.forEach((visited, i) => {
+            visited.innerHTML = activeProfile.visited;   
+        });
+ 
     }
    
 }
