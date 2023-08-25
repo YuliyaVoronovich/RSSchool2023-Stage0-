@@ -34,7 +34,7 @@
               <div class="drop-menu-noauth">
                 <h3 class="drop-menu-title">Profile</h3>
                 <div class="drop-menu-list">
-                    <button class="drop-menu-item">Log In</button>
+                    <button class="drop-menu-item login">Log In</button>
                     <button class="drop-menu-item register">Register</button>
                 </div>
               </div>
@@ -43,7 +43,7 @@
               <div class="drop-menu-auth">
                 <h3 class="drop-menu-title menu-profile">Profile</h3>
                 <div class="drop-menu-list">
-                    <button class="drop-menu-item">My profile</button>
+                    <button class="drop-menu-item profile">My profile</button>
                     <button class="drop-menu-item logout">Log Out</button>
                 </div>
             </div>
@@ -404,6 +404,13 @@
                   <button id="log-in" class="btn btn-buy btn-reader-card">Log in</button>
                 </div>
               </div>
+              <div class="card-reader-login">
+                <h3 class="card-heading">Visit your profile</h3>
+                <p class="card-text">With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.</p>
+                <div>
+                  <button class="btn btn-buy btn-reader-card profile">Profile</button>
+                </div>
+              </div>
             </div>
             </div>
           </div>
@@ -449,33 +456,34 @@
     <!--Modals-->   
 
     <!--Modal Log-->
-    <div class="modal-login">
-      <button class="close-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-              <path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/>
-              <path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/>
-          </svg>
-      </button>
-      <div class="login-form-wrap">
-          <h3 class="login-title">Login</h3>
-          <form class="login">
-              <label class="label-login-form">E-mail or readers card</label>
-              <input class="input-login-form" type="text">
-              <label class="label-login-form">Password</label>
-              <input class="input-login-form" type="text">
-              <button class="button-login-form" type="submit">Log In</button>
-          </form>
-          <span class="span-form">Don’t have an account?</span> <span class="span-form span-form-register"><a href="#">Register</a></span>
-      </div>
-
+    <div class="modal-wrap" id="modal-login-popup">
+      <div class="modal-login modal-content">
+        <button class="close-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                <path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/>
+                <path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/>
+            </svg>
+        </button>
+        <div class="login-form-wrap">
+            <h3 class="login-title">Login</h3>
+            <form name="login_form" class="login-form">
+                <label class="label-login-form">E-mail or readers card</label>
+                <input class="input-login-form" type="text">
+                <label class="label-login-form">Password</label>
+                <input class="input-login-form" type="text">
+                <button class="button-login-form btn-buy" type="submit">Log In</button>
+            </form>
+            <span class="span-form">Don’t have an account?</span> <span class="span-form span-form-register"><a class="link-popup register">Register</a></span>
+        </div>
+    </div>
   </div>
     <!--End Modal Log-->
 
 
     <!--Modal Register-->
-    <div class="modal-login-wrap">
-      <div class="modal-register">
-        <button id="close-register" class="close-icon">
+    <div class="modal-wrap" id="modal-register-popup">
+      <div class="modal-register modal-content">
+        <button id="close-register" class="close-icon close-register">
             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
                 <path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/>
                 <path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/>
@@ -492,11 +500,11 @@
                 <input class="input-login-form" type="text" name="email" onchange="return validation(this.form)">
                 <label class="label-login-form">Password</label>
                 <input class="input-login-form" type="text" name="password" onchange="return validation(this.form)">
-                <button class="button-login-form btn-buy" type="submit">Sign Up</button>
+                <button class="button-login-form btn-buy close-register" type="submit">Sign Up</button>
             </form>
-            <span class="span-form">Already have an account?</span> <span class="span-form span-form-register"><a href="#">Login</a></span>
+            <span class="span-form">Already have an account?</span> <span class="span-form span-form-register"><a class="link-popup login">Login</a></span>
         </div>
-    </div>
+      </div>
     </div>
     <!--End Modal Register-->
 
@@ -540,70 +548,72 @@
   <!--End modal BuyCard-->
 
   <!--Modal Profile-->
-  <div class="modal-profile">
-    <div class="modal-profile-left">
-        <div class="modal-profile-left-wrap">
-            <div class="modal-profile-initials">JD</div>
-            <div class="modal-profile-name">John Doe</div>
-        </div> 
-    </div>
-    <div class="modal-profile-rigth">
-        <button class="close-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                <path d="M2 16.8507L17 2.00001" stroke="#0C0C0E" stroke-width="3"/>
-                <path d="M2 2.14928L17 17" stroke="#0C0C0E" stroke-width="3"/>
-            </svg>
-        </button>
-        <div class="profile-wrap">
-            <h3 class="profile-title">My profile</h3>
-                <ul class="profile-info-list">
-                    <li class="profile-info-item">
-                        <span class="info-item-title">visits</span>
-                        <span class="info-item-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 10C13.2614 10 15.5 7.76143 15.5 5C15.5 2.23857 13.2614 0 10.5 0C7.73857 0 5.5 2.23857 5.5 5C5.5 7.76143 7.73857 10 10.5 10ZM17.5711 13.9289C19.4464 15.8043 20.5 18.3478 20.5 21H10.5H0.5C0.5 18.3478 1.55357 15.8043 3.42894 13.9289C5.30429 12.0536 7.84784 11 10.5 11C13.1522 11 15.6957 12.0536 17.5711 13.9289Z" fill="#BB945F"/>
-                            </svg>
-                        </span>
-                        <span class="info-item-count">23</span>
-                    </li>
-                    <li class="profile-info-item">
-                        <span class="info-item-title">bonuses</span>
-                        <span class="info-item-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-                                <path d="M10 0L12.2249 3.31001L15.8779 2.00532L15.8249 6.05634L19.5106 7.25532L17.2 10.5L19.5106 13.7447L15.8249 14.9437L15.8779 18.9947L12.2249 17.69L10 21L7.77508 17.69L4.12215 18.9947L4.17508 14.9437L0.489435 13.7447L2.8 10.5L0.489435 7.25532L4.17508 6.05634L4.12215 2.00532L7.77508 3.31001L10 0Z" fill="#BB945F"/>
-                            </svg>
-                        </span>
-                        <span class="info-item-count">1240</span>
-                    </li>
-                    <li class="profile-info-item">
-                        <span class="info-item-title">Books</span>
-                        <span class="info-item-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-                                <rect width="20" height="21" fill="#BB945F"/>
-                                <rect x="2" width="1" height="19" fill="#826844"/>
-                                <rect x="1" width="1" height="21" fill="white"/>
-                            </svg>
-                        </span>
-                        <span class="info-item-count">2</span>
-                    </li>
-                </ul>
-            <h4 class="profile-heading">Rented books</h4>
-            <ul class="profile-book-list">
-                <li class="profile-book-item">The Last Queen, Clive Irving</li>
-                <li class="profile-book-item">Dominicana, Angie Cruz</li>
-            </ul>  
-            <div class="profile-card-info">
-                <span class="card-info card-info-title">Card number</span>
-                <span class="card-info card-info-number">F00234030</span>
-                <span class="card-info card-info-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
-                        <rect x="2.46826" y="0.25" width="10.5917" height="9.5" rx="0.75" stroke="black" stroke-width="0.5"/>
-                        <rect x="0.25" y="2.25" width="10.5917" height="9.5" rx="0.75" fill="white" stroke="black" stroke-width="0.5"/>
-                    </svg>
-                </span>
-            </div>             
-        </div>
-    </div>  
+  <div class="modal-wrap" id="modal-profile-popup">
+    <div class="modal-profile modal-content">
+      <div class="modal-profile-left">
+          <div class="modal-profile-left-wrap">
+              <div class="modal-profile-initials">JD</div>
+              <div class="modal-profile-name">John Doe</div>
+          </div> 
+      </div>
+      <div class="modal-profile-rigth">
+          <button class="close-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                  <path d="M2 16.8507L17 2.00001" stroke="#0C0C0E" stroke-width="3"/>
+                  <path d="M2 2.14928L17 17" stroke="#0C0C0E" stroke-width="3"/>
+              </svg>
+          </button>
+          <div class="profile-wrap">
+              <h3 class="profile-title">My profile</h3>
+                  <ul class="profile-info-list">
+                      <li class="profile-info-item">
+                          <span class="info-item-title">visits</span>
+                          <span class="info-item-icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 10C13.2614 10 15.5 7.76143 15.5 5C15.5 2.23857 13.2614 0 10.5 0C7.73857 0 5.5 2.23857 5.5 5C5.5 7.76143 7.73857 10 10.5 10ZM17.5711 13.9289C19.4464 15.8043 20.5 18.3478 20.5 21H10.5H0.5C0.5 18.3478 1.55357 15.8043 3.42894 13.9289C5.30429 12.0536 7.84784 11 10.5 11C13.1522 11 15.6957 12.0536 17.5711 13.9289Z" fill="#BB945F"/>
+                              </svg>
+                          </span>
+                          <span class="info-item-count">23</span>
+                      </li>
+                      <li class="profile-info-item">
+                          <span class="info-item-title">bonuses</span>
+                          <span class="info-item-icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                  <path d="M10 0L12.2249 3.31001L15.8779 2.00532L15.8249 6.05634L19.5106 7.25532L17.2 10.5L19.5106 13.7447L15.8249 14.9437L15.8779 18.9947L12.2249 17.69L10 21L7.77508 17.69L4.12215 18.9947L4.17508 14.9437L0.489435 13.7447L2.8 10.5L0.489435 7.25532L4.17508 6.05634L4.12215 2.00532L7.77508 3.31001L10 0Z" fill="#BB945F"/>
+                              </svg>
+                          </span>
+                          <span class="info-item-count">1240</span>
+                      </li>
+                      <li class="profile-info-item">
+                          <span class="info-item-title">Books</span>
+                          <span class="info-item-icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                  <rect width="20" height="21" fill="#BB945F"/>
+                                  <rect x="2" width="1" height="19" fill="#826844"/>
+                                  <rect x="1" width="1" height="21" fill="white"/>
+                              </svg>
+                          </span>
+                          <span class="info-item-count">2</span>
+                      </li>
+                  </ul>
+              <h4 class="profile-heading">Rented books</h4>
+              <ul class="profile-book-list">
+                  <li class="profile-book-item">The Last Queen, Clive Irving</li>
+                  <li class="profile-book-item">Dominicana, Angie Cruz</li>
+              </ul>  
+              <div class="profile-card-info">
+                  <span class="card-info card-info-title">Card number</span>
+                  <span class="card-info card-info-number">F00234030</span>
+                  <span class="card-info card-info-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
+                          <rect x="2.46826" y="0.25" width="10.5917" height="9.5" rx="0.75" stroke="black" stroke-width="0.5"/>
+                          <rect x="0.25" y="2.25" width="10.5917" height="9.5" rx="0.75" fill="white" stroke="black" stroke-width="0.5"/>
+                      </svg>
+                  </span>
+              </div>             
+          </div>
+      </div>  
+  </div>
 </div>
   <!--End Modal Profile-->
   <script src="./js/main.js"></script>

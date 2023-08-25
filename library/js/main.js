@@ -195,7 +195,7 @@ function saveToLocalStorage (form) {
     showProfileIcon();
     changeInfoCard();
     countVisited();
-    closePopUp('.modal-login-wrap');       
+    closePopUp(document.querySelector('#modal-register-popup'));       
 }
 
 function  showProfileIcon() {
@@ -223,7 +223,6 @@ function  showProfileMenu () {
     document.querySelector(activeProfileMenu).classList.remove('open');
     activeProfileMenu = (activeProfile) ? '.drop-menu-auth': '.drop-menu-noauth';
 
-    console.log(activeProfileMenu);
     if (activeCardNumber) {
         document.querySelector('.menu-profile').innerHTML = activeCardNumber;
         document.querySelector('.menu-profile').style.fontSize = '12px'; 
@@ -250,7 +249,6 @@ function getProfileCard (form) {
     const nameProfileArray = nameProfile.split(" ");
 
     profile = getProfile(cardProfile);
-    console.log(profile);
     if (profile) {
         if (profile.name === nameProfileArray[0] && profile.surname === nameProfileArray[1]) {
 
@@ -278,6 +276,8 @@ function showInfoCard() {
     if (activeProfile) {
         document.querySelector('[name="nameProfile"]').value = activeProfile.name;
         document.querySelector('[name="cardProfile"]').value = activeProfile.surname;
+        document.querySelector('.card-reader').style.display='none';
+        document.querySelector('.card-reader-login').style.display='flex';
     }
    
 }
@@ -287,4 +287,6 @@ function hiddenInfoCard() {
     document.querySelector('.profile-info-card').style.display='none';
     document.querySelector('[name="nameProfile"]').value='';
     document.querySelector('[name="cardProfile"]').value='';
+    document.querySelector('.card-reader').style.display='flex';
+    document.querySelector('.card-reader-login').style.display='none';
 }

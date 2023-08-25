@@ -1,5 +1,7 @@
 // открытие поп-ап register
 const registers = document.querySelectorAll('.register');
+const logins = document.querySelectorAll('.login');
+const profiles = document.querySelectorAll('.profile');
 const body = document.querySelector('body');
 
 let unlock = true;
@@ -7,32 +9,56 @@ let unlock = true;
 registers.forEach((register, i) => {
     
     register.addEventListener('click', event => {   
-        openPopUp('.modal-login-wrap');        
+        const currentPopUp = document.querySelector('#modal-register-popup');
+        openPopUp(currentPopUp);     
+        event.preventDefault();   
+        document.querySelector('.drop-menu-noauth').classList.remove('open');        
+        
+    });    
+});
+
+logins.forEach((login, i) => {
+    
+    login.addEventListener('click', event => {   
+        const currentPopUp = document.querySelector('#modal-login-popup');
+        openPopUp(currentPopUp);  
+        event.preventDefault();       
+        document.querySelector('.drop-menu-noauth').classList.remove('open');        
+        
+    });    
+});
+
+profiles.forEach((profile, i) => {
+    
+    profile.addEventListener('click', event => {   
+        const currentPopUp = document.querySelector('#modal-profile-popup');
+        openPopUp(currentPopUp);  
+        event.preventDefault();       
         document.querySelector('.drop-menu-noauth').classList.remove('open');        
         
     });    
 });
 
 // закрытие поп-ап register
-document.querySelector('#close-register').addEventListener('click', event => {
-    closePopUp('.modal-login-wrap');  
+document.querySelector('.close-register').addEventListener('click', event => {
+    closePopUp(event.target.closest('.modal-wrap'));  
     event.preventDefault();  
 });
 
 function openPopUp(popUp) {
 
     if (popUp && unlock) {
-    const popupActive = document.querySelector('.modal-login-wrap.open');   
+    const popupActive = document.querySelector('.modal-wrap.open');   
         if (popupActive) {
-            closePopUp(popUp, false);
+            closePopUp(popupActive, false);
         } else {
             bodyLock();
         }
-        document.querySelector(popUp).classList.add('open');
+        popUp.classList.add('open');
 
-        document.querySelector('.modal-login-wrap').addEventListener('click', event => {
-              if (!event.target.closest('.modal-register') && event.target.closest('.modal-register') !== null) {
-                closePopUp('.modal-login-wrap');
+        popUp.addEventListener('click', event => {
+              if (!event.target.closest('.modal-content')) {
+                closePopUp(event.target.closest('.modal-wrap'));
             }
         });          
     }     
@@ -40,7 +66,7 @@ function openPopUp(popUp) {
 
 function closePopUp(popUp, doUnlock = true) {
     if (unlock) {
-        document.querySelector(popUp).classList.remove('open');
+        popUp.classList.remove('open');
         if(doUnlock) {
             bodyUnlock();
         }

@@ -761,12 +761,16 @@ font-weight: 700;
 line-height: normal;
 letter-spacing: 1px;
 }
-.card-reader {
+.card-reader,
+.card-reader-login {
 display: flex;
 flex-direction: column;
 text-align: right;
 max-width: 456px;
 gap:35px;
+}
+.card-reader-login {
+  display: none;
 }
 .card-heading {
 color: #000;
