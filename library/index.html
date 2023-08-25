@@ -44,7 +44,7 @@
                 <h3 class="drop-menu-title menu-profile">Profile</h3>
                 <div class="drop-menu-list">
                     <button class="drop-menu-item">My profile</button>
-                    <button class="drop-menu-item">Log Out</button>
+                    <button class="drop-menu-item logout">Log Out</button>
                 </div>
             </div>
               <!--End Modal Auth-->
@@ -354,14 +354,47 @@
             <div class="digital-section">
               <div class="digital-form-card">
                 <h3 class="heading">Find your Library card</h3>
-                <form class="form-card" method="post">
+                <div  class="form-card">
+                <form name="formcard" class="form-digital-card">
                   <div class="form-card-data">
                     <p class="form-caption">Brooklyn Public Library</p>
-                    <input class="form-input" type="text" id="name" placeholder="Reader's name" pattern="^[A-Za-z\-\s]+$">
-                    <input class="form-input" type="text" id="card" placeholder="Card number" pattern="^[A-Z]{1}[0-9\-\s]+$">
+                    <input class="form-input" type="text" name="nameProfile" placeholder="Reader's name" pattern="^[A-Za-z\-\s]+$">
+                    <input class="form-input" type="text" name="cardProfile" placeholder="Card number" pattern="^[A-Za-z0-9\-\s]+$">
                   </div>
                   <button id="button-check-card" class="btn-buy btn-card" type="submit">Check the card</button>
+                  <ul class="profile-info-card">
+                    <li class="profile-info-card-item">
+                        <span class="info-item-title">visits</span>
+                        <span class="info-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 10C13.2614 10 15.5 7.76143 15.5 5C15.5 2.23857 13.2614 0 10.5 0C7.73857 0 5.5 2.23857 5.5 5C5.5 7.76143 7.73857 10 10.5 10ZM17.5711 13.9289C19.4464 15.8043 20.5 18.3478 20.5 21H10.5H0.5C0.5 18.3478 1.55357 15.8043 3.42894 13.9289C5.30429 12.0536 7.84784 11 10.5 11C13.1522 11 15.6957 12.0536 17.5711 13.9289Z" fill="#BB945F"/>
+                            </svg>
+                        </span>
+                        <span class="info-item-count">23</span>
+                    </li>
+                    <li class="profile-info-card-item">
+                        <span class="info-item-title">bonuses</span>
+                        <span class="info-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                <path d="M10 0L12.2249 3.31001L15.8779 2.00532L15.8249 6.05634L19.5106 7.25532L17.2 10.5L19.5106 13.7447L15.8249 14.9437L15.8779 18.9947L12.2249 17.69L10 21L7.77508 17.69L4.12215 18.9947L4.17508 14.9437L0.489435 13.7447L2.8 10.5L0.489435 7.25532L4.17508 6.05634L4.12215 2.00532L7.77508 3.31001L10 0Z" fill="#BB945F"/>
+                            </svg>
+                        </span>
+                        <span class="info-item-count">1240</span>
+                    </li>
+                    <li class="profile-info-card-item">
+                        <span class="info-item-title">Books</span>
+                        <span class="info-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                <rect width="20" height="21" fill="#BB945F"/>
+                                <rect x="2" width="1" height="19" fill="#826844"/>
+                                <rect x="1" width="1" height="21" fill="white"/>
+                            </svg>
+                        </span>
+                        <span class="info-item-count">2</span>
+                    </li>
+                </ul>
                 </form>
+              </div>
               </div>
               <div class="card-reader">
                 <h3 class="card-heading">Get a reader card</h3>

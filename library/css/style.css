@@ -733,9 +733,12 @@ padding: 8px 20px;
 font-size: 30px;
 line-height: 50px;
 letter-spacing: 0.6px;
-color: #8E8E8E;
+color: #BB945F;
 font-family: Forum;
 font-weight: 400;
+}
+.form-input::placeholder {
+  color: #8E8E8E;
 }
 .form-input:last-child {
 margin-bottom: 25px;
@@ -748,7 +751,7 @@ outline-offset: 1px;
 }
 
 .btn-card {
-margin: 18px 0 25px 0;
+margin: 18px auto 25px auto;
 padding: 10px 40px;
 border-radius: 2px;
 border: 1px solid #0C0C0E;
