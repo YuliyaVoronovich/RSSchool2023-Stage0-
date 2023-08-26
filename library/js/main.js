@@ -4,6 +4,7 @@ let activeCardNumber = '';
 let activeProfileMenu = '.drop-menu-noauth';
 
 const visiteds = document.querySelectorAll('.item-count-visited');
+
 let books = 0;
 
 let _isClickProfile = false;
@@ -114,7 +115,7 @@ const EMAIL_REGEXP = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})
 function validation (form) {  
 
     const elementsForm = form.querySelectorAll('input');
-    let result = true;   
+    let result = true;  
 
     for (const element of elementsForm) {
 
@@ -135,7 +136,18 @@ function validation (form) {
                 createError(element, text);
                 result = false;
             }
-         }
+            if (element.name === 'email' && seardhProfileOfEmail(element.value)) {
+                text = 'this email already exists';
+                createError(element, text);
+                result = false;
+            };
+            if (element.name === 'card_number_email' && !seardhProfileOfEmail(element.value)
+                && !seardhProfileOfCard(element.value)) {//для логин
+                text = 'profile not registered';
+                createError(element, text);
+                result = false;
+            };
+        }
     }    
     return result;
 
@@ -171,6 +183,7 @@ formRegister.addEventListener('submit', event => {
 formLogin.addEventListener('submit', event => {
 
     event.preventDefault();
+    let result = false;
 
     if (validation(event.target)) {
    
@@ -185,6 +198,8 @@ formLogin.addEventListener('submit', event => {
             localStorage.setItem('active', cardNumberOrEmail);
             activeProfile = profile;
             activeCardNumber = cardNumberOrEmail;
+
+            result = true;
         } else {
             //поиск по email
             let keys = Object.keys(localStorage);
@@ -195,37 +210,74 @@ formLogin.addEventListener('submit', event => {
                     if (profileJson.hasOwnProperty("email")) {
                         if (profileJson.email === cardNumberOrEmail && profileJson.password === password)  {
     
-                                localStorage.setItem('active', profileJson.card);
-                                activeProfile = profileJson;
-                                activeCardNumber = profileJson.card;                            
-                        } else {
-                            console.log('no profile');
-                            return;
-                            // пользователь не найден
-                        }         
+                            localStorage.setItem('active', profileJson.card);
+                            activeProfile = profileJson;
+                            activeCardNumber = profileJson.card; 
+                              
+                            result = true;                       
+                        }        
                     }                     
-            }
-        }  
+             }
+        }        
+    }  
+    if (result) {
         showProfileMenu();
         showProfileIcon();
         changeInfoCard();
-        countVisited(); 
-        closePopUp(document.querySelector('#modal-login-popup'));   
+        countVisited();   
+        closePopUp(document.querySelector('#modal-login-popup'));
     }
+    return result; 
+    
 });
+
+function seardhProfileOfEmail (email = "", item = '') {
+    //поиск по email
+    let keys = Object.keys(localStorage);
+    let result = null;
+    for(let key of keys) {   
+
+        const profileJson = JSON.parse(localStorage.getItem(key));
+        
+        if (profileJson.hasOwnProperty("email")) { 
+     
+            if (profileJson.email === email)  {
+                result = profileJson;                       
+            }
+        }                     
+    }
+    return result;
+}
+function seardhProfileOfCard(card = "") {
+    //поиск по email
+    let keys = Object.keys(localStorage);
+    let result = null;
+    for(let key of keys) {   
+
+        const profileJson = JSON.parse(localStorage.getItem(key));
+        
+        if (profileJson.hasOwnProperty("card")) {     
+            if (profileJson.card === card)  {
+                result = profileJson;                       
+            }
+        }                     
+    }
+    return result;
+}
 
 function saveToLocalStorage (form) {
 
     const formData = new FormData(form);
     // теперь можно извлечь данные
-    const name = formData.get('name').toUpperCase().trim();
-    const surname = formData.get('surname').toUpperCase().trim();
-    const email = formData.get('email');
+    const name = formData.get('name').toLowerCase().trim();
+    const surname = formData.get('surname').toLowerCase().trim();
+    const email = formData.get('email');  
     const password = formData.get('password');
     const activeCardNumber = [...Array(9)].map(() => Math.floor(Math.random() * 16).toString(16)).join('').toUpperCase();
 
-    activeProfile = {"card":activeCardNumber, "name":name, "surname":surname, "email":email, "password":password, "visited": 1, "books":[], "bonuses": 1250};
+    activeProfile = {"card":activeCardNumber, "name":name, "surname":surname, "email":email, "password":password, "visited": 1, "books":[], "bonuses": 1250, "subscription":false};
 
+    //проверить на почту существующую
     localStorage.setItem(activeCardNumber, JSON.stringify(activeProfile));
     localStorage.setItem('active', activeCardNumber);
 
@@ -328,8 +380,7 @@ function showInfoCard() {
             visited.innerHTML = activeProfile.visited;   
         });
  
-    }
-   
+    }   
 }
 
 function hiddenInfoCard() { 
@@ -340,3 +391,4 @@ function hiddenInfoCard() {
     document.querySelector('.card-reader').style.display='flex';
     document.querySelector('.card-reader-login').style.display='none';
 }
+
