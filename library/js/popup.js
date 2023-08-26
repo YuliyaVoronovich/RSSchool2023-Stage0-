@@ -36,7 +36,11 @@ profiles.forEach((profile, i) => {
         openPopUp(currentPopUp);
         if (activeCardNumber) {
           document.querySelector('.card-info-number').innerHTML = activeCardNumber;   
-        }      
+        }     
+        if (activeProfile) {
+            document.querySelector('.modal-profile-initials').innerHTML = activeProfile.name[0] + ' ' + activeProfile.surname[0];
+            document.querySelector('.modal-profile-name').innerHTML = activeProfile.name.toLowerCase() + ' ' + activeProfile.surname.toLowerCase();  
+          } 
         event.preventDefault();       
         document.querySelector('.drop-menu-noauth').classList.remove('open');        
         

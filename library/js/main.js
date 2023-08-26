@@ -192,15 +192,20 @@ formLogin.addEventListener('submit', event => {
 
                     const profileJson = JSON.parse(localStorage.getItem(key));
 
-                     if (profileJson.hasOwnProperty("email") && profileJson.email === cardNumberOrEmail 
-                        && profileJson.password === password)  {
-
-                            localStorage.setItem('active', profileJson.card);
-                            activeProfile = profileJson;
-                            activeCardNumber = profileJson.card;                            
-                    }                           
+                    if (profileJson.hasOwnProperty("email")) {
+                        if (profileJson.email === cardNumberOrEmail && profileJson.password === password)  {
+    
+                                localStorage.setItem('active', profileJson.card);
+                                activeProfile = profileJson;
+                                activeCardNumber = profileJson.card;                            
+                        } else {
+                            console.log('no profile');
+                            return;
+                            // пользователь не найден
+                        }         
+                    }                     
             }
-        }    
+        }  
         showProfileMenu();
         showProfileIcon();
         changeInfoCard();
@@ -263,9 +268,12 @@ function  showProfileMenu () {
 
 function countVisited() {
 
-   activeProfile.visited +=1;
-   localStorage.setItem(activeCardNumber, JSON.stringify(activeProfile));
-   changeInfoCard();
+    if (activeProfile) {
+        activeProfile.visited +=1;
+        localStorage.setItem(activeCardNumber, JSON.stringify(activeProfile));
+        changeInfoCard();
+    }
+   
 }
 
 // digital cards
