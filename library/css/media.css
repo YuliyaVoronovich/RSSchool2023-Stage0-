@@ -16,7 +16,8 @@
   .digital-section { 
     justify-content: center;
   }
-  .card-reader {
+  .card-reader,
+  .card-reader-login {
     min-width: 600px;
     text-align: center;
   } 
@@ -100,7 +101,8 @@
   .carousel-list {
     padding-top: 20px;
    }
-  .card-reader {
+  .card-reader,
+  .card-reader-login{
     gap: 40px;
    }
   .coffee-shop-subject {
@@ -140,7 +142,8 @@
     .book-desc {
        max-width: 300px;
     } */
-    .card-reader {
+    .card-reader,
+    .card-reader-login {
         min-width: 100px;
     }
     .price-drink, .price-dessert {

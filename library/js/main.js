@@ -110,7 +110,12 @@ document.body.addEventListener('click', event => {
 //формы
 const formLogin = document.forms.login_form;
 const formRegister = document.forms.register_form;
+const formSubscription = document.forms.subscription_form;
 const EMAIL_REGEXP = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+const CVC_REGEXP = /^[0-9]{3}$/;
+const CVC_MY = /^[0-9]{2}$/;
+const CVC_NUMBER = /^[0-9]{16}$/;
+const CVC_NUMBER_SPACE = /^[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}$/;
 
 function validation (form) {  
 
@@ -144,6 +149,21 @@ function validation (form) {
             if (element.name === 'card_number_email' && !seardhProfileOfEmail(element.value)
                 && !seardhProfileOfCard(element.value)) {//для логин
                 text = 'profile not registered';
+                createError(element, text);
+                result = false;
+            };
+            if (element.name === 'card_cvc' && !CVC_REGEXP.test(element.value)) {
+                text = 'input correct number';
+                createError(element, text);
+                result = false;
+            };
+            if ((element.name === 'card_month' || element.name === 'card_year') && !CVC_MY.test(element.value)) {
+                text = 'input correct number';
+                createError(element, text);
+                result = false;
+            };
+            if (element.name === 'card_number'  && !CVC_NUMBER.test(element.value) && !CVC_NUMBER_SPACE.test(element.value)) {
+                text = 'input correct number';
                 createError(element, text);
                 result = false;
             };
@@ -231,7 +251,21 @@ formLogin.addEventListener('submit', event => {
     
 });
 
-function seardhProfileOfEmail (email = "", item = '') {
+formSubscription.addEventListener('submit', event => {
+
+    event.preventDefault();
+
+    if (validation(event.target)) {
+        //сабмит формы в localstorage -покупка абонемента
+        if (activeProfile) {
+            activeProfile.subscription = true;
+            localStorage.setItem(activeCardNumber, JSON.stringify(activeProfile));
+            closePopUp(document.querySelector('#modal-buy-popup'));
+        }
+    }
+});
+
+function seardhProfileOfEmail (email = "") {
     //поиск по email
     let keys = Object.keys(localStorage);
     let result = null;
@@ -394,9 +428,10 @@ function hiddenInfoCard() {
 
 function addBook(element) {
 
-    const bookTitle = element.closest('.book-section-element').querySelector('.book-title');
-    const bookAutor = element.closest('.book-section-element').querySelector('.book-autor');
+    const bookTitle = element.closest('.book-section-element').querySelector('.book-title').innerHTML.trim();
+    const bookAutor = element.closest('.book-section-element').querySelector('.book-autor').innerHTML.replace('By', '').trim();
 
-    console.log(bookArray);
+    console.log(bookTitle);
+    console.log(bookAutor);
 }
 

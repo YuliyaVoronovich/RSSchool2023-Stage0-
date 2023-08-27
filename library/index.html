@@ -521,23 +521,24 @@
       </div>
       <div class="buy-card-main">
           <div class="buy-card-form-wrap">
-              <form id="login" class="buy-card-form">
+              <form name="subscription_form" class="buy-card-form">
                   <label class="label-buy-card-form">Bank card number</label>
-                  <input class="input-buy-card-form" type="text">
+                  <input class="input-buy-card-form" name="card_number" type="text" onchange="return validation(this.form)">
                   <label class="label-buy-card-form">Expiration code</label>
-                  <span>
-                      <input class="input-buy-card-form input-buy-card-half" type="text"> <input class="input-buy-card-form input-buy-card-half" type="text">
+                  <span class="cvc-display">
+                      <input class="input-buy-card-form input-buy-card-half vertical-top" name="card_month" type="text" pattern="[0-9]{2}" onchange="return validation(this.form)"> 
+                      <input class="input-buy-card-form input-buy-card-half vertical-top" name="card_year" type="text" pattern="[0-9]{2}" onchange="return validation(this.form)">
                   </span>
                   <label class="label-buy-card-form">CVC</label>
-                  <input class="input-buy-card-form input-buy-card-half" type="text">
+                  <input class="input-buy-card-form input-buy-card-half" name="card_cvc" type="text" pattern="[0-9]{3}" onchange="return validation(this.form)">
                   <label class="label-buy-card-form margin-other-top">Cardholder name</label>
-                  <input class="input-buy-card-form" type="text">
+                  <input class="input-buy-card-form" type="text" onchange="return validation(this.form)">
                   <label class="label-buy-card-form">Postal code</label>
-                  <input class="input-buy-card-form" type="text">
+                  <input class="input-buy-card-form" type="text" onchange="return validation(this.form)">
                   <label class="label-buy-card-form">City / Town</label>
-                  <input class="input-buy-card-form" type="text">
+                  <input class="input-buy-card-form" type="text" onchange="return validation(this.form)">
                   <span class="buy-card-price-wrap">
-                      <button class="button-login-form btn-general" type="submit">Buy</button><span class="buy-card-price">$ 25.00</span>
+                      <button class="button-login-form btn-general vertical-top" type="submit">Buy</button><span class="buy-card-price">$ 25.00</span>
                   </span>
               </form>               
           </div>

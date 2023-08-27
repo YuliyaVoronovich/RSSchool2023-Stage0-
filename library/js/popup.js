@@ -48,7 +48,6 @@ profiles.forEach((profile, i) => {
 buys.forEach((buy, i) => {
     
     buy.addEventListener('click', event => { 
-        console.log(activeProfile.subscription);
         if (activeProfile) {
             if (!activeProfile.subscription) {
                 const currentPopUp = document.querySelector('#modal-buy-popup');
