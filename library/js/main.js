@@ -392,3 +392,11 @@ function hiddenInfoCard() {
     document.querySelector('.card-reader-login').style.display='none';
 }
 
+function addBook(element) {
+
+    const bookTitle = element.closest('.book-section-element').querySelector('.book-title');
+    const bookAutor = element.closest('.book-section-element').querySelector('.book-autor');
+
+    console.log(bookArray);
+}
+

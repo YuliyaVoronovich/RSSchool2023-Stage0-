@@ -463,7 +463,7 @@ section {
   bottom: 0px; 
   background-color: #BB945F;
 }
-.book-title {
+.book-title-wrap {
   padding: 20px 0 0 0;
   color: #000;
   font-family: Inter;
@@ -473,7 +473,7 @@ section {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-.book-title-bottom {
+.book-autor {
   text-transform: capitalize;
 }
 
