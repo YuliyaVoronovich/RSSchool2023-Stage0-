@@ -3,7 +3,8 @@ let activeProfile = '';
 let activeCardNumber = '';
 let activeProfileMenu = '.drop-menu-noauth';
 
-const visiteds = document.querySelectorAll('.item-count-visited');
+const infoCountVisiteds = document.querySelectorAll('.item-count-visited');
+const infoCountBooks = document.querySelectorAll('.item-count-books');
 
 let books = 0;
 
@@ -355,8 +356,11 @@ function countVisited() {
         activeProfile.visited +=1;
         localStorage.setItem(activeCardNumber, JSON.stringify(activeProfile));
         changeInfoCard();
-    }
-   
+    }   
+}
+
+function countBooks() {
+    return  activeProfile.books.length;
 }
 
 // digital cards
@@ -407,8 +411,11 @@ function showInfoCard() {
 
         document.querySelector('#button-check-card').style.display='none';
         document.querySelector('.profile-info-card').style.display='flex';
-        visiteds.forEach((visited, i) => {
+        infoCountVisiteds.forEach((visited, i) => {
             visited.innerHTML = activeProfile.visited;   
+        });
+        infoCountBooks.forEach((book, i) => {
+            book.innerHTML = countBooks();   
         });
  
     }   
@@ -423,13 +430,21 @@ function hiddenInfoCard() {
     document.querySelector('.card-reader-login').style.display='none';
 }
 
-function addBook(element) {
+function addBook(book) {
 
-    const bookTitle = element.closest('.book-section-element').querySelector('.book-title').innerHTML.trim();
-    const bookAutor = element.closest('.book-section-element').querySelector('.book-autor').innerHTML.replace('By', '').trim();
+    activeProfile = getProfile (activeCardNumber);
 
-    console.log(bookTitle);
-    console.log(bookAutor);
+    const bookTitle = book.closest('.book-section-element').querySelector('.book-title').innerHTML.trim();
+    const bookAutor = book.closest('.book-section-element').querySelector('.book-autor').innerHTML.replace('By', '').trim();
+    const bookItem = book.dataset.item;
+    
+    let bookObject = {
+        "title": bookTitle,
+        "autor": bookAutor,
+        "item" : bookItem
+    }
+    activeProfile.books.push(bookObject);
+    localStorage.setItem(activeCardNumber, JSON.stringify(activeProfile));
 }
 
 /* вызываем функцию Copy вб буфер при нажатии на кнопку */
@@ -463,4 +478,3 @@ copyButton.addEventListener('click', event => {
     document.body.removeChild(input);
     
   });
-

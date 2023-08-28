@@ -55,7 +55,8 @@ buys.forEach((buy, i) => {
             } else {
                 buy.classList.add("btn-own");
                 buy.innerHTML = "Own";
-                addBook(buy);
+                addBook(buy);   
+                changeInfoCard();
                 //добавить книгу в массив профиля в локалсторидж
             }            
         } else {

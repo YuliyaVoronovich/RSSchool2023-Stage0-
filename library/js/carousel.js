@@ -103,7 +103,7 @@ buttons.forEach((button) => {
     
     button.addEventListener ('click', event => {
 
-        const dataItem = button.getAttribute('data-item');        
+        const dataItem = button.dataset.item;        
         const stepMovePosition = parseInt(parseInt(dataItem.match(/\d+/) - currentDataItem.match(/\d+/)));
 
         if (parseInt(dataItem.match(/\d+/)) !== parseInt(currentDataItem.match(/\d+/)) ) {
