@@ -461,15 +461,10 @@ function showBooks() {
         bookItem.innerHTML = `${element.title}, ${element.autor}`;
         
         boookParent.appendChild(bookItem);
-       // console.log(element);
 
-       const buys = document.querySelectorAll('.btn-buy');
-       buys.forEach((buy) => {
-        if (buy.dataset.item === element.item) {
-            buy.classList.add("btn-own");
-            buy.innerHTML = "Own";
-        }
-       });            
+        const buy = document.querySelector(`[data-item="${element.item}"]`);
+        buy.classList.add("btn-own");
+        buy.innerHTML = "Own";           
     });
 }
 
