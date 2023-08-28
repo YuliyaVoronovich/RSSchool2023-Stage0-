@@ -339,7 +339,7 @@ function  showProfileIcon() {
     }     
 }
 
-function  showProfileMenu () {
+function showProfileMenu () {
 
     document.querySelector(activeProfileMenu).classList.remove('open');
     activeProfileMenu = (activeProfile) ? '.drop-menu-auth': '.drop-menu-noauth';
@@ -359,10 +359,6 @@ function countVisited() {
     }   
 }
 
-function countBooks() {
-    return  activeProfile.books.length;
-}
-
 // digital cards
 const formCard = document.forms.formcard;
 formCard.addEventListener('submit', event => {
@@ -375,18 +371,19 @@ formCard.addEventListener('submit', event => {
 function getProfileCard (form) {
 
     const formData = new FormData(form);
-    const nameProfile = formData.get('nameProfile').toUpperCase().trim();
+    const nameProfile = formData.get('nameProfile').toLowerCase().trim();
     const cardProfile = formData.get('cardProfile');
     const nameProfileArray = nameProfile.split(" ");
 
     profile = getProfile(cardProfile);
-    if (profile) {
-        if (profile.name === nameProfileArray[0] && profile.surname === nameProfileArray[1]) {
 
+    if (profile) {
+
+        if (profile.name === nameProfileArray[0] && profile.surname === nameProfileArray[1]) {
             document.querySelector('#button-check-card').style.display='none';
             document.querySelector('.profile-info-card').style.display='flex';
     
-            showInfoCard();
+            showInfoCard(profile);
             setTimeout(() => {   
                 hiddenInfoCard();
             }, 10000);        
@@ -400,8 +397,7 @@ function changeInfoCard() {
     } else hiddenInfoCard();   
 }
 
-function showInfoCard() {
-
+function showInfoCard(profile = '') {
     
     if (activeProfile) {
         document.querySelector('[name="nameProfile"]').value = activeProfile.name;
@@ -411,14 +407,21 @@ function showInfoCard() {
 
         document.querySelector('#button-check-card').style.display='none';
         document.querySelector('.profile-info-card').style.display='flex';
-        infoCountVisiteds.forEach((visited, i) => {
+        infoCountVisiteds.forEach((visited) => {
             visited.innerHTML = activeProfile.visited;   
         });
-        infoCountBooks.forEach((book, i) => {
-            book.innerHTML = countBooks();   
+        infoCountBooks.forEach((book) => {
+            book.innerHTML = activeProfile.books.length;   
         });
- 
-    }   
+        showBooks(); 
+    } else {
+        infoCountVisiteds.forEach((visited) => {
+            visited.innerHTML = profile.visited;   
+        });
+        infoCountBooks.forEach((book) => {
+            book.innerHTML = profile.books.length;   
+        });
+    }
 }
 
 function hiddenInfoCard() { 
@@ -439,12 +442,35 @@ function addBook(book) {
     const bookItem = book.dataset.item;
     
     let bookObject = {
-        "title": bookTitle,
+        "title": bookTitle.toLowerCase(),
         "autor": bookAutor,
         "item" : bookItem
     }
     activeProfile.books.push(bookObject);
     localStorage.setItem(activeCardNumber, JSON.stringify(activeProfile));
+}
+
+function showBooks() {
+
+    let boookParent = document.querySelector(".profile-book-list");
+    boookParent.innerHTML = '';// перерисовываем секцию вывода книг
+    activeProfile = getProfile (activeCardNumber);
+    activeProfile.books.forEach((element) => {
+        const bookItem = document.createElement('li');
+        bookItem.classList.add('profile-book-item');
+        bookItem.innerHTML = `${element.title}, ${element.autor}`;
+        
+        boookParent.appendChild(bookItem);
+       // console.log(element);
+
+       const buys = document.querySelectorAll('.btn-buy');
+       buys.forEach((buy) => {
+        if (buy.dataset.item === element.item) {
+            buy.classList.add("btn-own");
+            buy.innerHTML = "Own";
+        }
+       });            
+    });
 }
 
 /* вызываем функцию Copy вб буфер при нажатии на кнопку */
