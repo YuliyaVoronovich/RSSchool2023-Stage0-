@@ -1,46 +1,47 @@
 @media (max-width: 1439px) and (min-width: 1024px) {
-
-  .about-item:nth-child(3) {
-    display: none;
-  } 
-  .carousel-item:last-child {
-    display: block;
-  }
-        
+  .carousel-item:nth-child(4) {
+      display: block;
+  }        
 }
-
-@media (max-width: 1280px) {     
+@media (max-width: 1280px) {   
+  .radiobutton-section {
+    position: sticky;
+    top:-2px;
+    background: #ffffff;
+    border-bottom: 1px solid #d6d6d6;
+    /*box-shadow: 4px 5px 12px 0px #d6d6d6;*/
+    z-index: 99;
+  }  
     
-  .digital-section {
+  .digital-section { 
     justify-content: center;
   }
-  .card-reader {
+  .card-reader,
+  .card-reader-login {
     min-width: 600px;
     text-align: center;
   } 
     
   .book-section {
      justify-content: center;
+     column-gap: 50px;
    }
+   
   .book-section-element {
      margin: 0 auto;
    }
 }
 
-@media (max-width: 1024px) {     
-
-  .about-item:nth-child(2),
-  .about-item:nth-child(3) {
-     display: none;
-   }
-  .carousel-item:first-child,
-  .carousel-item:last-child {
-    display: block;
-   }
-   .carousel-item:first-child a {
-    background: #bb945f;
-    color: #bb945f;
+@media (max-width: 1024px) { 
+  
+  .about-pictures {
+    max-width: 450px;
   }
+   .carousel-item:nth-child(4),
+   .carousel-item:nth-child(5) {
+      display: block;
+  }
+
   .carousel-item:nth-child(2) a {
     background: #000000;
     color: #000000;
@@ -50,38 +51,22 @@
     position: absolute;
     height: 24px;
     width: 24px;
-    top: 288px;
+    top:308px;
     background: none;
     border: none;
   }
   .about-button-left {
-    left: -82px;
+    left: 58px;
   }
   .about-button-right {
-    right: -82px;
+    right: 58px;
   }
 
-  /* .about-list {
-     gap: 58px;
+  .about-list {
+    max-width: 450px;
+    gap: 0;
    }
-  .about-list:before {
-     display: inline;
-     content: '';
-     background-image: url('../assets/image/svg/arrow_left.svg');
-     background-repeat: no-repeat;
-     background-position: center;
-     margin-top: 290px;
-     height: 24px;
-     width: 24px;
-   }
-  .about-list::after {
-     display: inline-flex;
-     content: '';
-     background-image: url('../assets/image/svg/arrow_right.svg');
-     margin-top: 290px;
-     height: 24px;
-     width: 24px;
-   } */
+
   .nav {
      position: fixed;
      right: -332px;
@@ -116,7 +101,8 @@
   .carousel-list {
     padding-top: 20px;
    }
-  .card-reader {
+  .card-reader,
+  .card-reader-login{
     gap: 40px;
    }
   .coffee-shop-subject {
@@ -156,7 +142,8 @@
     .book-desc {
        max-width: 300px;
     } */
-    .card-reader {
+    .card-reader,
+    .card-reader-login {
         min-width: 100px;
     }
     .price-drink, .price-dessert {

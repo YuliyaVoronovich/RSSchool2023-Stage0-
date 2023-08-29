@@ -63,6 +63,7 @@ section {
   padding: 0 20px;
 }
 .header-container {
+  position: relative;
   display: flex;
   padding: 20px;
   height: 90px;
@@ -78,11 +79,15 @@ section {
   line-height: 50px;
   letter-spacing: 0.6px;    
 }
+.header-profile-wrap {
+  position: relative;
+  margin-left: auto;
+  align-self: center;
+  padding: 30px 0;
+  padding-left: 40px;
+}
 .profile-icon {
   display: flex;
-  align-items: center;
-  padding-left: 40px;
-  margin-left: auto;
   cursor: pointer;
   background: none;
   border: none;
@@ -227,7 +232,7 @@ section {
   margin-left: auto;
   height: 600px;
   padding: 220px 0 160px 0;
-  background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 50%, transparent 50%), url(../assets/image/welcome_.png);
+  background-image: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.1) 50%, transparent 50%), url(../assets/image/welcome_.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -263,14 +268,15 @@ section {
   position: relative;
 }
 .about-pictures {
-  position: relative;
+  max-width: 1400px;
+  overflow: hidden;
 }
-
 .about-list {
   display: flex;
   gap: 25px;
-  justify-content: center;
+  justify-content: space-between;
   list-style: none;
+  transition: 0.3s;
 }
 .about-button {
   display: none;
@@ -278,7 +284,7 @@ section {
 
 .about-item-img{
   display: block;
-  max-width: 450px;
+  min-width: 450px;
   width: 100%;
 }
 .about-item-hidden {
@@ -287,18 +293,17 @@ section {
 .carousel-list {
   display: flex;
   justify-content: center;
-  list-style: none;
   padding: 35px 0;
 }
 .carousel-item {
   padding: 5px;
   cursor:pointer;
 }
-.carousel-item:first-child,
-.carousel-item:last-child {
+.carousel-item:nth-child(4),
+.carousel-item:nth-child(5) {
     display: none;
 }
-.carousel-link {
+.carousel-button {
   display: block;
   padding: 5px;
   border: 1px solid;
@@ -307,6 +312,7 @@ section {
   height: 16px;
   background: #0c0c0e;
   color: #0c0c0e;
+  cursor: pointer;
 }
 .carousel-item:nth-child(2) a {
   background: #bb945f;
@@ -324,7 +330,8 @@ section {
   display: flex;
   flex-wrap: wrap;    
   gap: 5px 57px;
-  padding: 28px 0 34px 0;
+  padding: 10px 0;
+  margin: 18px 0  24px 0;
   justify-content: flex-start;
 }
 
@@ -381,12 +388,48 @@ section {
 }
 
 .book-section {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   gap: 40px;
+  min-height: 1190px;
   padding: 0 40px 40px 0;
   justify-content: space-between;
 }
+.active-tab {
+  display: block;
+}
+.active {
+  display: flex;
+  opacity: 0;
+  transition: opacity 1s;
+}
+/* .active-fade-in {
+  opacity: 1;
+}
+.active-fade-out {
+  animation: fadeOut 2s ease-in;
+}
+.no-active {
+  display: none;
+}
+ @keyframes fadeIn {  
+  from {  
+      opacity:0;  
+  }  
+
+  to {  
+      opacity:1;  
+  }  
+} 
+@keyframes fadeOut {  
+  from {  
+      opacity:1;  
+  }  
+
+  to {  
+      opacity:0;  
+  }  
+}  */
 .book-section-element {
  width: 550px;
  min-height: 555px;
@@ -400,9 +443,6 @@ section {
   margin-right: auto;
 }
 
-.book-section-hidden {
-  display:none;
-}
 .book-staff-picks {
   position: relative;
   color: #000;
@@ -423,7 +463,7 @@ section {
   bottom: 0px; 
   background-color: #BB945F;
 }
-.book-title {
+.book-title-wrap {
   padding: 20px 0 0 0;
   color: #000;
   font-family: Inter;
@@ -433,7 +473,7 @@ section {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-.book-title-bottom {
+.book-autor {
   text-transform: capitalize;
 }
 
@@ -470,18 +510,18 @@ font-size: 10px;
 font-weight: 700;
 letter-spacing: 1px;  
 }
-.btn-buy {  
+.btn-general {  
 border: 1px solid #0C0C0E;
 background-color: #ffffff;
 color: #0C0C0E;  
 transition: 0.5s;
 cursor: pointer;
 }
-.btn-buy:hover {
+.btn-general:hover {
 border: 1px solid #BB945F;
 background: #BB945F; 
 }
-.btn-buy.btn-own {  
+.btn-general.btn-own {  
 border: 1px solid #BB945F;
 color: #BB945F;
 cursor: unset;
@@ -693,9 +733,12 @@ padding: 8px 20px;
 font-size: 30px;
 line-height: 50px;
 letter-spacing: 0.6px;
-color: #8E8E8E;
+color: #BB945F;
 font-family: Forum;
 font-weight: 400;
+}
+.form-input::placeholder {
+  color: #8E8E8E;
 }
 .form-input:last-child {
 margin-bottom: 25px;
@@ -708,7 +751,7 @@ outline-offset: 1px;
 }
 
 .btn-card {
-margin: 18px 0 25px 0;
+margin: 18px auto 25px auto;
 padding: 10px 40px;
 border-radius: 2px;
 border: 1px solid #0C0C0E;
@@ -718,12 +761,16 @@ font-weight: 700;
 line-height: normal;
 letter-spacing: 1px;
 }
-.card-reader {
+.card-reader,
+.card-reader-login {
 display: flex;
 flex-direction: column;
 text-align: right;
 max-width: 456px;
 gap:35px;
+}
+.card-reader-login {
+  display: none;
 }
 .card-heading {
 color: #000;
