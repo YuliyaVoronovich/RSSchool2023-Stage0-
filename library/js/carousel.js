@@ -51,6 +51,7 @@ function calcutateStartParams() {
     itemWidth = (container.clientWidth - 2*positionPadding) / slideToShow;
     movePosition = itemWidth + positionPadding;
     position = 0;
+    counter = 0;
     currentDataItem = 'item-1';
     track.style.transform = `translateX(0)`;
 
@@ -141,7 +142,7 @@ nextArrow.addEventListener ('click',  event => {
     switchUp ();
 
     /*связать с кнопками*/
-    currentDataItem = buttons[counter].getAttribute('data-item');
+    currentDataItem = buttons[counter].dataset.item; 
     currentButton = buttons[counter];
     chooseActiveButton(buttonList.children[counter]);
     removeActiveButton(buttonList.children[counter - 1]);
@@ -158,7 +159,7 @@ prevArrow.addEventListener ('click',  event => {
     switchDown ();
 
     /*связать с кнопками*/
-    currentDataItem = buttons[counter].getAttribute('data-item');
+    currentDataItem = buttons[counter].dataset.item; 
     currentButton = buttons[counter];
     chooseActiveButton(buttonList.children[counter]);
     removeActiveButton(buttonList.children[counter + 1]);
