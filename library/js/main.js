@@ -263,19 +263,24 @@ formSubscription.addEventListener('submit', event => {
 });
 
 function seardhProfileOfEmail (email = "") {
+    const KEY =  /^[0-9A-Z]{9}$/;
     //поиск по email
     let keys = Object.keys(localStorage);
     let result = null;
     for(let key of keys) {   
 
+        if (!KEY.test(key)) {
+            continue;
+        }
         const profileJson = JSON.parse(localStorage.getItem(key));
         
         if (profileJson.hasOwnProperty("email")) { 
-     
-            if (profileJson.email === email)  {
-                result = profileJson;                       
-            }
-        }                     
+         
+                if (profileJson.email === email)  {
+                    result = profileJson;                       
+                }
+            }        
+                  
     }
     return result;
 }
