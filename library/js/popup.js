@@ -29,8 +29,11 @@ logins.forEach((login, i) => {
 });
 
 profiles.forEach((profile, i) => {
-    
+   
     profile.addEventListener('click', event => {   
+        activeCardNumber = localStorage.getItem(ACTIVE);
+        activeProfile = getProfile (activeCardNumber);
+
         const currentPopUp = document.querySelector('#modal-profile-popup');
         openPopUp(currentPopUp);
         if (activeCardNumber) {
@@ -48,6 +51,8 @@ profiles.forEach((profile, i) => {
 buys.forEach((buy, i) => {
     
     buy.addEventListener('click', event => { 
+        activeProfile = getProfile (activeCardNumber);
+
         if (activeProfile) {
             if (!activeProfile.subscription) {
                 const currentPopUp = document.querySelector('#modal-buy-popup');

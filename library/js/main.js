@@ -23,7 +23,7 @@ window.onload= function(event) {
 };   
 
 function getProfile (card = '') {
-   
+
     if (card) {
         profile = localStorage.getItem(card);
         return JSON.parse(profile);
@@ -113,7 +113,6 @@ const EMAIL_REGEXP = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})
 const CVC_REGEXP = /^[0-9]{3}$/;
 const CVC_MY = /^[0-9]{2}$/;
 const CVC_NUMBER = /^[0-9]{16}$/;
-const CVC_NUMBER_SPACE = /^[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}$/;
 
 function validation (form) {  
 
@@ -160,7 +159,7 @@ function validation (form) {
                 createError(element, text);
                 result = false;
             };
-            if (element.name === 'card_number'  && !CVC_NUMBER.test(element.value) && !CVC_NUMBER_SPACE.test(element.value)) {
+            if (element.name === 'card_number'  && !CVC_NUMBER.test(element.value) && !CVC_NUMBER.test(element.value.replaceAll(" ", ""))) {
                 text = 'input correct number';
                 createError(element, text);
                 result = false;
@@ -305,7 +304,7 @@ function saveToLocalStorage (form) {
     const surname = formData.get('surname').toLowerCase().trim();
     const email = formData.get('email');  
     const password = formData.get('password');
-    const activeCardNumber = [...Array(9)].map(() => Math.floor(Math.random() * 16).toString(16)).join('').toUpperCase();
+    activeCardNumber = [...Array(9)].map(() => Math.floor(Math.random() * 16).toString(16)).join('').toUpperCase();
 
     activeProfile = {"card":activeCardNumber, "name":name, "surname":surname, "email":email, "password":password, "visited": 1, "books":[], "bonuses": 1250, "subscription":false};
 
@@ -319,7 +318,7 @@ function saveToLocalStorage (form) {
     closePopUp(document.querySelector('#modal-register-popup'));       
 }
 
-function  showProfileIcon() {
+function showProfileIcon() {
 
     const icon = document.querySelector('.profile-icon');
 
@@ -343,6 +342,7 @@ function showProfileMenu () {
 
     document.querySelector(activeProfileMenu).classList.remove('open');
     activeProfileMenu = (activeProfile) ? '.drop-menu-auth': '.drop-menu-noauth';
+    activeCardNumber = localStorage.getItem(ACTIVE);
 
     if (activeCardNumber) {
         document.querySelector('.menu-profile').innerHTML = activeCardNumber;
@@ -455,17 +455,19 @@ function showBooks() {
     let boookParent = document.querySelector(".profile-book-list");
     boookParent.innerHTML = '';// перерисовываем секцию вывода книг
     activeProfile = getProfile (activeCardNumber);
-    activeProfile.books.forEach((element) => {
-        const bookItem = document.createElement('li');
-        bookItem.classList.add('profile-book-item');
-        bookItem.innerHTML = `${element.title}, ${element.autor}`;
-        
-        boookParent.appendChild(bookItem);
+    if (activeProfile) {
+        activeProfile.books.forEach((element) => {
+            const bookItem = document.createElement('li');
+            bookItem.classList.add('profile-book-item');
+            bookItem.innerHTML = `${element.title}, ${element.autor}`;
+            
+            boookParent.appendChild(bookItem);
 
-        const buy = document.querySelector(`[data-item="${element.item}"]`);
-        buy.classList.add("btn-own");
-        buy.innerHTML = "Own";           
-    });
+            const buy = document.querySelector(`[data-item="${element.item}"]`);
+            buy.classList.add("btn-own");
+            buy.innerHTML = "Own";           
+        });
+    }
 }
 
 /* вызываем функцию Copy вб буфер при нажатии на кнопку */
