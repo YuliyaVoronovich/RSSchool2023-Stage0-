@@ -336,9 +336,8 @@
 } 
 .profile-book-list {
     max-width: 380px;
-    max-height: 80px;
+    height: 90px;
     padding-left: 30px;
-    margin-bottom: 10px;
     white-space: nowrap;
     overflow: auto;
 }
