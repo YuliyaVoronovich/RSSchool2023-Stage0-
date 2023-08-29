@@ -217,16 +217,19 @@
 }
 .modal-profile-left {
     max-width: 170px;
+    max-height: 403px;
     width: 100%;
 }
 .modal-profile-rigth {
     width: 100%;
+    max-height: 400px;
     background: #ffffff;
 }
 .modal-profile-left-wrap {
     padding: 138px 25px;
 }
 .modal-profile-initials {
+    width: 80px;
     padding: 30px 20px;
     margin: 0 20px 15px 20px;
     color: #BB945F;
@@ -332,10 +335,9 @@
     line-height: 20px; /* 80% */
 } 
 .profile-book-list {
-    max-width: 400px;
-    max-height: 80px;
+    max-width: 380px;
+    height: 90px;
     padding-left: 30px;
-    margin-bottom: 40px;
     white-space: nowrap;
     overflow: auto;
 }
@@ -351,7 +353,7 @@
     text-transform: capitalize;
 }
 .card-info {
-    margin-right: 12px;
+    margin-right: 10px;
 }
 .card-info:last-child {
     margin-right: 0;
