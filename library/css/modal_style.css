@@ -1,0 +1,490 @@
+/* Start modal Auth*/
+.drop-menu-auth,
+.drop-menu-noauth  { 
+    top: 88px;
+    right: 0;
+    position: absolute;
+    width: 80px;
+    background: #ffffff;
+    padding: 5px 0 20px 0;
+    transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
+    /* Прячем элемент */
+    opacity: 0;
+    visibility: hidden;
+    transform: rotateY(180deg);
+    cursor: pointer;
+   
+   /* border: 1px solid #000;*/
+}
+.drop-menu-auth.open {
+    opacity: 1;
+    visibility: visible;    
+    transform: rotateY(0);
+}
+.drop-menu-noauth.open {
+    opacity: 1;
+    visibility: visible;    
+    transform: rotateY(0);
+}
+.drop-menu-title {
+    position: relative;
+    text-align: center;
+    color: #000;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+}
+.drop-menu-title::after {
+    content: "";
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    width: 40px;
+    height: 1px;    
+    background-color: #BB945F;
+}
+.drop-menu-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 20px;
+    gap: 10px;
+    list-style: none;
+}
+.drop-menu-item {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+.drop-menu-item:hover {
+   opacity: 0.5;
+}
+/* Finish modal Auth*/
+
+/* Start modal Login*/
+.modal-wrap {
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    background: rgb(0, 0, 0, 0.9);
+    /* z-index: 1; */
+    transition: opacity 0.8s, transform 0.5s;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.modal-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;    
+    opacity: 0;
+    visibility: hidden;
+    background: #ffffff;
+    transform: perspective(500px) translate(-50%, -100%) rotateX(45deg);
+    transition: opacity 0.8s, visibility 0.5s, transform 0.5s;
+}
+.modal-wrap.open {
+    visibility: visible;
+}
+.modal-wrap.open .modal-content {
+    opacity: 1;
+    visibility: visible;
+    transform: perspective(500px) translate(-50%, -50%) rotateX(0);
+}
+.link-popup {
+    cursor: pointer;
+}
+.modal-login,
+.modal-register {
+    max-width: 250px;
+    width: 100%;    
+}
+.close-icon {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+.login-form-wrap {
+    padding: 20px 25px;
+}
+.login-title {
+    color: #000;
+    text-align: center;
+    font-family: Forum;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    align-items: flex-start;
+    font-size: 15px;
+}
+.label-login-form {
+    display: block;
+    margin-bottom: 10px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;   
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 133.333% */
+    letter-spacing: 0.3px;
+}
+.input-login-form {
+    max-width: 200px;
+    height: 20px;
+    margin-bottom: 10px;
+    padding: 2px;
+    font-size: 12px;
+    border: 1px solid #BB945F;
+}
+.input-login-form ~.error,
+.input-buy-card-form ~.error {
+    margin-top: -10px;
+    font-size: 8px;
+    color: rgb(243, 74, 74);
+}
+.button-login-form {
+    width: 75px;
+    height: 30px;
+    margin-top: 10px;
+    text-align: center;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    border: 1px solid #0C0C0E;
+    background: none;
+    color: #0C0C0E;
+}
+.span-form {
+    display: inline-block;
+    margin-top: 10px;
+    color: #000;
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.span-form-register {
+    margin-left: 5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration-line: underline;
+}
+.span-form-register a {
+    color: #0C0C0E;
+}
+/* Finish modal Login*/
+
+/* Start modal Profile*/
+.modal-profile {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    background: #0C0C0E;
+}
+.modal-profile-left {
+    max-width: 170px;
+    width: 100%;
+}
+.modal-profile-rigth {
+    width: 100%;
+    background: #ffffff;
+}
+.modal-profile-left-wrap {
+    padding: 138px 25px;
+}
+.modal-profile-initials {
+    padding: 30px 20px;
+    margin: 0 20px 15px 20px;
+    color: #BB945F;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+    text-transform: capitalize;
+    background: #ffffff;
+}
+.modal-profile-name {
+    padding: 5px;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+    text-transform: capitalize;
+    background: #ffffff;
+}
+.modal-profile-rigth .close-icon {
+    top: 25px;
+    right: 25px;
+}
+.profile-wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 39px 20px;
+}
+.profile-title {
+    padding-bottom: 40px;
+    color: #000;
+    font-family: Forum;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 50% */
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+.profile-info-list {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    list-style: none;
+}
+.profile-info-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap:10px;
+}
+.profile-info-card {
+    display: none;
+    justify-content: center;
+    gap: 35px;
+    padding: 15px 0 16px 0;
+    list-style: none;
+}
+.profile-info-card-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.info-item-title {
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+}
+.info-item-icon {
+    width: 21px;
+    height: 21px;
+    margin: 0 auto;
+}
+.info-item-count {
+    color: #000;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 200% */
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+}
+.profile-heading {
+    padding-bottom: 30px;
+    color: #0C0C0E;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 80% */
+} 
+.profile-book-list {
+    max-width: 400px;
+    max-height: 80px;
+    padding-left: 30px;
+    margin-bottom: 40px;
+    white-space: nowrap;
+    overflow: auto;
+}
+.profile-book-item {
+    margin-bottom: 10px;
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
+.card-info {
+    margin-right: 12px;
+}
+.card-info:last-child {
+    margin-right: 0;
+}
+.card-info-title {
+    color: #0C0C0E;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+}
+.card-info-number {
+    color: #BB945F;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+}
+.card-info-icon {
+    width: 14px;
+    height: 12px;
+    cursor: pointer;
+}
+.card-info-icon .error {
+    margin-top: -10px;
+    font-size: 8px;
+    color: rgb(243, 74, 74);
+}
+
+/* Finish modal Profile*/
+
+/* Start modal Buy Card*/
+.modal-buy-card {
+    max-width: 640px;
+    width: 100%;
+    position: relative;
+    background: #0C0C0E;  
+}
+.buy-card-header {
+    padding: 20px;
+}
+.buy-card-title {
+    flex-grow: 1;
+    color: #FFF;
+    text-align: center;
+    font-family: Forum;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 50% */
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+.buy-card-close-icon {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 22px;
+    right: 25px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+.buy-card-main {
+    display: flex;
+    padding: 30px 35px;
+    background: #ffffff;
+}
+.buy-card-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.label-buy-card-form {
+    display: block;
+    margin-bottom: 10px;
+    color: #000;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 133.333% */
+    letter-spacing: 0.3px;
+}
+.input-buy-card-form {
+    min-width: 200px;
+    height: 20px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    border: 1px solid #BB945F;
+}
+.input-buy-card-half {
+    display: inline;
+    max-width: 45px;
+    min-width: 0;
+}
+.input-buy-card-half:last-child {
+    margin-left: 5px;
+}
+.margin-other-top {/* может быть поправят макет*/
+    margin-top: 10px;
+}
+.buy-card-price {
+    margin-left: 25px;
+    vertical-align: bottom;
+    color: #0C0C0E;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px; /* 100% */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.buy-card-text {
+    padding-left: 40px;
+    color: #8E8E8E;
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px; /* 133.333% */
+    letter-spacing: 2px;
+}
+.vertical-top {
+    vertical-align: top;
+}
+.cvc-display {
+    display: flex;
+}
+.cvc-display .input-buy-card-half ~.error {
+    margin-top: 0;
+    margin-left: 5px;
+}
+/* Finish modal Buy Card*/
