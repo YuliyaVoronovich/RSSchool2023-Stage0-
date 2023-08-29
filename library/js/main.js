@@ -9,6 +9,7 @@ const infoCountBooks = document.querySelectorAll('.item-count-books');
 let books = 0;
 
 let _isClickProfile = false;
+const KEY =  /^[0-9A-Z]{9}$/;
 
 window.onload= function(event) {
 
@@ -263,7 +264,6 @@ formSubscription.addEventListener('submit', event => {
 });
 
 function seardhProfileOfEmail (email = "") {
-    const KEY =  /^[0-9A-Z]{9}$/;
     //поиск по email
     let keys = Object.keys(localStorage);
     let result = null;
@@ -285,11 +285,14 @@ function seardhProfileOfEmail (email = "") {
     return result;
 }
 function seardhProfileOfCard(card = "") {
-    //поиск по email
+    //поиск по card
     let keys = Object.keys(localStorage);
     let result = null;
-    for(let key of keys) {   
+    for(let key of keys) {  
 
+        if (!KEY.test(key)) {
+            continue;
+        } 
         const profileJson = JSON.parse(localStorage.getItem(key));
         
         if (profileJson.hasOwnProperty("card")) {     
