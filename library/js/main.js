@@ -221,8 +221,11 @@ formLogin.addEventListener('submit', event => {
         } else {
             //поиск по email
             let keys = Object.keys(localStorage);
-                for(let key of keys) {   
-
+                for(let key of keys) { 
+                     
+                    if (!KEY.test(key)) {
+                         continue;
+                    } 
                     const profileJson = JSON.parse(localStorage.getItem(key));
 
                     if (profileJson.hasOwnProperty("email")) {
