@@ -159,4 +159,7 @@
   .nav-item a:after {
     display: none;
   }
+  .btn-general:hover {
+    background: none;
+}
 }
