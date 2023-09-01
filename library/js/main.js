@@ -381,16 +381,26 @@ formCard.addEventListener('submit', event => {
 
 function getProfileCard (form) {
 
+    let firstName = '';
+    let lastName = '';
+
     const formData = new FormData(form);
     const nameProfile = formData.get('nameProfile').toLowerCase().trim();
     const cardProfile = formData.get('cardProfile');
     const nameProfileArray = nameProfile.split(" ");
 
+    if (nameProfileArray.length >1) {
+        firstName = nameProfileArray[0];
+        lastName = nameProfileArray[1];
+    } else  firstName = nameProfileArray[0];
+
     profile = getProfile(cardProfile);
 
     if (profile) {
-
-        if (profile.name === nameProfileArray[0] && profile.surname === nameProfileArray[1]) {
+        if (profile.name === firstName && profile.surname === lastName 
+        || profile.name === firstName
+        || profile.surname === firstName
+        || profile.name === lastName && profile.surname === firstName ) {
             document.querySelector('#button-check-card').style.display='none';
             document.querySelector('.profile-info-card').style.display='flex';
     
