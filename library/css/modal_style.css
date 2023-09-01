@@ -197,13 +197,13 @@
     line-height: normal;
 }
 .span-form-register {
-    margin-left: 5px;
+    margin-left: 10px;
     font-weight: 700;
     letter-spacing: 1px;
     text-decoration-line: underline;
-}
-.span-form-register a {
-    color: #0C0C0E;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 /* Finish modal Login*/
 
