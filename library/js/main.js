@@ -282,8 +282,7 @@ function seardhProfileOfEmail (email = "") {
                 if (profileJson.email === email)  {
                     result = profileJson;                       
                 }
-            }        
-                  
+            }    
     }
     return result;
 }
@@ -337,8 +336,8 @@ function showProfileIcon() {
         const nameFirstLetter = activeProfile.name[0].toUpperCase();
         const surnameFirstLetter = activeProfile.surname[0].toUpperCase();       
         icon.innerHTML = `<svg height="28" width="28">
-        <circle cx="14" cy="14" r="50%" fill="white"></circle>
-        <text x="4" y="20" fill="#BB945F" font-size="15px">${nameFirstLetter}${surnameFirstLetter}</text>
+        <path d="M28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14Z" fill="white"/>
+        <text x="50%" y="50%" fill="#BB945F" font-size="15px" text-anchor="middle" dominant-baseline="middle">${nameFirstLetter}${surnameFirstLetter}</text>
         </svg>`;
         icon.title = `${activeProfile.name[0].toUpperCase()}${activeProfile.name.slice(1)} ${activeProfile.surname[0].toUpperCase()}${activeProfile.surname.slice(1)}`;  
     } else {
