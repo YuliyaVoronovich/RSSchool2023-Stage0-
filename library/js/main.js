@@ -404,8 +404,10 @@ function getProfileCard (form) {
             document.querySelector('.profile-info-card').style.display='flex';
     
             showInfoCard(profile);
-            setTimeout(() => {   
-                hiddenInfoCard();
+            setTimeout(() => { 
+                if (!activeProfile) {  
+                    hiddenInfoCard();
+                }
             }, 10000);        
         } 
     }              
