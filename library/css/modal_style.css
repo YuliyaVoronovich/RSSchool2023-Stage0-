@@ -255,6 +255,7 @@
     line-height: 20px; /* 100% */
     text-transform: capitalize;
     background: #ffffff;
+    overflow-wrap: anywhere;
 }
 .modal-profile-rigth .close-icon {
     top: 25px;
