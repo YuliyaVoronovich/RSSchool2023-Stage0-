@@ -429,6 +429,8 @@ function showInfoCard(profile = '') {
 
         document.querySelector('#button-check-card').style.display='none';
         document.querySelector('.profile-info-card').style.display='flex';
+        document.querySelector('.heading-open').style.display='none';
+        document.querySelector('.heading-close').style.display='block';
         infoCountVisiteds.forEach((visited) => {
             visited.innerHTML = activeProfile.visited;   
         });
@@ -453,6 +455,8 @@ function hiddenInfoCard() {
     document.querySelector('[name="cardProfile"]').value='';
     document.querySelector('.card-reader').style.display='flex';
     document.querySelector('.card-reader-login').style.display='none';
+    document.querySelector('.heading-open').style.display='block';
+    document.querySelector('.heading-close').style.display='none';
 }
 
 function addBook(book) {
