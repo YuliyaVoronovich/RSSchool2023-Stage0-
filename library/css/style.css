@@ -697,6 +697,12 @@ letter-spacing: 0.6px;
 text-align: center;
 padding-bottom: 30px;
 }
+.heading.heading-open {
+  display: block;
+}
+.heading.heading-close {
+  display: none;
+}
 
 .form-card {
 max-width: 600px;
