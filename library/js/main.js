@@ -385,7 +385,7 @@ function getProfileCard (form) {
 
     const formData = new FormData(form);
     const nameProfile = formData.get('nameProfile').toLowerCase().trim();
-    const cardProfile = formData.get('cardProfile');
+    const cardProfile = formData.get('cardProfile').trim();
     const nameProfileArray = nameProfile.split(" ");
 
     if (nameProfileArray.length >1) {
