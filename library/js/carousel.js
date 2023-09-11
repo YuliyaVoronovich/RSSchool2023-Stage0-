@@ -29,18 +29,15 @@ items.forEach((item) => {
 function reportWindowSize ()  {
     let widthWind = document.querySelector('body').offsetWidth;
 
-    if (widthWind < 1440) {
+    if (widthWind < 1000) {
         slideToShow = 1;
         positionPadding = 0;
         calcutateStartParams();
-
-     } 
-     //else if (widthWind > 768 && widthWind < 1440) {
-    //     slideToShow = 2;
-    //     positionPadding = 25;
-    //     calcutateStartParams();
-    // }
-    else {
+     } else if (widthWind >= 1000 && widthWind < 1423) {
+         slideToShow = 2;
+         positionPadding = 25;
+         calcutateStartParams();
+    }  else {
         slideToShow = 3;
         positionPadding = 25;
         calcutateStartParams();
