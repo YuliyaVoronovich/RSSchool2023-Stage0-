@@ -41,11 +41,6 @@
    .carousel-item:nth-child(5) {
       display: block;
   }
-
-  .carousel-item:nth-child(2) a {
-    background: #000000;
-    color: #000000;
-  }
   .about-button {
     display: block;
     position: absolute;
