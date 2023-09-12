@@ -497,33 +497,25 @@ function showBooks() {
 }
 
 /* вызываем функцию Copy вб буфер при нажатии на кнопку */
-let copyText = document.querySelector(".card-info-number");
 let copyButton = document.querySelector(".card-copy");
 copyButton.addEventListener('click', event => {
 
     let input = document.createElement('input');
-    input.value = copyText.textContent;
+    input.value = activeCardNumber;
 
     document.body.appendChild(input);
-
-    let selection = document.getSelection();
-    let range = document.createRange();
-
-    range.selectNode(input);
-    selection.removeAllRanges();
-    selection.addRange(range);
-
-    console.log('copy success', document.execCommand('copy'));
+    input.select();
+    document.execCommand('copy');
 
     const copySpan = document.createElement('span');
     copySpan.classList.add('error');
     copySpan.textContent = 'copy success';
     copyButton.appendChild(copySpan);
+
     setTimeout(() => {   
         copyButton.removeChild(copySpan);
     }, 1000);     
 
-    selection.removeAllRanges();
     document.body.removeChild(input);
     
   });
