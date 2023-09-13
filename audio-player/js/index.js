@@ -42,13 +42,19 @@ function pauseAudio() {
 
 function nextAudio() {
     isPlay = false;
-    currentIndex +=1;
+
+    if (currentIndex === songs.length-1) {
+        currentIndex = 0;
+    } else currentIndex +=1;
     playAudio();
 }
 
 function prevAudio() {
     isPlay = false;
-    currentIndex -=1;
+    
+    if (currentIndex === 0) {
+        currentIndex = songs.length-1;
+    } else currentIndex -=1;
     playAudio();
 }
 

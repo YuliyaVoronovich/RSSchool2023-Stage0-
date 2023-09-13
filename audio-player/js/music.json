@@ -1,20 +1,32 @@
  [
     {
-      "name": "Comatose",
-      "artist": "Skillet",
-      "img": "Skillet_Comatose",
-      "src": "Skillet_Comatose"
+      "name": "Savior",
+      "artist": "Anggun",
+      "img": "Anggun_Saviour",
+      "src": "Anggun_Saviour"
     },
     {
-      "name": "Numb",
-      "artist": "Linkin Park",
-      "img": "Linkin_Park_Numb",
-      "src": "Linkin_Park_Numb"
+      "name": "Sous_loeil_de_lange",
+      "artist": "K Maro",
+      "img": "KMaro_Sous_loeil_de_lange",
+      "src": "KMaro_Sous_loeil_de_lange"
     },
     {
       "name": "Вокруг шум",
       "artist": "Каста",
       "img": "Kasta_Shum",
       "src": "Kasta_Shum"
+    },
+    {
+      "name": "Numb",
+      "artist": "Linkin Park",
+      "img": "Linkin_Park_Numb",
+      "src": "Linkin_Park_Numb"
+    },       
+    {
+      "name": "Monster",
+      "artist": "Skillet",
+      "img": "Skillet_Monster",
+      "src": "Skillet_Monster"
     }
 ]
