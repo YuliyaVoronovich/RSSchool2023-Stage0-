@@ -14,8 +14,19 @@ const audio = new Audio();
 let isPlay = false;
 let currentIndex = 0;
 
-function playAudio() {    
+window.addEventListener("load", ()=>{
+    loadAudio();
+  });
 
+function loadAudio() {
+    const currentSong = songs[currentIndex];
+    audioImg.src =  `../assets/img/${currentSong.img}.jpg`;
+    blur.style.backgroundImage=`url(../assets/img/${currentSong.img}.jpg)`;
+    nameSong.innerText = `${currentSong.name}`;
+    artistSong.innerText = `${currentSong.artist}`;
+}
+
+function playAudio() {    
     const currentSong = songs[currentIndex];
     if (!isPlay) {
         isPlay = true;
@@ -23,10 +34,7 @@ function playAudio() {
         audio.currentTime = 0;
         audio.play();  
         playButton.innerText = "pause";  
-        audioImg.src =  `../assets/img/${currentSong.img}.jpg`;
-        blur.style.backgroundImage=`url(../assets/img/${currentSong.img}.jpg)`;
-        nameSong.innerText = `${currentSong.name}`;
-        artistSong.innerText = `${currentSong.artist}`;
+        loadAudio();
 
     } else {
         pauseAudio();
@@ -51,7 +59,7 @@ function nextAudio() {
 
 function prevAudio() {
     isPlay = false;
-    
+
     if (currentIndex === 0) {
         currentIndex = songs.length-1;
     } else currentIndex -=1;
