@@ -253,6 +253,9 @@ body {
   opacity: 0.2;
   z-index: 99;
 }
+.footer-span:hover {
+  opacity: 0.4;
+}
 .year,
 .link-github {
   padding-top: 20px;
