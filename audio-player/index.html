@@ -35,8 +35,15 @@
                         <div class="audio-button button-prev material-symbols-outlined">fast_rewind</div>
                         <div class="audio-button button-play material-symbols-outlined">play_arrow</div>
                         <div class="audio-button button-next material-symbols-outlined">fast_forward</div>
-                        <div class="audio-button button-volume material-symbols-outlined icon">volume_mute</div>
-                    </div>
+                        <div class="audio-button button-volume material-symbols-outlined icon">volume_down</div>
+                        
+                        <div class="audio-volume-wrapper">
+                            <span class="material-symbols-outlined volume-min">volume_down</span>
+                            <input class="audio-progress-volume" type="range" min="0" max="100"> 
+                            <div class="volume-count"></div> 
+                        </div>
+                        
+                    </div>                    
                 </div>
             </div>
         </main>
