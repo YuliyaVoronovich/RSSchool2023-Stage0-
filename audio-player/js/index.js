@@ -14,13 +14,17 @@ const progressArea = document.querySelector(".audio-progress-area");
 const progressBar = progressArea.querySelector(".audio-progress-bar");
 
 const audio = new Audio();
+
 let isPlay = false;
 let currentIndex = 0;
 let currentSong = songs[currentIndex];
 let currentTime = 0;
+audio.src = `../assets/audio/${currentSong.src}.mp3`;
+
 
 window.addEventListener("load", ()=>{
     loadAudio();
+   
   });
 
 function loadAudio() {
@@ -28,7 +32,7 @@ function loadAudio() {
     audioImg.src =  `../assets/img/${currentSong.img}.jpg`;
     blur.style.backgroundImage=`url(../assets/img/${currentSong.img}.jpg)`;
     nameSong.innerText = `${currentSong.name}`;
-    artistSong.innerText = `${currentSong.artist}`;
+    artistSong.innerText = `${currentSong.artist}`;    
 }
 
 function playAudio() {
@@ -75,28 +79,18 @@ function prevAudio() {
 }
 
 audio.addEventListener("timeupdate", (e)=>{
+
     currentTime = e.target.currentTime; //getting playing song currentTime
     const duration = e.target.duration; //getting playing song total duration
     let progressWidth = (currentTime / duration) * 100;
 
     progressBar.style.width = `${progressWidth}%`;
-    let musicCurrentTime = document.querySelector(".current-time"),
-    musicDuration = document.querySelector(".max-duration");
-
-    // audio.addEventListener("loadeddata", ()=>{
-    //   // update song total duration
-       let mainAdDuration = audio.duration;
-       let totalMin = Math.floor(mainAdDuration / 60);
-       let totalSec = Math.floor(mainAdDuration % 60);
-       if(totalSec < 10){ //if sec is less than 10 then add 0 before it
-         totalSec = `0${totalSec}`;
-       }
-       musicDuration.innerText = `${totalMin}:${totalSec}`;
-    // });
+    let musicCurrentTime = document.querySelector(".current-time");    
+   
      // update playing song current time
      let currentMin = Math.floor(currentTime / 60);
      let currentSec = Math.floor(currentTime % 60);
-     if(currentSec < 10){ //if sec is less than 10 then add 0 before it
+     if(currentSec < 10) {
        currentSec = `0${currentSec}`;
      }
      musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
@@ -104,7 +98,30 @@ audio.addEventListener("timeupdate", (e)=>{
      if (currentTime === duration) {
         nextAudio();
      }
+});
+
+audio.addEventListener("loadeddata", ()=>{
+    
+    let musicDuration = document.querySelector(".max-duration");
+    let mainAdDuration = audio.duration;
+    let totalMin = Math.floor(mainAdDuration / 60);
+    let totalSec = Math.floor(mainAdDuration % 60);
+    if(totalSec < 10) {
+        totalSec = `0${totalSec}`;
+    }
+    musicDuration.innerText = `${totalMin}:${totalSec}`;
+});
+
+progressArea.addEventListener("click", (e)=>{
+    let progressWidth = progressArea.clientWidth; //getting width of progress bar
+    let clickedOffsetX = e.offsetX; //getting offset x value
+    let songDuration = audio.duration; //getting song total duration
+    
+    isPlay = false;
+    currentTime = (clickedOffsetX / progressWidth) * songDuration;
+    playAudio();
   });
+  
 
 
 playButton.addEventListener('click', playAudio);
