@@ -26,8 +26,15 @@ body {
   background-position: center;
   filter: blur(10px);
 }
+.audio-inner {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: space-between;
+}
 .audio-player {
-  position: absolute;
+  position: relative;
   left: 50%;
   top: 50%; 
   max-width: 300px;
@@ -224,4 +231,33 @@ body {
 }
 .volume-min {
   cursor: pointer;
+}
+.footer {
+  width: 100%;
+  margin-top: 30px;
+}
+.footer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 80px;
+  padding: 20px 0;
+}
+.footer-span  {
+  width: 120px;  
+  background: #f0f0f0;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  opacity: 0.2;
+  z-index: 99;
+}
+.year,
+.link-github {
+  padding-top: 20px;
+}
+.link-github a {
+  text-decoration: none;
+  color:#000000;
 }
