@@ -31,7 +31,7 @@ window.addEventListener("load", ()=>{
 
 function loadAudio() {
    
-    audioImg.src =  `../assets/img/${currentSong.img}.jpg`;
+    audioImg.src =  `./assets/img/${currentSong.img}.jpg`;
     blur.style.backgroundImage=`url(../assets/img/${currentSong.img}.jpg)`;
     nameSong.innerText = `${currentSong.name}`;
     artistSong.innerText = `${currentSong.artist}`;    
