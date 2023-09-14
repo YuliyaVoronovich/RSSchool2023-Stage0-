@@ -135,10 +135,6 @@ progressArea.addEventListener("click", (e) => {
 
 function volumeShowAudio () {
     progressVolumeWrapper.classList.toggle('show');
-    
-    setTimeout(() => {   
-        progressVolumeWrapper.classList.remove('show');
-    }, 3000); 
 }
 
 progressVolume.addEventListener("input", (e) => {
@@ -158,6 +154,10 @@ progressVolume.addEventListener("input", (e) => {
         volumeButtonMin.innerText = "volume_down"; 
     }
     e._isClickMenu = true;
+        
+    setTimeout(() => {   
+        progressVolumeWrapper.classList.remove('show');
+    }, 3000); 
         
 });
 
