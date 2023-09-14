@@ -4,6 +4,7 @@ const playButton = document.querySelector('.button-play');
 const nextButton = document.querySelector('.button-next');
 const prevButton = document.querySelector('.button-prev');
 const repeatButton = document.querySelector(".button-repeat");
+const volumeButton = document.querySelector(".button-volume");
 
 const audioImg = document.querySelector('.audio-img');
 const blur = document.querySelector('.blur');
@@ -20,7 +21,7 @@ let isPlay = false;
 let currentIndex = 0;
 let currentSong = songs[currentIndex];
 let currentTime = 0;
-audio.src = `../assets/audio/${currentSong.src}.mp3`;
+audio.src = `./assets/audio/${currentSong.src}.mp3`;
 
 
 window.addEventListener("load", ()=>{
@@ -42,7 +43,7 @@ function playAudio() {
 
     if (!isPlay) {
         isPlay = true;
-        audio.src = `../assets/audio/${currentSong.src}.mp3`;
+        audio.src = `./assets/audio/${currentSong.src}.mp3`;
         audio.currentTime = currentTime;
         audio.play();  
         playButton.innerText = "pause";  
@@ -77,6 +78,11 @@ function prevAudio() {
         currentIndex = songs.length-1;
     } else currentIndex -=1;
     playAudio();
+}
+
+function volumeAudio () {
+    audio.volume = 0;
+    volumeButton.innerText = "volume_off";  
 }
 
 audio.addEventListener("timeupdate", (e) => {
@@ -161,9 +167,7 @@ function repeatAudio() {
     }
 };
 
-  
-
-
 playButton.addEventListener('click', playAudio);
 nextButton.addEventListener('click', nextAudio);
 prevButton.addEventListener('click', prevAudio);
+volumeButton.addEventListener('click', volumeAudio);

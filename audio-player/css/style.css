@@ -102,6 +102,11 @@ body {
 .audio-button {
   font-size: 26px;
 }
+.button-play {
+  border-radius: 50%;
+  background: #343436;
+  padding: 5px;
+}
 .icon {  
   font-size: 16px;
   color: #c4b61a;
