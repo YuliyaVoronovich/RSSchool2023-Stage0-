@@ -110,7 +110,7 @@ body {
   width: 0%;
   position: relative;
   border-radius: inherit;
-  background: linear-gradient(90deg, #c4b61a 0%, #f0f0f0 100%);
+  background: #c4b61a;
 }
 .audio-progress-bar::before {
   content: "";
@@ -121,14 +121,11 @@ body {
   top: 50%;
   right: -5px;
   z-index: 2;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
   transform: translateY(-50%);
-  background: inherit;
+  background: linear-gradient(90deg, #c4b61a 0%, #f0f0f0 100%);
   transition: opacity 0.2s ease;
-}
-.audio-progress-area:hover .audio-progress-bar::before {
-  opacity: 1;
   pointer-events: auto;
 }
 .audio-song-timer {
