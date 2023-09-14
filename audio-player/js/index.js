@@ -3,6 +3,7 @@ import songs from "./music.json" assert { type: "json" };
 const playButton = document.querySelector('.button-play');
 const nextButton = document.querySelector('.button-next');
 const prevButton = document.querySelector('.button-prev');
+const repeatButton = document.querySelector(".button-repeat");
 
 const audioImg = document.querySelector('.audio-img');
 const blur = document.querySelector('.blur');
@@ -78,7 +79,7 @@ function prevAudio() {
     playAudio();
 }
 
-audio.addEventListener("timeupdate", (e)=>{
+audio.addEventListener("timeupdate", (e) => {
 
     currentTime = e.target.currentTime; //getting playing song currentTime
     const duration = e.target.duration; //getting playing song total duration
@@ -96,11 +97,11 @@ audio.addEventListener("timeupdate", (e)=>{
      musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
 
      if (currentTime === duration) {
-        nextAudio();
+        repeatAudio();
      }
 });
 
-audio.addEventListener("loadeddata", ()=>{
+audio.addEventListener("loadeddata", () => {
     
     let musicDuration = document.querySelector(".max-duration");
     let mainAdDuration = audio.duration;
@@ -112,7 +113,7 @@ audio.addEventListener("loadeddata", ()=>{
     musicDuration.innerText = `${totalMin}:${totalSec}`;
 });
 
-progressArea.addEventListener("click", (e)=>{
+progressArea.addEventListener("click", (e) => {
     let progressWidth = progressArea.clientWidth; //getting width of progress bar
     let clickedOffsetX = e.offsetX; //getting offset x value
     let songDuration = audio.duration; //getting song total duration
@@ -120,7 +121,46 @@ progressArea.addEventListener("click", (e)=>{
     isPlay = false;
     currentTime = (clickedOffsetX / progressWidth) * songDuration;
     playAudio();
-  });
+});
+
+
+repeatButton.addEventListener("click", () => {
+  let text = repeatButton.innerText;
+
+  switch (text) {
+    case "repeat":
+        repeatButton.innerText = "repeat_one";
+      break;
+    case "repeat_one":
+        repeatButton.innerText = "shuffle";
+      break;
+    case "shuffle":
+        repeatButton.innerText = "repeat";
+      break;
+  }
+});
+
+function repeatAudio() {
+    let text = repeatButton.innerText;
+
+    switch (text) {
+      case "repeat":
+        nextAudio();
+      break;
+      case "repeat_one":
+        currentTime = 0;
+        isPlay = false;
+        playAudio();
+      break;
+      case "shuffle":
+        currentIndex = Math.floor((Math.random() * songs.length));
+        currentTime = 0;
+        isPlay = false;
+        playAudio();
+      break;
+    }
+};
+
   
 
 

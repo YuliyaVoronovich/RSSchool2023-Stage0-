@@ -81,6 +81,8 @@ body {
 
 .audio-content-button {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-wrap: nowrap;
   margin-top: 20px;
   gap:30px;
@@ -96,6 +98,13 @@ body {
   'wght' 700,
   'GRAD' 0,
   'opsz' 24
+}
+.audio-button {
+  font-size: 26px;
+}
+.icon {  
+  font-size: 16px;
+  color: #c4b61a;
 }
 
 .audio-progress-area {
