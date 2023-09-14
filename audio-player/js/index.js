@@ -5,6 +5,7 @@ const nextButton = document.querySelector('.button-next');
 const prevButton = document.querySelector('.button-prev');
 const repeatButton = document.querySelector(".button-repeat");
 const volumeButton = document.querySelector(".button-volume");
+const volumeButtonMin = document.querySelector(".volume-min");
 
 const audioImg = document.querySelector('.audio-img');
 const blur = document.querySelector('.blur');
@@ -15,12 +16,17 @@ const artistSong = document.querySelector('.artist-song');
 const progressArea = document.querySelector(".audio-progress-area");
 const progressBar = progressArea.querySelector(".audio-progress-bar");
 
+const progressVolumeWrapper = document.querySelector(".audio-volume-wrapper");
+const progressVolume = document.querySelector(".audio-progress-volume");
+const progressVolumeBar = progressVolume.querySelector(".audio-progress-volume-bar");
+
 const audio = new Audio();
 
 let isPlay = false;
 let currentIndex = 0;
 let currentSong = songs[currentIndex];
 let currentTime = 0;
+let currentVolume = 40;
 audio.src = `./assets/audio/${currentSong.src}.mp3`;
 
 
@@ -34,7 +40,9 @@ function loadAudio() {
     audioImg.src =  `./assets/img/${currentSong.img}.jpg`;
     blur.style.backgroundImage=`url(./assets/img/${currentSong.img}.jpg)`;
     nameSong.innerText = `${currentSong.name}`;
-    artistSong.innerText = `${currentSong.artist}`;    
+    artistSong.innerText = `${currentSong.artist}`;  
+    
+    document.querySelector('.volume-count').innerText = `${currentVolume}`;
 }
 
 function playAudio() {
@@ -45,7 +53,8 @@ function playAudio() {
         isPlay = true;
         audio.src = `./assets/audio/${currentSong.src}.mp3`;
         audio.currentTime = currentTime;
-        audio.play();  
+        audio.play();
+        audio.volume = currentVolume / 100;  
         playButton.innerText = "pause";  
         loadAudio();
 
@@ -78,11 +87,6 @@ function prevAudio() {
         currentIndex = songs.length-1;
     } else currentIndex -=1;
     playAudio();
-}
-
-function volumeAudio () {
-    audio.volume = 0;
-    volumeButton.innerText = "volume_off";  
 }
 
 audio.addEventListener("timeupdate", (e) => {
@@ -129,6 +133,57 @@ progressArea.addEventListener("click", (e) => {
     playAudio();
 });
 
+function volumeShowAudio () {
+    progressVolumeWrapper.classList.toggle('show');
+    
+    setTimeout(() => {   
+        progressVolumeWrapper.classList.remove('show');
+    }, 3000); 
+}
+
+progressVolume.addEventListener("input", (e) => {
+
+    currentVolume = e.target.value;
+    audio.volume = currentVolume / 100;
+    document.querySelector('.volume-count').innerText = `${currentVolume}`;
+
+    if (currentVolume == 0) {
+        volumeButton.innerText = "volume_off";
+        volumeButtonMin.innerText = "volume_off"; 
+    } else if (currentVolume > 60) {
+        volumeButton.innerText = "volume_up";
+        volumeButtonMin.innerText = "volume_up"; 
+    } else {
+        volumeButton.innerText = "volume_down";
+        volumeButtonMin.innerText = "volume_down"; 
+    }
+    e._isClickMenu = true;
+        
+});
+
+volumeButtonMin.addEventListener('click', () => {
+    volumeButton.innerText = "volume_off";
+    volumeButtonMin.innerText = "volume_off";
+    currentVolume = 0;
+    audio.volume = currentVolume / 100;
+    document.querySelector('.volume-count').innerText = `${currentVolume}`;
+    progressVolume.value = 0;
+});
+
+// Закрыть volume при клике вне меню
+volumeButton.addEventListener('click', event => {
+    event._isClickMenu = true;
+});
+
+document.body.addEventListener('click', event => {
+    if (event._isClickMenu) return;
+    
+    if (!event.target.closest('.audio-volume-wrapper')) {
+        progressVolumeWrapper.classList.remove('show');
+    };
+    
+});
+
 
 repeatButton.addEventListener("click", () => {
   let text = repeatButton.innerText;
@@ -170,4 +225,4 @@ function repeatAudio() {
 playButton.addEventListener('click', playAudio);
 nextButton.addEventListener('click', nextAudio);
 prevButton.addEventListener('click', prevAudio);
-volumeButton.addEventListener('click', volumeAudio);
+volumeButton.addEventListener('click', volumeShowAudio);
