@@ -155,9 +155,9 @@ progressVolume.addEventListener("input", (e) => {
     }
     e._isClickMenu = true;
         
-    setTimeout(() => {   
-        progressVolumeWrapper.classList.remove('show');
-    }, 3000); 
+    // setTimeout(() => {   
+    //     progressVolumeWrapper.classList.remove('show');
+    // }, 3000); 
         
 });
 

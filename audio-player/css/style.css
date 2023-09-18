@@ -168,18 +168,22 @@ body {
   background: #343436;
   opacity: 0.7;  
   cursor: pointer;
-  appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  overflow: hidden;
 }
 .audio-progress-volume::-webkit-slider-thumb {
   margin-top: -2px;
   width: 8px;
   height: 8px;
-  background-color: #c4b61a;
+  background: linear-gradient(90deg, #c4b61a 0%, #f0f0f0 100%);
   border-radius: 50%;
   cursor: pointer;
-  appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: -200px  0 0 200px #c4b61a; 
 }
 
 .audio-progress-volume::-webkit-slider-runnable-track {
