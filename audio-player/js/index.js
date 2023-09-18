@@ -106,9 +106,11 @@ function prevAudio() {
 
 
     currentTime = e.target.currentTime; //getting playing song currentTime  
+    if (audio.duration) {
+        progress.value = currentTime * 100 / audio.duration;   
+    } else   progress.value = 0;
      
     const duration = e.target.duration; 
-
     let musicCurrentTime = document.querySelector(".current-time");    
    
      // update playing song current time
@@ -118,7 +120,7 @@ function prevAudio() {
        currentSec = `0${currentSec}`;
      }
      musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
-
+    
      if (currentTime === duration) {
         repeatAudio();
      }
@@ -153,9 +155,10 @@ progress.addEventListener("input", (e) => {
      }
      musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
 
-     if (audio.currentTime  === audio.duration) {
+     if (currentTime >= audio.duration) {
         repeatAudio();
      }
+
 });
 
 function volumeShowAudio () {
