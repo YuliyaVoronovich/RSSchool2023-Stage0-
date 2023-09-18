@@ -38,26 +38,25 @@ window.addEventListener("load", ()=>{
 
 function loadAudio() {
    
+    currentSong = songs[currentIndex];
+
     audioImg.src =  `./assets/img/${currentSong.img}.jpg`;
     blur.style.backgroundImage=`url(./assets/img/${currentSong.img}.jpg)`;
     nameSong.innerText = `${currentSong.name}`;
     artistSong.innerText = `${currentSong.artist}`;  
     
     document.querySelector('.volume-count').innerText = `${currentVolume}`;
+    audio.src = `./assets/audio/${currentSong.src}.mp3`;
+    audio.currentTime = currentTime;
+    audio.volume = currentVolume / 100;  
 }
 
-function playAudio() {
-
-    currentSong = songs[currentIndex];
+function playAudio() {   
 
     if (!isPlay) {
         isPlay = true;
-        audio.src = `./assets/audio/${currentSong.src}.mp3`;
-        audio.currentTime = currentTime;
         audio.play();
-        audio.volume = currentVolume / 100;  
         playButton.innerText = "pause";  
-        loadAudio();
 
     } else {
         pauseAudio();
@@ -84,6 +83,7 @@ function nextAudio() {
         currentIndex = 0;
     } else currentIndex +=1;
     
+    loadAudio();
     playAudio();
 }
 
@@ -99,6 +99,7 @@ function prevAudio() {
         currentIndex = songs.length-1;
     } else currentIndex -=1;
    
+    loadAudio();
     playAudio();
 }
 
@@ -143,13 +144,14 @@ audio.addEventListener("loadeddata", () => {
 progress.addEventListener("input", (e) => {
     progress.value = e.target.value;
 
-    audio.currentTime = e.target.value * audio.duration / 100;  
+    currentTime = e.target.value * audio.duration / 100;  
+    audio.currentTime = currentTime;
 
     let musicCurrentTime = document.querySelector(".current-time");    
    
      // update playing song current time
-     let currentMin = Math.floor(audio.currentTime  / 60);
-     let currentSec = Math.floor(audio.currentTime  % 60);
+     let currentMin = Math.floor(currentTime  / 60);
+     let currentSec = Math.floor(currentTime  % 60);
      if(currentSec < 10) {
        currentSec = `0${currentSec}`;
      }
