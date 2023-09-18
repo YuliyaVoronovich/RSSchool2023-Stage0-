@@ -23,10 +23,12 @@ const progressVolumeBar = progressVolume.querySelector(".audio-progress-volume-b
 const audio = new Audio();
 
 let isPlay = false;
+let isShuffle = false;
 let currentIndex = 0;
 let currentSong = songs[currentIndex];
 let currentTime = 0;
 let currentVolume = 40;
+let currentRandom;
 audio.src = `./assets/audio/${currentSong.src}.mp3`;
 
 
@@ -68,14 +70,21 @@ function pauseAudio() {
     audio.pause();
     playButton.innerText = "play_arrow";
 }
+function changeRandomPlay () {
+    return Math.floor((Math.random() * songs.length));
+}
 
 function nextAudio() {
     isPlay = false;
     currentTime = 0;
+    if (isShuffle) {
+        currentIndex = changeRandomPlay ();
+    }
 
     if (currentIndex === songs.length-1) {
         currentIndex = 0;
     } else currentIndex +=1;
+    
     playAudio();
 }
 
@@ -83,9 +92,14 @@ function prevAudio() {
     isPlay = false;
     currentTime = 0;
 
+    if (isShuffle) {
+        currentIndex = changeRandomPlay ();
+    }
+
     if (currentIndex === 0) {
         currentIndex = songs.length-1;
     } else currentIndex -=1;
+   
     playAudio();
 }
 
@@ -190,12 +204,15 @@ repeatButton.addEventListener("click", () => {
 
   switch (text) {
     case "repeat":
+        isShuffle = false;
         repeatButton.innerText = "repeat_one";
       break;
     case "repeat_one":
+        isShuffle = true;
         repeatButton.innerText = "shuffle";
       break;
     case "shuffle":
+        isShuffle = false;
         repeatButton.innerText = "repeat";
       break;
   }
@@ -214,7 +231,7 @@ function repeatAudio() {
         playAudio();
       break;
       case "shuffle":
-        currentIndex = Math.floor((Math.random() * songs.length));
+        currentIndex = changeRandomPlay();
         currentTime = 0;
         isPlay = false;
         playAudio();
