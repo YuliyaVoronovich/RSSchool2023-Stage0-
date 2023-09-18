@@ -106,7 +106,9 @@ audio.addEventListener("timeupdate", (e) => {
 
     currentTime = e.target.currentTime; //getting playing song currentTime
     const duration = e.target.duration; //getting playing song total duration
-    progress.value = currentTime * 100 / duration;
+    if (audio.duration) {
+        progress.value = currentTime * 100 / duration;
+    } else progress.value = 0;
 
     let musicCurrentTime = document.querySelector(".current-time");    
    
