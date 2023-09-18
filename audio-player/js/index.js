@@ -102,13 +102,12 @@ function prevAudio() {
     playAudio();
 }
 
-audio.addEventListener("timeupdate", (e) => {
+ audio.addEventListener("timeupdate", (e) => {
 
-    currentTime = e.target.currentTime; //getting playing song currentTime
-    const duration = e.target.duration; //getting playing song total duration
-    if (audio.duration) {
-        progress.value = currentTime * 100 / duration;
-    } else progress.value = 0;
+
+    currentTime = e.target.currentTime; //getting playing song currentTime  
+     
+    const duration = e.target.duration; 
 
     let musicCurrentTime = document.querySelector(".current-time");    
    
@@ -123,7 +122,7 @@ audio.addEventListener("timeupdate", (e) => {
      if (currentTime === duration) {
         repeatAudio();
      }
-});
+ });
 
 audio.addEventListener("loadeddata", () => {
     
@@ -139,16 +138,24 @@ audio.addEventListener("loadeddata", () => {
     musicDuration.innerText = `${totalMin}:${totalSec}`;
 });
 
-progress.addEventListener("click", (e) => {
-    e.value = currentTime * 100 / audio.duration;
+progress.addEventListener("input", (e) => {
+    progress.value = e.target.value;
+
+    audio.currentTime = e.target.value * audio.duration / 100;  
+
+    let musicCurrentTime = document.querySelector(".current-time");    
    
-    let progressWidth = progressArea.clientWidth; //getting width of progress bar
-    let clickedOffsetX = e.offsetX; //getting offset x value
-    let songDuration = audio.duration; //getting song total duration
-    
-    isPlay = false;
-    currentTime = (clickedOffsetX / progressWidth) * songDuration;
-    playAudio();
+     // update playing song current time
+     let currentMin = Math.floor(audio.currentTime  / 60);
+     let currentSec = Math.floor(audio.currentTime  % 60);
+     if(currentSec < 10) {
+       currentSec = `0${currentSec}`;
+     }
+     musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
+
+     if (audio.currentTime  === audio.duration) {
+        repeatAudio();
+     }
 });
 
 function volumeShowAudio () {
