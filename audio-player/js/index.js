@@ -27,7 +27,7 @@ let currentIndex = 0;
 let currentSong = songs[currentIndex];
 let currentTime = 0;
 let currentVolume = 40;
-let currentRandom;
+progress.value = 0;
 audio.src = `./assets/audio/${currentSong.src}.mp3`;
 
 
@@ -125,8 +125,10 @@ audio.addEventListener("timeupdate", (e) => {
 
 audio.addEventListener("loadeddata", () => {
     
+    progress.value = 0;
     let musicDuration = document.querySelector(".max-duration");
     let mainAdDuration = audio.duration;
+
     let totalMin = Math.floor(mainAdDuration / 60);
     let totalSec = Math.floor(mainAdDuration % 60);
     if(totalSec < 10) {
