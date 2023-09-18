@@ -25,6 +25,7 @@ body {
   background-size: cover;
   background-position: center;
   filter: blur(10px);
+  transition: all 0.7s;
 }
 .audio-inner {
   height: 100vh;
@@ -62,8 +63,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 20px;
+  gap: 10px;
+  padding: 10px;
 }
 .audio-content-title {
   text-align: center;
@@ -119,36 +120,36 @@ body {
   font-size: 16px;
   color: #c4b61a;
 }
-
-.audio-progress-area {
+.audio-progress {
   height: 6px;
-  width: 100%;
-  border-radius: 50px;
+  min-width: 260px;
+  width: 100%;  
+  border-radius: 5px;
   background: #f0f0f0;
   cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  overflow: hidden;
+  transition: 0.3s;
 }
-.audio-progress-bar {
-  height: inherit;
-  width: 0%;
-  position: relative;
-  border-radius: inherit;
-  background: #c4b61a;
-}
-.audio-progress-bar::before {
-  content: "";
-  position: absolute;
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  top: 50%;
-  right: -5px;
-  z-index: 2;
-  opacity: 1;
-  pointer-events: none;
-  transform: translateY(-50%);
+.audio-progress::-webkit-slider-thumb {
+  margin-top: -2px;
+  width: 8px;
+  height: 8px;
   background: linear-gradient(90deg, #c4b61a 0%, #f0f0f0 100%);
-  transition: opacity 0.2s ease;
-  pointer-events: auto;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: -260px  0 0 260px #c4b61a; 
+}
+
+.audio-progress::-webkit-slider-runnable-track {
+  height: 3px;
+  background: #f0f0f0;
+  cursor: pointer;
 }
 .audio-song-timer {
   display: flex;
@@ -168,35 +169,29 @@ body {
   background: #343436;
   opacity: 0.7;  
   cursor: pointer;
-  appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  overflow: hidden;
 }
 .audio-progress-volume::-webkit-slider-thumb {
   margin-top: -2px;
   width: 8px;
   height: 8px;
-  background-color: #c4b61a;
+  background: linear-gradient(90deg, #c4b61a 0%, #f0f0f0 100%);
   border-radius: 50%;
   cursor: pointer;
-  appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: -50px  0 0 50px #c4b61a; 
 }
 
 .audio-progress-volume::-webkit-slider-runnable-track {
   height: 3px;
   background: #343436;
   cursor: pointer;
-
 }
-
-.audio-progress-volume-bar {
-  height: inherit;
-  width: 0%;
-  position: relative;
-  border-radius: inherit;
-  background: #c4b61a;
-}
-
 
 .audio-volume-wrapper {
   display: flex;
