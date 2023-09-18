@@ -136,8 +136,7 @@ body {
 .audio-progress::-webkit-slider-thumb {
   margin-top: -2px;
   width: 8px;
-  height: 8px;
-  background: linear-gradient(90deg, #c4b61a 0%, #f0f0f0 100%);
+  background: #c4b61a;
   border-radius: 50%;
   cursor: pointer;
   -webkit-appearance: none;
