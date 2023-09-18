@@ -14,11 +14,10 @@ const nameSong = document.querySelector('.name-song');
 const artistSong = document.querySelector('.artist-song');
 
 const progressArea = document.querySelector(".audio-progress-area");
-const progressBar = progressArea.querySelector(".audio-progress-bar");
+const progress = document.querySelector(".audio-progress");
 
 const progressVolumeWrapper = document.querySelector(".audio-volume-wrapper");
 const progressVolume = document.querySelector(".audio-progress-volume");
-const progressVolumeBar = progressVolume.querySelector(".audio-progress-volume-bar");
 
 const audio = new Audio();
 
@@ -107,9 +106,8 @@ audio.addEventListener("timeupdate", (e) => {
 
     currentTime = e.target.currentTime; //getting playing song currentTime
     const duration = e.target.duration; //getting playing song total duration
-    let progressWidth = (currentTime / duration) * 100;
+    progress.value = currentTime * 100 / duration;
 
-    progressBar.style.width = `${progressWidth}%`;
     let musicCurrentTime = document.querySelector(".current-time");    
    
      // update playing song current time
@@ -137,7 +135,9 @@ audio.addEventListener("loadeddata", () => {
     musicDuration.innerText = `${totalMin}:${totalSec}`;
 });
 
-progressArea.addEventListener("click", (e) => {
+progress.addEventListener("click", (e) => {
+    e.value = currentTime * 100 / audio.duration;
+   
     let progressWidth = progressArea.clientWidth; //getting width of progress bar
     let clickedOffsetX = e.offsetX; //getting offset x value
     let songDuration = audio.duration; //getting song total duration
