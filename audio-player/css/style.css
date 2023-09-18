@@ -25,6 +25,7 @@ body {
   background-size: cover;
   background-position: center;
   filter: blur(10px);
+  transition: all 0.7s;
 }
 .audio-inner {
   height: 100vh;
