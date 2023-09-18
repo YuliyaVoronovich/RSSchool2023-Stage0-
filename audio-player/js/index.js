@@ -176,12 +176,18 @@ progressVolume.addEventListener("input", (e) => {
 });
 
 volumeButtonMin.addEventListener('click', () => {
-    volumeButton.innerText = "volume_off";
-    volumeButtonMin.innerText = "volume_off";
-    currentVolume = 0;
-    audio.volume = currentVolume / 100;
+    if (audio.volume != 0) {
+      volumeButton.innerText = "volume_off";
+      volumeButtonMin.innerText = "volume_off";
+      audio.volume = 0;      
+    } else {
+        volumeButton.innerText = "volume_down";
+        volumeButtonMin.innerText = "volume_down";
+        audio.volume = currentVolume / 100;
+    }
     document.querySelector('.volume-count').innerText = `${currentVolume}`;
-    progressVolume.value = 0;
+    progressVolume.value = currentVolume;  
+    
 });
 
 // Закрыть volume при клике вне меню
