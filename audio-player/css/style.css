@@ -193,6 +193,7 @@ body {
 }
 
 .audio-volume-wrapper {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -257,4 +258,22 @@ body {
 .link-github a {
   text-decoration: none;
   color:#000000;
+}
+@media  (max-width: 560px) {
+.footer-wrapper {
+  gap: 10px;
+}
+.audio-volume-wrapper {
+  right: 80px;
+  transform: translateX(100%);
+}
+.footer-span {
+  width: 80px;
+}
+.logo {
+  padding-top: 20px;
+}
+.logo img {
+  width: 70%;
+}
 }
