@@ -6,16 +6,12 @@ const prevButton = document.querySelector('.button-prev');
 const repeatButton = document.querySelector(".button-repeat");
 const volumeButton = document.querySelector(".button-volume");
 const volumeButtonMin = document.querySelector(".volume-min");
-
 const audioImg = document.querySelector('.audio-img');
 const blur = document.querySelector('.blur');
-
 const nameSong = document.querySelector('.name-song');
 const artistSong = document.querySelector('.artist-song');
-
 const progressArea = document.querySelector(".audio-progress-area");
 const progress = document.querySelector(".audio-progress");
-
 const progressVolumeWrapper = document.querySelector(".audio-volume-wrapper");
 const progressVolume = document.querySelector(".audio-progress-volume");
 
@@ -57,7 +53,6 @@ function playAudio() {
         isPlay = true;
         audio.play();
         playButton.innerText = "pause";  
-
     } else {
         pauseAudio();
     }    
@@ -68,6 +63,7 @@ function pauseAudio() {
     audio.pause();
     playButton.innerText = "play_arrow";
 }
+
 function changeRandomPlay () {
     return Math.floor((Math.random() * songs.length));
 }
@@ -75,10 +71,10 @@ function changeRandomPlay () {
 function nextAudio() {
     isPlay = false;
     currentTime = 0;
-    if (isShuffle) {
-        currentIndex = changeRandomPlay ();
-    }
 
+    if (isShuffle) {
+        currentIndex = changeRandomPlay();
+    }
     if (currentIndex === songs.length-1) {
         currentIndex = 0;
     } else currentIndex +=1;
@@ -92,9 +88,8 @@ function prevAudio() {
     currentTime = 0;
 
     if (isShuffle) {
-        currentIndex = changeRandomPlay ();
+        currentIndex = changeRandomPlay();
     }
-
     if (currentIndex === 0) {
         currentIndex = songs.length-1;
     } else currentIndex -=1;
@@ -102,27 +97,27 @@ function prevAudio() {
     loadAudio();
     playAudio();
 }
+function convertTime() {
+    let musicCurrentTime = document.querySelector(".current-time"); 
+    let currentMin = Math.floor(currentTime / 60);
+    let currentSec = Math.floor(currentTime % 60);
+    if(currentSec < 10) {
+      currentSec = `0${currentSec}`;
+    }
+    musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
+}
 
  audio.addEventListener("timeupdate", (e) => {
 
-
     currentTime = e.target.currentTime; //getting playing song currentTime  
+
     if (audio.duration) {
         progress.value = currentTime * 100 / audio.duration;   
     } else   progress.value = 0;
-     
-    const duration = e.target.duration; 
-    let musicCurrentTime = document.querySelector(".current-time");    
-   
-     // update playing song current time
-     let currentMin = Math.floor(currentTime / 60);
-     let currentSec = Math.floor(currentTime % 60);
-     if(currentSec < 10) {
-       currentSec = `0${currentSec}`;
-     }
-     musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
+
+    convertTime();
     
-     if (currentTime === duration) {
+     if (currentTime === audio.duration) {
         repeatAudio();
      }
  });
@@ -143,24 +138,13 @@ audio.addEventListener("loadeddata", () => {
 
 progress.addEventListener("input", (e) => {
     progress.value = e.target.value;
+    audio.currentTime = e.target.value * audio.duration / 100;
 
-    currentTime = e.target.value * audio.duration / 100;  
-    audio.currentTime = currentTime;
+    convertTime();
 
-    let musicCurrentTime = document.querySelector(".current-time");    
-   
-     // update playing song current time
-     let currentMin = Math.floor(currentTime  / 60);
-     let currentSec = Math.floor(currentTime  % 60);
-     if(currentSec < 10) {
-       currentSec = `0${currentSec}`;
-     }
-     musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
-
-     if (currentTime >= audio.duration) {
+     if (audio.currentTime >= audio.duration) {
         repeatAudio();
      }
-
 });
 
 function volumeShowAudio () {
@@ -183,23 +167,18 @@ progressVolume.addEventListener("input", (e) => {
         volumeButton.innerText = "volume_down";
         volumeButtonMin.innerText = "volume_down"; 
     }
-    e._isClickMenu = true;
-        
-    // setTimeout(() => {   
-    //     progressVolumeWrapper.classList.remove('show');
-    // }, 3000); 
-        
+    e._isClickMenu = true;        
 });
 
 volumeButtonMin.addEventListener('click', () => {
     if (audio.volume != 0) {
-      volumeButton.innerText = "volume_off";
-      volumeButtonMin.innerText = "volume_off";
-      audio.volume = 0;      
+       volumeButton.innerText = "volume_off";
+       volumeButtonMin.innerText = "volume_off";
+       audio.volume = 0;      
     } else {
-        volumeButton.innerText = "volume_down";
-        volumeButtonMin.innerText = "volume_down";
-        audio.volume = currentVolume / 100;
+      volumeButton.innerText = "volume_down";
+      volumeButtonMin.innerText = "volume_down";
+      audio.volume = currentVolume / 100;
     }
     document.querySelector('.volume-count').innerText = `${currentVolume}`;
     progressVolume.value = currentVolume;  
@@ -219,7 +198,6 @@ document.body.addEventListener('click', event => {
     };
     
 });
-
 
 repeatButton.addEventListener("click", () => {
   let text = repeatButton.innerText;
@@ -250,12 +228,14 @@ function repeatAudio() {
       case "repeat_one":
         currentTime = 0;
         isPlay = false;
+        loadAudio();
         playAudio();
       break;
       case "shuffle":
         currentIndex = changeRandomPlay();
         currentTime = 0;
         isPlay = false;
+        loadAudio();
         playAudio();
       break;
     }
