@@ -1,0 +1,134 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth; 
+  }
+  *, 
+  *::before, 
+  *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: #262626;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    font-style: normal;
+    font-weight: 400;
+    color: #151515;
+  } 
+  .container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .header {
+    height: 120px;
+    background: #262626;
+  }
+  .footer {
+    height: 100px;
+    background: #262626;
+  }
+  .header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 40px 20px;
+    line-height: 30px;
+    gap: 10px;
+    color: #eeecec;
+  }
+  .logo {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .logo-icon {
+    font-size: 40px;
+  }
+  .logo-text {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+  }
+  .form-search {
+    position: relative;
+    width: 300px;
+  }
+  .input-search {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #eeecec;;
+  }
+  .input-search:focus {
+    color: #BB945F;
+    border: 1px solid #BB945F;
+    box-shadow: 0 0 2px 2px #BB945F;
+    outline: 0;
+  }
+  .button-search {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    border: none;
+    background: inherit;
+    cursor: pointer;
+  }
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    background: #000000;
+  }
+  .gallery-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:flex-start;
+    gap: 20px;
+    list-style: none;
+    padding: 20px;
+  }
+  .gallery-item {
+    width: calc((100% - 2 * 20px) / 3);
+    min-height: 300px;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }
+
+  @media (max-width: 1080px) {
+    .gallery-item {
+        width: calc((100% - 20px) / 2);
+    }
+  }
+  @media (max-width: 768px) {
+    .header {
+      height: 150px;
+    }
+    .gallery-item {
+        width: 100%;
+    }
+    .header-container {
+      flex-direction: column;
+    }
+    .form-search {
+      width: 100%;
+    }
+  }
