@@ -4,7 +4,7 @@ const KEY = 'yaQ7ydsJ2lF3tYD6evKdJNpjw8RLGInYmnqO2_IMje8';
 const gallery = document.querySelector(".gallery-list");
 const form = document.querySelector(".form-search");
 
-let queryDefault = 'mount';
+let queryDefault = 'random';
 const page = 0;
 
 async function getData(query = queryDefault) {
@@ -19,7 +19,13 @@ function showData(data) {
     let picture = '';
     data.results.map((element) => {
          picture += `<li class="gallery-item" data-picture="${element.urls.full}">
-          <img src="${element.urls.regular}" alt="${element.alt_description}" loading="lazy">          
+          <img src="${element.urls.regular}" alt="${element.alt_description}" loading="lazy">
+            <div class="image-info">
+                <div class="own-name">${element.user.name}</div>
+                <div class="own-likes">
+                    <span class="material-symbols-outlined icon-likes">favorite</span>${element.likes}
+                </div>
+            </div>          
         </li>`;
     });
     gallery.innerHTML = picture;
