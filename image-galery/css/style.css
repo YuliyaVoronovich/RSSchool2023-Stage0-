@@ -116,6 +116,38 @@ html {
     'GRAD' 0,
     'opsz' 24
   }
+  .footer-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 80px;
+    padding: 30px 0;
+  }
+
+  .footer-span  {
+    width: 120px;  
+    background: #BB945F;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    opacity: 0.2;
+    cursor: pointer;
+  }
+  .footer-span:hover {
+    opacity: 0.4;
+  }
+  .link-github {
+    text-decoration: none;
+    color:#000000;
+  }
+  .year {
+    cursor: auto;
+  }
+  .year,
+  .link-github {
+    padding-top: 20px;
+  }
 
   @media (max-width: 1080px) {
     .gallery-item {
