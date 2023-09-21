@@ -45,6 +45,7 @@ html {
     display: flex;
     gap: 10px;
     align-items: center;
+    color: #BB945F;
   }
   .logo-icon {
     font-size: 40px;
@@ -86,6 +87,7 @@ html {
     justify-content: space-between;
     min-height: 100vh;
     background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(41, 40, 40) 50%, rgb(222, 223, 223) 100%);;
+
   }
   .gallery-list {
     display: flex;
@@ -95,10 +97,12 @@ html {
     gap: 20px;
     list-style: none;
     padding: 20px;
+
   }
   .gallery-item {
     width: calc((100% - 2 * 20px) / 3);
     min-height: 300px;
+    transition: all 0.5s;
   }
   .gallery-item img {
     width: 100%;
