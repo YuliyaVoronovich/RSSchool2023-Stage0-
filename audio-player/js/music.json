@@ -1,32 +1,50 @@
  [
     {
-      "name": "Savior",
-      "artist": "Anggun",
-      "img": "Anggun_Saviour",
-      "src": "Anggun_Saviour"
+      "name": "Не твоя війна",
+      "artist": "Океан Эльзи",
+      "img": "Okean_Elzy_Ne_Tvoya_Viyna",
+      "src": "Okean_Elzy_Ne_Tvoya_Viyna"
     },
     {
-      "name": "Sous_loeil_de_lange",
-      "artist": "K Maro",
-      "img": "KMaro_Sous_loeil_de_lange",
-      "src": "KMaro_Sous_loeil_de_lange"
-    },
-    {
-      "name": "Вокруг шум",
-      "artist": "Каста",
-      "img": "Kasta_Shum",
-      "src": "Kasta_Shum"
-    },
-    {
-      "name": "Numb",
-      "artist": "Linkin Park",
-      "img": "Linkin_Park_Numb",
-      "src": "Linkin_Park_Numb"
+      "name": "Аллилуя",
+      "artist": "БИ 2",
+      "img": "BI2_Allilyya",
+      "src": "BI2_Allilyya"
     },       
     {
-      "name": "Monster",
-      "artist": "Skillet",
-      "img": "Skillet_Monster",
-      "src": "Skillet_Monster"
+      "name": "No Leaf Clover",
+      "artist": "Metallica",
+      "img": "Metallica_No_Leaf_Clover",
+      "src": "Metallica_No_Leaf_Clover"
+    },
+    {
+      "name": "Я никому не верю",
+      "artist": "БИ 2",
+      "img": "BI2_Nikomy",
+      "src": "BI2_Nikomy"
+    },       
+    {
+      "name": "Город под подошвой",
+      "artist": "Oxxxymiron",
+      "img": "Oxxxymiron_Gorod",
+      "src": "Oxxxymiron_Gorod"
+    },  
+    {
+      "name": "Обійми",
+      "artist": "Океан Эльзи",
+      "img": "Okean_Elzy_Obijmy",
+      "src": "Okean_Elzy_Obijmy"
+    },
+    {
+      "name": "Цемра",
+      "artist": "Nizkiz_Zemra",
+      "img": "Nizkiz_Zemra",
+      "src": "Nizkiz_Zemra"
+    },       
+    {
+      "name": "Обитатели рая",
+      "artist": "Грот",
+      "img": "Grot_Obitateli_Raya",
+      "src": "Grot_Obitateli_Raya"
     }
 ]
