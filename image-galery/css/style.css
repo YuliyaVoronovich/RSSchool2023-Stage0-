@@ -81,13 +81,27 @@ html {
     background: inherit;
     cursor: pointer;
   }
+  .button-cross {
+    position: absolute;
+    right: 40px;
+    top: 8px;
+    border: none;
+    background: inherit;
+    visibility: hidden;
+    cursor: pointer;
+  }
+  .button-cross.show {
+    visibility: visible;
+  }
+  .button:hover {
+    color: #BB945F;
+  }
   .gallery {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
     background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(41, 40, 40) 50%, rgb(222, 223, 223) 100%);;
-
   }
   .gallery-list {
     display: flex;
@@ -97,7 +111,7 @@ html {
     gap: 20px;
     list-style: none;
     padding: 20px;
-
+    color: #eeecec;
   }
   .gallery-item {
     position: relative;
