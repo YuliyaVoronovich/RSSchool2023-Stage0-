@@ -260,6 +260,10 @@ body {
   color:#000000;
 }
 @media  (max-width: 560px) {
+
+.audio-player {
+  top:40%
+}
 .footer-wrapper {
   gap: 10px;
 }
