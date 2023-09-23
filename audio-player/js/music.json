@@ -6,6 +6,18 @@
       "src": "Okean_Elzy_Ne_Tvoya_Viyna"
     },
     {
+      "name": "Цемра",
+      "artist": "Nizkiz",
+      "img": "Nizkiz_Zemra",
+      "src": "Nizkiz_Zemra"
+    },
+    {
+      "name": "Така як ти",
+      "artist": "Святослав Вакарчук",
+      "img": "Svyatoslav_Vakarchuk_Taka_yak_ti",
+      "src": "Svyatoslav_Vakarchuk_Taka_yak_ti"
+    },
+    {
       "name": "Аллилуя",
       "artist": "БИ 2",
       "img": "BI2_Allilyya",
@@ -16,7 +28,7 @@
       "artist": "Metallica",
       "img": "Metallica_No_Leaf_Clover",
       "src": "Metallica_No_Leaf_Clover"
-    },
+    },    
     {
       "name": "Я никому не верю",
       "artist": "БИ 2",
@@ -34,12 +46,6 @@
       "artist": "Океан Эльзи",
       "img": "Okean_Elzy_Obijmy",
       "src": "Okean_Elzy_Obijmy"
-    },
-    {
-      "name": "Цемра",
-      "artist": "Nizkiz",
-      "img": "Nizkiz_Zemra",
-      "src": "Nizkiz_Zemra"
     },       
     {
       "name": "Обитатели рая",
