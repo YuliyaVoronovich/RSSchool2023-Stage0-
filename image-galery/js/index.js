@@ -73,5 +73,13 @@ buttonCross.addEventListener('click', event => {
     getData();
 });
 
+searchInput.addEventListener('change', event => {
+
+    if (event.target.value === '') {
+        getData();
+    }
+    
+});
+
 
 getData();
