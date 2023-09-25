@@ -70,7 +70,7 @@ buttonCross.addEventListener('click', event => {
 
     event.preventDefault();
     searchInput.value = '';
-    getData();
+   // getData();
 });
 
 searchInput.addEventListener('change', event => {
