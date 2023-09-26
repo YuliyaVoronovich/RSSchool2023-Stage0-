@@ -160,7 +160,13 @@ html {
     color: rgb(241, 58, 58);
     font-variation-settings: 'FILL' 10
   }
- 
+  .load {
+    text-align: center;
+    visibility: hidden;
+  }
+  .load.show {
+    visibility: visible;
+  }
   .footer-wrapper {
     display: flex;
     flex-wrap: wrap;

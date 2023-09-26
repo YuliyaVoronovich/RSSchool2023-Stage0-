@@ -7,6 +7,7 @@ const form = document.querySelector(".form-search");
 const ownName = document.querySelector(".own-name");
 let searchInput = document.querySelector(".input-search");
 let buttonCross = document.querySelector(".button-cross");
+const load = document.querySelector(".load");
 
 let page = 1;
 let query = 'random';
@@ -130,14 +131,21 @@ searchInput.addEventListener('change', event => {
     }    
 });
 
-window.addEventListener('scroll', async () => {
+window.addEventListener('scroll', () => {
 
     const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
 
     if (scrollTop + clientHeight >= scrollHeight-1) {
-        page +=1;
-        console.log(page);
-        await getData();
+        //показать загрузку а потом отображение след картинок
+        load.classList.add('show');
+
+        setTimeout (async () => {
+            page +=1;
+            console.log(page);
+            await getData();
+            load.classList.remove('show');
+          }, "1000");
+ 
     }
 });
 
