@@ -1,5 +1,6 @@
-const URL = 'https://api.unsplash.com/search/photos';
+const URL = 'https://api.unsplash.com/';
 const KEY = 'yaQ7ydsJ2lF3tYD6evKdJNpjw8RLGInYmnqO2_IMje8';
+
 
 const gallery = document.querySelector(".gallery-list");
 const form = document.querySelector(".form-search");
@@ -7,19 +8,18 @@ const ownName = document.querySelector(".own-name");
 let searchInput = document.querySelector(".input-search");
 let buttonCross = document.querySelector(".button-cross");
 
-let queryDefault = 'random';
-const page = 0;
+let page = 1;
+let query = 'random';
 
-async function getData(query = queryDefault) {
-    const url = `${URL}?query=${query}&page=${page}&per_page=50&orientation=landscape&client_id=${KEY}`;
+async function getData() {
+    const url = `${URL}search/photos?query=${query}&page=${page}&per_page=50&orientation=landscape&client_id=${KEY}`;
     const response = await fetch(url);
     const data = await response.json();
    
     showData(data.results);
 }
-
 async function getDataUsers(username, name) {
-    const url1 = `https://api.unsplash.com/users/${username}/photos?page=${page}&per_page=50&orientation=landscape&order_by=views&client_id=${KEY}`;
+    const url1 = `${URL}users/${username}/photos?page=${page}&per_page=30&orientation=landscape&order_by=views&client_id=${KEY}`;
     searchInput.value = name;
     const response = await fetch(url1);
     const data = await response.json();
@@ -27,25 +27,72 @@ async function getDataUsers(username, name) {
     showData(data);
 } 
 function showData(data) {
-    let picture = '';
+    data.map((element) => {
+        const elementLi = document.createElement('li');
+        elementLi.classList.add('gallery-item');
 
-    if (data.length > 0) {
-       data.map((element) => {
-         picture += `<li class="gallery-item" data-picture="${element.urls.full}">
-          <img src="${element.urls.regular}" alt="${element.alt_description}" loading="lazy">
-            <div class="image-info">
-                <div class="own-name" onclick="getDataUsers('${element.user.username}', '${element.user.name}')">${element.user.name}</div>
-                <div class="own-likes">
-                    <span class="material-symbols-outlined icon-likes">favorite</span>${element.likes}
-                </div>
-            </div>          
-        </li>`;
+        const image = document.createElement('img');
+        image.src = `${element.urls.regular}`;
+        image.alt = `${element.alt_description}`;
+        image.loading = "lazy";
+        elementLi.append(image);
+
+        const imageInfo = document.createElement('div');
+        imageInfo.classList.add('image-info');
+        elementLi.append(imageInfo);
+
+        const OwnName = document.createElement('div');
+        OwnName.classList.add('own-name');
+        OwnName.textContent = `${element.user.name}`;
+        imageInfo.append(OwnName);
+
+        const OwnLikes = document.createElement('div');
+        OwnLikes.classList.add('own-likes');
+        imageInfo.append(OwnLikes);       
+
+        const iconLikes = document.createElement('span');
+        iconLikes.classList.add('material-symbols-outlined');
+        iconLikes.classList.add('icon-likes');
+        iconLikes.textContent = "favorite";
+        OwnLikes.append(iconLikes);
+        OwnLikes.append(`${element.likes}`);
+       
+        gallery.appendChild(elementLi);
     });
+    showButtonCross ();
+}
+// function showData(data) {
+//     let picture = '';
+
+//     if (data.length > 0) {
+//        data.map((element) => {
+//          picture += `<li class="gallery-item">
+//           <img src="${element.urls.regular}" alt="${element.alt_description}" loading="lazy">
+//             <div class="image-info">
+//                 <div class="own-name" onclick="getDataUsers('${element.user.username}', '${element.user.name}')">${element.user.name}</div>
+//                 <div class="own-likes">
+//                     <span class="material-symbols-outlined icon-likes">favorite</span>${element.likes}
+//                 </div>
+//             </div>          
+//         </li>`;
+//     });
      
-    } else {
-        picture = `Sorry. Nothing found for this request`;
+//     } else {
+//         picture = `Sorry. Nothing found for this request`;
+//     }
+//     gallery.innerHTML = picture;   
+//     showButtonCross ();
+    
+// }
+function clearElements () {
+
+    let items = document.querySelectorAll(".gallery-item");
+    for (let i=0; i< items.length; i++) {
+        gallery.removeChild(items[i]);
     }
-    gallery.innerHTML = picture;
+}
+
+function showButtonCross () {
     if (searchInput.value !=='') {
         buttonCross.classList.add('show');
     } else {
@@ -61,8 +108,9 @@ form.addEventListener('submit', event => {
     const search = formData.get('search');
     if (search) {
         query = search;
-    } else  query = queryDefault;
+    } else  query = 'random';
 
+    clearElements();
     getData(query);
 });
 
@@ -70,15 +118,27 @@ buttonCross.addEventListener('click', event => {
 
     event.preventDefault();
     searchInput.value = '';
+    showButtonCross ();
    // getData();
 });
 
 searchInput.addEventListener('change', event => {
 
     if (event.target.value === '') {
+        clearElements();
         getData();
+    }    
+});
+
+window.addEventListener('scroll', async () => {
+
+    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+
+    if (scrollTop + clientHeight >= scrollHeight-1) {
+        page +=1;
+        console.log(page);
+        await getData();
     }
-    
 });
 
 function showReviewToConsole() {
