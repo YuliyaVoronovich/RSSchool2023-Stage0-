@@ -25,7 +25,7 @@ async function getImages(query, username, name) {
         const response = await fetch(url);
         images = await response.json();
     } else {
-        url = `${URL}search/photos?query=${query}&page=${page}&per_page=50&orientation=landscape&client_id=${KEY}`;
+        url = `${URL}search/photos?query=${query}&page=${page}&per_page=30&orientation=landscape&client_id=${KEY}`;
         const response = await fetch(url);
         images = await response.json();
         images = images.results;
@@ -38,7 +38,8 @@ async function getImages(query, username, name) {
     }
 }
 function showImages(images) {
-    images.map((element) => {
+    if (images.length >0 ) {
+        images.map((element) => {
         const elementLi = document.createElement('li');
         elementLi.classList.add('gallery-item');
 
@@ -71,7 +72,11 @@ function showImages(images) {
        
         gallery.appendChild(elementLi);
      
-    });
+        }); 
+    } else {
+        gallery.innerHTML = `No results were found for your request. Try again.`;
+    }
+    
     showButtonCross ();
 }
 function clearElements () {
@@ -130,14 +135,16 @@ window.addEventListener('scroll', async () => {
 
     if (scrollTop + clientHeight >= scrollHeight-1) {
         //показать загрузку а потом отображение след картинок
-        load.classList.add('show');
+        if (images.length >0) {
+          load.classList.add('show');
         page +=1;
         images = await getImages(query, username, name);
 
         setTimeout (() => {           
             showImages(images);
             load.classList.remove('show');
-          }, timeout);
+          }, timeout);  
+        }     
  
     }
 });
