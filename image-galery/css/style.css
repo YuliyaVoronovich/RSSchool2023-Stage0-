@@ -29,7 +29,6 @@ html {
     background: #262626;
   }
   .footer {
-    height: 100px;
     background: #262626;
   }
   .header-container {
@@ -136,8 +135,7 @@ html {
     padding: 10px;
     color: #eeecec;
     visibility: hidden;
-    background: rgba(237, 241, 241, 0.2);
-  
+    background: rgba(237, 241, 241, 0.2);  
   }
   .gallery-item:hover .image-info {
     visibility: visible;
@@ -162,7 +160,13 @@ html {
     color: rgb(241, 58, 58);
     font-variation-settings: 'FILL' 10
   }
- 
+  .load {
+    text-align: center;
+    visibility: hidden;
+  }
+  .load.show {
+    visibility: visible;
+  }
   .footer-wrapper {
     display: flex;
     flex-wrap: wrap;

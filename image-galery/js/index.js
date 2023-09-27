@@ -1,51 +1,88 @@
-const URL = 'https://api.unsplash.com/search/photos';
+const URL = 'https://api.unsplash.com/';
 const KEY = 'yaQ7ydsJ2lF3tYD6evKdJNpjw8RLGInYmnqO2_IMje8';
+
 
 const gallery = document.querySelector(".gallery-list");
 const form = document.querySelector(".form-search");
 const ownName = document.querySelector(".own-name");
 let searchInput = document.querySelector(".input-search");
 let buttonCross = document.querySelector(".button-cross");
+const load = document.querySelector(".load");
 
-let queryDefault = 'random';
-const page = 0;
+let page = 1;
+let query = 'random';
+const timeout = 400;
+let url = '';
+let images;
+let username = '';
+let name = '';
 
-async function getData(query = queryDefault) {
-    const url = `${URL}?query=${query}&page=${page}&per_page=50&orientation=landscape&client_id=${KEY}`;
-    const response = await fetch(url);
-    const data = await response.json();
+async function getImages(query, username, name) {
+
+    if (username != '') {
+        url = `${URL}users/${username}/photos?page=${page}&per_page=30&orientation=landscape&order_by=views&client_id=${KEY}`;
+        searchInput.value = name;
+        const response = await fetch(url);
+        images = await response.json();
+    } else {
+        url = `${URL}search/photos?query=${query}&page=${page}&per_page=50&orientation=landscape&client_id=${KEY}`;
+        const response = await fetch(url);
+        images = await response.json();
+        images = images.results;
+    }
    
-    showData(data.results);
+    if (page > 1) {
+        return images;
+    } else {
+        showImages(images); 
+    }
+}
+function showImages(images) {
+    images.map((element) => {
+        const elementLi = document.createElement('li');
+        elementLi.classList.add('gallery-item');
+
+        const image = document.createElement('img');
+        image.src = `${element.urls.regular}`;
+        image.alt = `${element.alt_description}`;
+        image.loading = "lazy";
+        elementLi.append(image);
+
+        const imageInfo = document.createElement('div');
+        imageInfo.classList.add('image-info');
+        elementLi.append(imageInfo);
+
+        const OwnName = document.createElement('div');
+        OwnName.classList.add('own-name');
+        OwnName.dataset.username = `${element.user.username}`;
+        OwnName.textContent = `${element.user.name}`;
+        imageInfo.append(OwnName);
+
+        const OwnLikes = document.createElement('div');
+        OwnLikes.classList.add('own-likes');
+        imageInfo.append(OwnLikes);       
+
+        const iconLikes = document.createElement('span');
+        iconLikes.classList.add('material-symbols-outlined');
+        iconLikes.classList.add('icon-likes');
+        iconLikes.textContent = "favorite";
+        OwnLikes.append(iconLikes);
+        OwnLikes.append(`${element.likes}`);
+       
+        gallery.appendChild(elementLi);
+     
+    });
+    showButtonCross ();
+}
+function clearElements () {
+
+    let items = document.querySelectorAll(".gallery-item");
+    for (let i=0; i< items.length; i++) {
+        gallery.removeChild(items[i]);
+    }
 }
 
-async function getDataUsers(username, name) {
-    const url1 = `https://api.unsplash.com/users/${username}/photos?page=${page}&per_page=50&orientation=landscape&order_by=views&client_id=${KEY}`;
-    searchInput.value = name;
-    const response = await fetch(url1);
-    const data = await response.json();
-   
-    showData(data);
-} 
-function showData(data) {
-    let picture = '';
-
-    if (data.length > 0) {
-       data.map((element) => {
-         picture += `<li class="gallery-item" data-picture="${element.urls.full}">
-          <img src="${element.urls.regular}" alt="${element.alt_description}" loading="lazy">
-            <div class="image-info">
-                <div class="own-name" onclick="getDataUsers('${element.user.username}', '${element.user.name}')">${element.user.name}</div>
-                <div class="own-likes">
-                    <span class="material-symbols-outlined icon-likes">favorite</span>${element.likes}
-                </div>
-            </div>          
-        </li>`;
-    });
-     
-    } else {
-        picture = `Sorry. Nothing found for this request`;
-    }
-    gallery.innerHTML = picture;
+function showButtonCross () {
     if (searchInput.value !=='') {
         buttonCross.classList.add('show');
     } else {
@@ -56,28 +93,65 @@ function showData(data) {
 form.addEventListener('submit', event => {
     
     event.preventDefault();
+    page = 1;
 
     const formData = new FormData(form);
     const search = formData.get('search');
     if (search) {
         query = search;
-    } else  query = queryDefault;
+    } else  query = 'random';
 
-    getData(query);
+    clearElements();
+    getImages(query, username = '', name= '');
 });
 
 buttonCross.addEventListener('click', event => {
 
     event.preventDefault();
     searchInput.value = '';
-   // getData();
+    username = '', 
+    name= '';
+    showButtonCross();
+   // getImages();
 });
 
-searchInput.addEventListener('change', event => {
+// searchInput.addEventListener('change', event => {
 
-    if (event.target.value === '') {
-        getData();
+//     if (event.target.value === '') {
+//         clearElements();
+//         page = 1;
+//         getImages();
+//     }    
+// });
+
+window.addEventListener('scroll', async () => {
+
+    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+
+    if (scrollTop + clientHeight >= scrollHeight-1) {
+        //показать загрузку а потом отображение след картинок
+        load.classList.add('show');
+        page +=1;
+        images = await getImages(query, username, name);
+
+        setTimeout (() => {           
+            showImages(images);
+            load.classList.remove('show');
+          }, timeout);
+ 
     }
+});
+
+gallery.addEventListener('click', event => {
+    if (event.target.classList.contains('own-name')) {
+        page = 1;
+        window.scrollTo(0,0);
+        username = event.target.dataset.username;
+        name = event.target.innerHTML;
+
+        clearElements();
+        getImages(query, event.target.dataset.username, name);
+      }
     
 });
 
@@ -95,12 +169,15 @@ function showReviewToConsole() {
     после отправки поискового запроса и отображения результатов поиска, поисковый запрос продолжает отображаться в поле ввода +5
     в поле ввода есть крестик при клике по которому поисковый запрос из поля ввода удаляется и отображается placeholder +5
  5. Дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10
-    наведение на изображение отображает его автора и кол-во лайков
-    клик на имя автора подгружает на страницу его фотографии
+    1. инфинити скролл
+    2. наведение на изображение отображает его автора и кол-во лайков
+    3. клик на имя автора подгружает на страницу его фотографии
 \n
 score: 60`);
 }
+document.addEventListener('DOMContentLoaded', async () => {
+    getImages(query, username, name);
+    showReviewToConsole(); 
+});
 
 
-getData();
-showReviewToConsole();
