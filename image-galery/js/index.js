@@ -11,22 +11,32 @@ const load = document.querySelector(".load");
 
 let page = 1;
 let query = 'random';
+const timeout = 400;
+let url = '';
+let data;
+let username = '';
+let name = '';
 
-async function getData() {
-    const url = `${URL}search/photos?query=${query}&page=${page}&per_page=50&orientation=landscape&client_id=${KEY}`;
-    const response = await fetch(url);
-    const data = await response.json();
+async function getData(query, username, name) {
+
+    if (username != '') {
+        url = `${URL}users/${username}/photos?page=${page}&per_page=30&orientation=landscape&order_by=views&client_id=${KEY}`;
+        searchInput.value = name;
+        const response = await fetch(url);
+        data = await response.json();
+    } else {
+        url = `${URL}search/photos?query=${query}&page=${page}&per_page=50&orientation=landscape&client_id=${KEY}`;
+        const response = await fetch(url);
+        data = await response.json();
+        data = data.results;
+    }
    
-    showData(data.results);
+    if (page > 1) {
+        return data;
+    } else {
+       showData(data); 
+    }
 }
-async function getDataUsers(username, name) {
-    const url1 = `${URL}users/${username}/photos?page=${page}&per_page=30&orientation=landscape&order_by=views&client_id=${KEY}`;
-    searchInput.value = name;
-    const response = await fetch(url1);
-    const data = await response.json();
-   
-    showData(data);
-} 
 function showData(data) {
     data.map((element) => {
         const elementLi = document.createElement('li');
@@ -44,6 +54,7 @@ function showData(data) {
 
         const OwnName = document.createElement('div');
         OwnName.classList.add('own-name');
+        OwnName.dataset.username = `${element.user.username}`;
         OwnName.textContent = `${element.user.name}`;
         imageInfo.append(OwnName);
 
@@ -59,32 +70,10 @@ function showData(data) {
         OwnLikes.append(`${element.likes}`);
        
         gallery.appendChild(elementLi);
+     
     });
     showButtonCross ();
 }
-// function showData(data) {
-//     let picture = '';
-
-//     if (data.length > 0) {
-//        data.map((element) => {
-//          picture += `<li class="gallery-item">
-//           <img src="${element.urls.regular}" alt="${element.alt_description}" loading="lazy">
-//             <div class="image-info">
-//                 <div class="own-name" onclick="getDataUsers('${element.user.username}', '${element.user.name}')">${element.user.name}</div>
-//                 <div class="own-likes">
-//                     <span class="material-symbols-outlined icon-likes">favorite</span>${element.likes}
-//                 </div>
-//             </div>          
-//         </li>`;
-//     });
-     
-//     } else {
-//         picture = `Sorry. Nothing found for this request`;
-//     }
-//     gallery.innerHTML = picture;   
-//     showButtonCross ();
-    
-// }
 function clearElements () {
 
     let items = document.querySelectorAll(".gallery-item");
@@ -104,6 +93,7 @@ function showButtonCross () {
 form.addEventListener('submit', event => {
     
     event.preventDefault();
+    page = 1;
 
     const formData = new FormData(form);
     const search = formData.get('search');
@@ -112,41 +102,57 @@ form.addEventListener('submit', event => {
     } else  query = 'random';
 
     clearElements();
-    getData(query);
+    getData(query, username = '', name= '');
 });
 
 buttonCross.addEventListener('click', event => {
 
     event.preventDefault();
     searchInput.value = '';
-    showButtonCross ();
+    username = '', 
+    name= '';
+    showButtonCross();
    // getData();
 });
 
-searchInput.addEventListener('change', event => {
+// searchInput.addEventListener('change', event => {
 
-    if (event.target.value === '') {
-        clearElements();
-        getData();
-    }    
-});
+//     if (event.target.value === '') {
+//         clearElements();
+//         page = 1;
+//         getData();
+//     }    
+// });
 
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', async () => {
 
     const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
 
     if (scrollTop + clientHeight >= scrollHeight-1) {
         //показать загрузку а потом отображение след картинок
         load.classList.add('show');
+        page +=1;
+        data = await getData(query, username, name);
 
-        setTimeout (async () => {
-            page +=1;
-            console.log(page);
-            await getData();
+        setTimeout (() => {           
+            showData(data);
             load.classList.remove('show');
-          }, "1000");
+          }, timeout);
  
     }
+});
+
+gallery.addEventListener('click', event => {
+    if (event.target.classList.contains('own-name')) {
+        page = 1;
+        window.scrollTo(0,0);
+        username = event.target.dataset.username;
+        name = event.target.innerHTML;
+
+        clearElements();
+        getData(query, event.target.dataset.username, name);
+      }
+    
 });
 
 function showReviewToConsole() {
@@ -163,12 +169,15 @@ function showReviewToConsole() {
     после отправки поискового запроса и отображения результатов поиска, поисковый запрос продолжает отображаться в поле ввода +5
     в поле ввода есть крестик при клике по которому поисковый запрос из поля ввода удаляется и отображается placeholder +5
  5. Дополнительный не предусмотренный в задании функционал, улучшающий качество приложения +10
-    наведение на изображение отображает его автора и кол-во лайков
-    клик на имя автора подгружает на страницу его фотографии
+    1. инфинити скролл
+    2. наведение на изображение отображает его автора и кол-во лайков
+    3. клик на имя автора подгружает на страницу его фотографии
 \n
 score: 60`);
 }
+document.addEventListener('DOMContentLoaded', async () => {
+    getData(query, username, name);
+    showReviewToConsole(); 
+});
 
 
-getData();
-showReviewToConsole();
