@@ -13,32 +13,32 @@ let page = 1;
 let query = 'random';
 const timeout = 400;
 let url = '';
-let data;
+let images;
 let username = '';
 let name = '';
 
-async function getData(query, username, name) {
+async function getImages(query, username, name) {
 
     if (username != '') {
         url = `${URL}users/${username}/photos?page=${page}&per_page=30&orientation=landscape&order_by=views&client_id=${KEY}`;
         searchInput.value = name;
         const response = await fetch(url);
-        data = await response.json();
+        images = await response.json();
     } else {
         url = `${URL}search/photos?query=${query}&page=${page}&per_page=50&orientation=landscape&client_id=${KEY}`;
         const response = await fetch(url);
-        data = await response.json();
-        data = data.results;
+        images = await response.json();
+        images = images.results;
     }
    
     if (page > 1) {
-        return data;
+        return images;
     } else {
-       showData(data); 
+        showImages(images); 
     }
 }
-function showData(data) {
-    data.map((element) => {
+function showImages(images) {
+    images.map((element) => {
         const elementLi = document.createElement('li');
         elementLi.classList.add('gallery-item');
 
@@ -102,7 +102,7 @@ form.addEventListener('submit', event => {
     } else  query = 'random';
 
     clearElements();
-    getData(query, username = '', name= '');
+    getImages(query, username = '', name= '');
 });
 
 buttonCross.addEventListener('click', event => {
@@ -112,7 +112,7 @@ buttonCross.addEventListener('click', event => {
     username = '', 
     name= '';
     showButtonCross();
-   // getData();
+   // getImages();
 });
 
 // searchInput.addEventListener('change', event => {
@@ -120,7 +120,7 @@ buttonCross.addEventListener('click', event => {
 //     if (event.target.value === '') {
 //         clearElements();
 //         page = 1;
-//         getData();
+//         getImages();
 //     }    
 // });
 
@@ -132,10 +132,10 @@ window.addEventListener('scroll', async () => {
         //показать загрузку а потом отображение след картинок
         load.classList.add('show');
         page +=1;
-        data = await getData(query, username, name);
+        images = await getImages(query, username, name);
 
         setTimeout (() => {           
-            showData(data);
+            showImages(images);
             load.classList.remove('show');
           }, timeout);
  
@@ -150,7 +150,7 @@ gallery.addEventListener('click', event => {
         name = event.target.innerHTML;
 
         clearElements();
-        getData(query, event.target.dataset.username, name);
+        getImages(query, event.target.dataset.username, name);
       }
     
 });
@@ -176,7 +176,7 @@ function showReviewToConsole() {
 score: 60`);
 }
 document.addEventListener('DOMContentLoaded', async () => {
-    getData(query, username, name);
+    getImages(query, username, name);
     showReviewToConsole(); 
 });
 
