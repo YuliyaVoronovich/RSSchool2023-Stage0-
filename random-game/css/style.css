@@ -17,3 +17,57 @@ body {
   font-weight: 400;
   color: #0b0b0c;
 }
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  background: url(../assets/img/cosmos.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.container {
+  width: 650px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+.title { 
+  margin: 0;
+  text-align: center;
+  color: rgb(211, 164, 9);
+  font-size: 150px;
+  text-shadow: 10px 0 20px black;  
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+  width: 150px;
+  gap: 10px;
+}
+.button {
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background:linear-gradient(360deg,  rgb(20 148 161) 0%,  rgb(48, 191, 207) 50%,  rgb(153, 182, 186) 100%);
+  color: rgb(235, 235, 92);
+  box-shadow: 0 0 5px #000000;
+  cursor: pointer;
+}
+.button:hover {
+  background: rgb(18, 104, 113);
+}
+.button:active {
+  background: rgb(24, 80, 86);
+}
+.button-link {
+  display: block;
+  width: 100%;
+  color: rgb(235, 235, 92);
+  text-decoration: none;
+}
+.button-link:focus,
+.button-link:active {
+  color: rgb(235, 235, 92);
+}
