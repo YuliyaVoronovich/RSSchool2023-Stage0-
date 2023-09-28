@@ -2,42 +2,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid');
     let squares = Array.from(document.querySelectorAll('.grid div'));
 
-    const width = 10;
+    const ceil = 10;
     let nextRandom = 0;
 
   const firstElement = [
-    [1, width+1, width*2+1, 2],
-    [width, width+1, width+2, width*2+2],
-    [1, width+1, width*2+1, width*2],
-    [width, width*2, width*2+1, width*2+2]
+    [1, ceil+1, ceil*2+1, 2],
+    [ceil, ceil+1, ceil+2, ceil*2+2],
+    [1, ceil+1, ceil*2+1, ceil*2],
+    [ceil, ceil*2, ceil*2+1, ceil*2+2]
   ]
 
   const secondElement = [
-    [0,width,width+1,width*2+1],
-    [width+1, width+2,width*2,width*2+1],
-    [0,width,width+1,width*2+1],
-    [width+1, width+2,width*2,width*2+1]
+    [0,ceil,ceil+1,ceil*2+1],
+    [ceil+1, ceil+2,ceil*2,ceil*2+1],
+    [0,ceil,ceil+1,ceil*2+1],
+    [ceil+1, ceil+2,ceil*2,ceil*2+1]
   ]
 
   const thirdElement = [
-    [1,width,width+1,width+2],
-    [1,width+1,width+2,width*2+1],
-    [width,width+1,width+2,width*2+1],
-    [1,width,width+1,width*2+1]
+    [1,ceil,ceil+1,ceil+2],
+    [1,ceil+1,ceil+2,ceil*2+1],
+    [ceil,ceil+1,ceil+2,ceil*2+1],
+    [1,ceil,ceil+1,ceil*2+1]
   ]
 
   const fourElement = [
-    [0,1,width,width+1],
-    [0,1,width,width+1],
-    [0,1,width,width+1],
-    [0,1,width,width+1]
+    [0,1,ceil,ceil+1],
+    [0,1,ceil,ceil+1],
+    [0,1,ceil,ceil+1],
+    [0,1,ceil,ceil+1]
   ]
 
   const fiveElement = [
-    [1,width+1,width*2+1,width*3+1],
-    [width,width+1,width+2,width+3],
-    [1,width+1,width*2+1,width*3+1],
-    [width,width+1,width+2,width+3]
+    [1,ceil+1,ceil*2+1,ceil*3+1],
+    [ceil,ceil+1,ceil+2,ceil+3],
+    [1,ceil+1,ceil*2+1,ceil*3+1],
+    [ceil,ceil+1,ceil+2,ceil+3]
   ]
 
   const arrayElements = [firstElement, secondElement, thirdElement, fourElement, fiveElement];
@@ -54,18 +54,53 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[currentPosition + item].classList.add('element');
     })
   }
+
   function hide() {
-    currentElement.forEach(index => {
-      squares[currentPosition + index].classList.remove('element');
+    currentElement.forEach(item => {
+      squares[currentPosition + item].classList.remove('element');
     })
+  }
+
+  function stop() {
+    if (currentElement.some(item => squares[currentPosition + item + ceil].classList.contains('bottom'))) {
+      currentElement.forEach(item => squares[currentPosition + item].classList.add('bottom'));
+      //start a new element
+      random = nextRandom;
+      nextRandom = Math.floor(Math.random() * arrayElements.length);
+      currentElement = arrayElements[random][currentRotation];
+      currentPosition = 2;
+      show();
+    }
+  }
+
+  function moveLeft() {
+    hide();
+    const isLeft = currentElement.some(item => (currentPosition + item) % ceil === 0);
+
+    if(!isLeft) currentPosition -=1
+    if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
+      currentPosition +=1;
+    }
+    show();
+  }
+
+  function moveRight() {
+    hide();
+    const isRight = current.some(item => (currentPosition + item) % ceil === ceil -1)
+    if(!isRight) currentPosition +=1;
+    if(currentElement.some(index => squares[currentPosition + item].classList.contains('bottom'))) {
+      currentPosition -=1;
+    }
+    show();
   }
 
   function moveDown() {
     hide();
-    currentPosition += width
+    currentPosition += ceil
     show();
+    stop();
   }
 
   show();
-  //timer = setInterval(moveDown, 1000);
+ // timer = setInterval(moveDown, 1000);
 });
