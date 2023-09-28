@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(e.keyCode === 37) {
       moveLeft();
     } else if (e.keyCode === 38) {
-      //rotate();
+      rotate();
     } else if (e.keyCode === 39) {
       moveRight();
     } else if (e.keyCode === 40) {
@@ -111,6 +111,16 @@ document.addEventListener('DOMContentLoaded', () => {
     currentPosition += ceil;
     show();
     stop();
+  }
+
+  function rotate() {
+    hide();
+    currentRotation +=1;
+    if(currentRotation === currentElement.length) {
+      currentRotation = 0;
+    }
+    currentElement = arrayElements[random][currentRotation];
+    show();
   }
 
   show();
