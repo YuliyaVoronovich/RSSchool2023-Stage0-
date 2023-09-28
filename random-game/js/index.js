@@ -98,9 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function moveRight() {
     hide();
-    const isRight = current.some(item => (currentPosition + item) % ceil === ceil -1)
+    const isRight = currentElement.some(item => (currentPosition + item) % ceil === ceil -1)
     if(!isRight) currentPosition +=1;
-    if(currentElement.some(index => squares[currentPosition + item].classList.contains('bottom'))) {
+    if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
       currentPosition -=1;
     }
     show();
