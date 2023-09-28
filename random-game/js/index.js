@@ -2,10 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid');
     let squares = Array.from(document.querySelectorAll('.grid div'));
     const scoreValue = document.querySelector('.score-value');
+    const lineValue = document.querySelector('.line-value');
 
     const ceil = 10;
     let nextRandom = 0;
     let score = 0;
+    let line = 0;
 
   const firstElement = [
     [1, ceil+1, ceil*2+1, 2],
@@ -128,23 +130,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function addScore() {
+    let countRow;
     for (let i = 0; i < 159; i +=ceil) {
-      const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
-      
+      const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];      
 
-      if(row.every(index => squares[index].classList.contains('bottom'))) {
-        score +=100;
-        scoreValue.innerHTML = score;
-        console.log(row);
+      if(row.every(index => squares[index].classList.contains('bottom'))) {        
         row.forEach(index => {
           squares[index].classList.remove('bottom');
           squares[index].classList.remove('element');
-        })
+        })       
+        line +=1;
+        lineValue.innerHTML = line;
+        score +=100;
+        scoreValue.innerHTML = score;        
         const squaresRemoved = squares.splice(i, ceil);
         squares = squaresRemoved.concat(squares);
         
         squares.forEach(cell => grid.appendChild(cell));
-        console.log(squares);
       }
     }
   }
