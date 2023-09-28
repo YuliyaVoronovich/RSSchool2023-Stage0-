@@ -48,6 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
   let random = Math.floor(Math.random()*arrayElements.length);
   let currentElement = arrayElements[random][currentRotation];
 
+  function control(e) {
+    if(e.keyCode === 37) {
+      moveLeft();
+    } else if (e.keyCode === 38) {
+      //rotate();
+    } else if (e.keyCode === 39) {
+      moveRight();
+    } else if (e.keyCode === 40) {
+      moveDown();
+    }
+  }
+
 
   function show() {
     currentElement.forEach(item => {
@@ -77,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hide();
     const isLeft = currentElement.some(item => (currentPosition + item) % ceil === 0);
 
-    if(!isLeft) currentPosition -=1
+    if(!isLeft) currentPosition -=1;
     if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
       currentPosition +=1;
     }
@@ -96,11 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function moveDown() {
     hide();
-    currentPosition += ceil
+    currentPosition += ceil;
     show();
     stop();
   }
 
   show();
  // timer = setInterval(moveDown, 1000);
+
+ document.addEventListener('keyup', control);
 });
+
