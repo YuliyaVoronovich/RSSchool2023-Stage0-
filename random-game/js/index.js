@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid');
     let squares = Array.from(document.querySelectorAll('.grid div'));
+    const scoreValue = document.querySelector('.score-value');
 
     const ceil = 10;
     let nextRandom = 0;
+    let score = 0;
 
   const firstElement = [
     [1, ceil+1, ceil*2+1, 2],
@@ -81,6 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nextRandom = Math.floor(Math.random() * arrayElements.length);
       currentElement = arrayElements[random][currentRotation];
       currentPosition = 2;
+     
+      addScore();
       show();
     }
   }
@@ -121,6 +125,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     currentElement = arrayElements[random][currentRotation];
     show();
+  }
+
+  function addScore() {
+    for (let i = 0; i < 159; i +=ceil) {
+      const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
+      
+
+      if(row.every(index => squares[index].classList.contains('bottom'))) {
+        score +=100;
+        scoreValue.innerHTML = score;
+        console.log(row);
+        row.forEach(index => {
+          squares[index].classList.remove('bottom');
+          squares[index].classList.remove('element');
+        })
+        const squaresRemoved = squares.splice(i, ceil);
+        squares = squaresRemoved.concat(squares);
+        
+        squares.forEach(cell => grid.appendChild(cell));
+        console.log(squares);
+      }
+    }
   }
 
   show();
