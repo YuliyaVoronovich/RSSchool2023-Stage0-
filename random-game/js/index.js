@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreValue = document.querySelector('.score-value');
     const lineValue = document.querySelector('.line-value');
     const levelValue = document.querySelector('.level-value');
+    const timelValue = document.querySelector('.time-value');
 
     const ceil = 10;
     const lineNextLevel = 10;
@@ -169,10 +170,26 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(timeId);
     timer -=100;
     timeId = setInterval(moveDown, timer);
+  }
 
+  function cureentTime () {
+    let d = +new Date(2023, 1, 1);
+    setInterval(function() {
+      let time = new Date;
+      time.setTime(d += 1000);
+  
+      let second = time.getSeconds();
+      if (second < 10) {
+        second = `0${second}`;
+      }
+      let minute = time.getMinutes();
+  
+      timelValue.innerHTML =  minute + ':' + second
+    }, 1000);
   }
 
   show();
+  cureentTime ();
   timeId = setInterval(moveDown, timer);
 
  document.addEventListener('keyup', control);
