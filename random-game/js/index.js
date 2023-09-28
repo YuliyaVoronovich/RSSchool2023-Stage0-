@@ -3,11 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let squares = Array.from(document.querySelectorAll('.grid div'));
     const scoreValue = document.querySelector('.score-value');
     const lineValue = document.querySelector('.line-value');
+    const levelValue = document.querySelector('.level-value');
 
     const ceil = 10;
+    const lineNextLevel = 10;
     let nextRandom = 0;
     let score = 0;
     let line = 0;
+    let lineLevel = 0;
+    let level = 1;
+    let timeId;
+    let timer = 1000;
 
   const firstElement = [
     [1, ceil+1, ceil*2+1, 2],
@@ -130,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function addScore() {
-    let countRow;
+    
     for (let i = 0; i < 159; i +=ceil) {
       const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];      
 
@@ -140,19 +146,34 @@ document.addEventListener('DOMContentLoaded', () => {
           squares[index].classList.remove('element');
         })       
         line +=1;
+        lineLevel +=1;
         lineValue.innerHTML = line;
         score +=100;
-        scoreValue.innerHTML = score;        
+        scoreValue.innerHTML = score; 
+        console.log(lineLevel);
+        if (lineLevel >= lineNextLevel) {
+          level +=1;
+          levelValue.innerHTML = level; 
+          nextLevel();
+        }     
         const squaresRemoved = squares.splice(i, ceil);
-        squares = squaresRemoved.concat(squares);
-        
+        squares = squaresRemoved.concat(squares);        
         squares.forEach(cell => grid.appendChild(cell));
+        
       }
     }
   }
 
+  function nextLevel() {
+    lineLevel = 0;
+    clearInterval(timeId);
+    timer -=100;
+    timeId = setInterval(moveDown, timer);
+
+  }
+
   show();
- // timer = setInterval(moveDown, 1000);
+  timeId = setInterval(moveDown, timer);
 
  document.addEventListener('keyup', control);
 });
