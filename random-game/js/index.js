@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
      
       addScore();
       show();
+      gameOver();
     }
   }
 
@@ -137,6 +138,13 @@ document.addEventListener('DOMContentLoaded', () => {
     show();
   }
 
+  function gameOver() {
+    if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
+      clearInterval(timeId);
+      console.log("gameOver");
+    }
+  }
+
   function addScore() {
     
     lineScore = 0;
@@ -167,7 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     countScore(lineScore);  
   }
-
 
   function countScore(lineScore) {
       if (lineScore === 1) {
