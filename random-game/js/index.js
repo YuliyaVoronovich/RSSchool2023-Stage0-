@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let lineScore = 0;
     let level = 1;
     let timeId;
+    let timerId;
     let timer = 1000;
 
   const firstElement = [
@@ -140,7 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function gameOver() {
     if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
-      clearInterval(timeId);
+      clearInterval(timeId);//остановить игру
+      clearInterval(timerId);//остановить время игры
+      //вывести модалку с результатом и сохранить с именем в LS
       console.log("gameOver");
     }
   }
@@ -198,7 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function cureentTime () {
     let d = +new Date(2023, 1, 1);
-    setInterval(function() {
+
+    timerId = setInterval(function() {
       let time = new Date;
       time.setTime(d += 1000);
   
