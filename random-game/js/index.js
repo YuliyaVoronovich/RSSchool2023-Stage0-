@@ -7,11 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const timelValue = document.querySelector('.time-value');
 
     const ceil = 10;
-    const lineNextLevel = 10;
+    const constlineNextLevel = 10;
     let nextRandom = 0;
     let score = 0;
     let line = 0;
     let lineLevel = 0;
+    let lineScore = 0;
     let level = 1;
     let timeId;
     let timer = 1000;
@@ -138,31 +139,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function addScore() {
     
+    lineScore = 0;
+
     for (let i = 0; i < 159; i +=ceil) {
       const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];      
 
-      if(row.every(index => squares[index].classList.contains('bottom'))) {        
+      if(row.every(index => squares[index].classList.contains('bottom'))) {
+        lineScore +=1;   
+
         row.forEach(index => {
           squares[index].classList.remove('bottom');
-          squares[index].classList.remove('element');
+          squares[index].classList.remove('element');          
         })       
         line +=1;
-        lineLevel +=1;
-        lineValue.innerHTML = line;
-        score +=100;
-        scoreValue.innerHTML = score; 
-        console.log(lineLevel);
-        if (lineLevel >= lineNextLevel) {
+        lineLevel +=1;// для перехода на сл уровень
+        lineValue.innerHTML = line; 
+        
+        if (lineLevel >= constlineNextLevel) {
           level +=1;
           levelValue.innerHTML = level; 
           nextLevel();
         }     
         const squaresRemoved = squares.splice(i, ceil);
         squares = squaresRemoved.concat(squares);        
-        squares.forEach(cell => grid.appendChild(cell));
-        
-      }
+        squares.forEach(cell => grid.appendChild(cell));        
+      }            
     }
+    countScore(lineScore);  
+  }
+
+
+  function countScore(lineScore) {
+      if (lineScore === 1) {
+        score +=100;        
+      } else if (lineScore === 2) {  
+        score +=300;
+      } else if (lineScore === 3) {  
+        score +=700;
+      } else if (lineScore === 4) {  
+        score +=1500;
+      }
+    scoreValue.innerHTML = score; 
   }
 
   function nextLevel() {
