@@ -5,18 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const lineValue = document.querySelector('.line-value');
     const levelValue = document.querySelector('.level-value');
     const timelValue = document.querySelector('.time-value');
+    const pause = document.querySelector('.pause');
 
     const ceil = 10;
     const constlineNextLevel = 10;
+
     let nextRandom = 0;
     let score = 0;
     let line = 0;
     let lineLevel = 0;
     let lineScore = 0;
     let level = 1;
-    let timeId;
-    let timerId;
-    let timer = 1000;
+    let timeId;//игра
+    let timerId;//текущее время игры
+    let time = 1000;
+    let d = +new Date(2023, 1, 1);
 
   const firstElement = [
     [1, ceil+1, ceil*2+1, 2],
@@ -71,7 +74,19 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (e.keyCode === 40) {
       moveDown();
     }
-  }
+  }  
+  pause.addEventListener('click', event => {
+    if (timeId) {
+      clearInterval(timeId);
+      clearInterval(timerId);
+      timeId = null;
+      pause.innerHTML = 'PLAY';
+    } else {
+      timeId = setInterval(moveDown, time);
+      currentTime();
+      pause.innerHTML = 'PAUSE';
+    }
+  });
 
 
   function show() {
@@ -151,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function addScore() {
     
     lineScore = 0;
-
     for (let i = 0; i < 159; i +=ceil) {
       const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];      
 
@@ -199,8 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     timeId = setInterval(moveDown, timer);
   }
 
-  function cureentTime () {
-    let d = +new Date(2023, 1, 1);
+  function currentTime () {   
 
     timerId = setInterval(function() {
       let time = new Date;
@@ -217,8 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   show();
-  cureentTime ();
-  timeId = setInterval(moveDown, timer);
+  currentTime ();
+  timeId = setInterval(moveDown, time);
 
  document.addEventListener('keyup', control);
 });
