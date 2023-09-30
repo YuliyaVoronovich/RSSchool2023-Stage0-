@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const ceil = 10;
     const constlineNextLevel = 10;
 
+    const colors = [
+      'yellow',
+      'orange',
+      'fiolet',
+      'green',
+      'lightblue',
+      'blue'
+    ]
+
     let nextRandom = 0;
     let score = 0;
     let line = 0;
@@ -62,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentRotation = 0;
 
   let random = Math.floor(Math.random()*arrayElements.length);
+  let randomColor = Math.floor(Math.random()*colors.length);
   let currentElement = arrayElements[random][currentRotation];
 
   function control(e) {
@@ -90,14 +100,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function show() {
-    currentElement.forEach(item => {
+    currentElement.forEach(item => {      
       squares[currentPosition + item].classList.add('element');
+      squares[currentPosition + item].style.backgroundImage = `url('../assets/img/${colors[randomColor]}.jpg')`;
     })
   }
 
   function hide() {
     currentElement.forEach(item => {
       squares[currentPosition + item].classList.remove('element');
+      squares[currentPosition + item].style.backgroundImage = '';
     })
   }
 
@@ -107,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
       //start a new element
       random = nextRandom;
       nextRandom = Math.floor(Math.random() * arrayElements.length);
+      randomColor = Math.floor(Math.random() * colors.length);
       currentElement = arrayElements[random][currentRotation];
       currentPosition = 2;
      
@@ -160,6 +173,18 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(timerId);//остановить время игры
       //вывести модалку с результатом и сохранить с именем в LS
       console.log("gameOver");
+
+      let i = 160;  
+        let timeGameOver = setInterval(function() {
+          i-=1;
+          const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
+          row.every(index => squares[index].classList.add('bottom'));          
+          row.every(index => squares[index].style.backgroundImage = '');
+          row.every(index => squares[index].classList.add('element'));
+          if (i == 0) {
+            clearInterval(timeGameOver);
+          }
+        }, 10);      
     }
   }
 
@@ -174,7 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         row.forEach(index => {
           squares[index].classList.remove('bottom');
-          squares[index].classList.remove('element');          
+          squares[index].classList.remove('element');  
+          squares[index].style.backgroundImage = '';        
         })       
         line +=1;
         lineLevel +=1;// для перехода на сл уровень
@@ -209,8 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function nextLevel() {
     lineLevel = 0;
     clearInterval(timeId);
-    timer -=100;
-    timeId = setInterval(moveDown, timer);
+    time -=100;
+    timeId = setInterval(moveDown, time);
   }
 
   function currentTime () {   
