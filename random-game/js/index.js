@@ -25,6 +25,7 @@ const colors = [
       'blue'
   ]
 
+let currentPopUp = null;
 let nextRandom = 0;
 let score = 0;
 let line = 0;
@@ -282,10 +283,11 @@ formResult.addEventListener('submit', (event) => {
     // теперь можно извлечь данные
     const name = formData.get('name').toLowerCase().trim();
     
-    let user = {"name":name, "score":name, "time":name};
+    let user = {"name":name, "score":modalScore.innerHTML, "time":modalTime.innerHTML};
     usersArray.push(user);
     localStorage.setItem('users', JSON.stringify(usersArray));
 
+    closePopUp(currentPopUp, false);
 });
 
 
@@ -302,8 +304,8 @@ formResult.addEventListener('submit', (event) => {
  let unlock = true;
 
  function showResults () {
-    const currentPopUp = document.querySelector('#modal-login-gameover');
-    modalTime.innerHTML = scoreValue.innerHTML;
+    currentPopUp = document.querySelector('#modal-login-gameover');
+    modalScore.innerHTML = scoreValue.innerHTML;
     modalTime.innerHTML = timelValue.innerHTML;
     openPopUp(currentPopUp); 
  }
