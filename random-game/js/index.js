@@ -1,36 +1,42 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const grid = document.querySelector('.grid');
-    let squares = Array.from(document.querySelectorAll('.grid div'));
-    const scoreValue = document.querySelector('.score-value');
-    const lineValue = document.querySelector('.line-value');
-    const levelValue = document.querySelector('.level-value');
-    const timelValue = document.querySelector('.time-value');
-    const pause = document.querySelector('.pause');
+const body = document.querySelector('body');
 
-    const ceil = 10;
-    const constlineNextLevel = 10;
+const grid = document.querySelector('.grid');
+let squares = Array.from(document.querySelectorAll('.grid div'));
+const scoreValue = document.querySelector('.score-value');
+const lineValue = document.querySelector('.line-value');
+const levelValue = document.querySelector('.level-value');
+const timelValue = document.querySelector('.time-value');
+const pause = document.querySelector('.pause');
+const formResult = document.querySelector('.form-name');
+const modalScore = document.querySelector('.modal-score');
+const modalTime = document.querySelector('.modal-time');
 
-    const colors = [
+const ceil = 10;
+const constlineNextLevel = 10;
+
+let isGameOver = false;
+
+const colors = [
       'yellow',
       'orange',
       'fiolet',
       'green',
       'lightblue',
       'blue'
-    ]
+  ]
 
-    let nextRandom = 0;
-    let score = 0;
-    let line = 0;
-    let lineLevel = 0;
-    let lineScore = 0;
-    let level = 1;
-    let timeId;//игра
-    let timerId;//текущее время игры
-    let time = 1000;
-    let d = +new Date(2023, 1, 1);
+let nextRandom = 0;
+let score = 0;
+let line = 0;
+let lineLevel = 0;
+let lineScore = 0;
+let level = 1;
+let timeId;//игра
+let timerId;//текущее время игры
+let time = 1000;
+let d = +new Date(2023, 1, 1);
 
-  const firstElement = [
+const firstElement = [
     [1, ceil+1, ceil*2+1, 2],
     [ceil, ceil+1, ceil+2, ceil*2+2],
     [1, ceil+1, ceil*2+1, ceil*2],
@@ -98,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-
   function show() {
     currentElement.forEach(item => {      
       squares[currentPosition + item].classList.add('element');
@@ -130,49 +135,58 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function moveLeft() {
-    hide();
-    const isLeft = currentElement.some(item => (currentPosition + item) % ceil === 0);
+    if (!isGameOver) {
+      hide();
+      const isLeft = currentElement.some(item => (currentPosition + item) % ceil === 0);
 
-    if(!isLeft) currentPosition -=1;
-    if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
-      currentPosition +=1;
+      if(!isLeft) currentPosition -=1;
+      if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
+        currentPosition +=1;
+      }
+      show();
     }
-    show();
   }
 
   function moveRight() {
-    hide();
-    const isRight = currentElement.some(item => (currentPosition + item) % ceil === ceil -1)
-    if(!isRight) currentPosition +=1;
-    if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
-      currentPosition -=1;
-    }
-    show();
+    if (!isGameOver) {
+      hide();
+      const isRight = currentElement.some(item => (currentPosition + item) % ceil === ceil -1)
+      if(!isRight) currentPosition +=1;
+      if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
+        currentPosition -=1;
+      }
+      show();
+   }
   }
 
   function moveDown() {
-    hide();
-    currentPosition += ceil;
-    show();
-    stop();
+    if (!isGameOver) {
+      hide();
+      currentPosition += ceil;
+      show();
+      stop();
+    }
+    
   }
 
   function rotate() {
-    hide();
-    currentRotation +=1;
-    if(currentRotation === currentElement.length) {
-      currentRotation = 0;
+    if (!isGameOver) {
+      hide();
+      currentRotation +=1;
+      if(currentRotation === currentElement.length) {
+        currentRotation = 0;
+      }
+      currentElement = arrayElements[random][currentRotation];
+      show();
     }
-    currentElement = arrayElements[random][currentRotation];
-    show();
   }
 
-  function gameOver() {
+function gameOver() {
     if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
       clearInterval(timeId);//остановить игру
       clearInterval(timerId);//остановить время игры
-      //вывести модалку с результатом и сохранить с именем в LS
-      console.log("gameOver");
+      isGameOver = true;
+      //вывести модалку с результатом и сохранить с именем в LS     
 
       let i = 160;  
         let timeGameOver = setInterval(function() {
@@ -183,12 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
           row.every(index => squares[index].classList.add('element'));
           if (i == 0) {
             clearInterval(timeGameOver);
+            showResults();             
           }
-        }, 10);      
+        }, 10); 
     }
   }
 
-  function addScore() {
+function addScore() {
     
     lineScore = 0;
     for (let i = 0; i < 159; i +=ceil) {
@@ -217,9 +232,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }            
     }
     countScore(lineScore);  
-  }
+}
 
-  function countScore(lineScore) {
+function countScore(lineScore) {
       if (lineScore === 1) {
         score +=100;        
       } else if (lineScore === 2) {  
@@ -230,16 +245,16 @@ document.addEventListener('DOMContentLoaded', () => {
         score +=1500;
       }
     scoreValue.innerHTML = score; 
-  }
+}
 
-  function nextLevel() {
+function nextLevel() {
     lineLevel = 0;
     clearInterval(timeId);
     time -=100;
     timeId = setInterval(moveDown, time);
-  }
+}
 
-  function currentTime () {   
+function currentTime () {   
 
     timerId = setInterval(function() {
       let time = new Date;
@@ -253,12 +268,91 @@ document.addEventListener('DOMContentLoaded', () => {
   
       timelValue.innerHTML =  minute + ':' + second
     }, 1000);
-  }
+}
 
-  show();
-  currentTime ();
-  timeId = setInterval(moveDown, time);
+formResult.addEventListener('submit', (event) => {
+  event.preventDefault();
 
- document.addEventListener('keyup', control);
+  let usersArray = localStorage.getItem('users');
+  if (usersArray) {
+    usersArray = JSON.parse(usersArray);
+  } else usersArray = [];
+
+  const formData = new FormData(formResult);
+    // теперь можно извлечь данные
+    const name = formData.get('name').toLowerCase().trim();
+    
+    let user = {"name":name, "score":name, "time":name};
+    usersArray.push(user);
+    localStorage.setItem('users', JSON.stringify(usersArray));
+
 });
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    show();
+    currentTime ();
+    timeId = setInterval(moveDown, time);
+
+    document.addEventListener('keyup', control);
+});
+
+ //modal windows
+
+ let unlock = true;
+
+ function showResults () {
+    const currentPopUp = document.querySelector('#modal-login-gameover');
+    modalTime.innerHTML = scoreValue.innerHTML;
+    modalTime.innerHTML = timelValue.innerHTML;
+    openPopUp(currentPopUp); 
+ }
+
+ // закрытие поп-ап
+
+// closes.forEach((close, i) => {
+//   close.addEventListener('click', event => {
+//       closePopUp(event.target.closest('.modal-wrapper'));  
+//       event.preventDefault();  
+//   });
+// });
+
+function openPopUp(popUp) {
+
+  if (popUp && unlock) {
+    const popupActive = document.querySelector('.modal-wrapper.open');   
+      if (popupActive) {
+          closePopUp(popupActive, false);
+      } else {
+          bodyLock();
+      }
+      popUp.classList.add('open');
+
+      // popUp.addEventListener('click', event => {
+      //       if (!event.target.closest('.modal-content')) {
+      //         closePopUp(event.target.closest('.modal-wrapper'));
+      //     }
+      // });          
+  }     
+}
+
+function closePopUp(popUp, doUnlock = true) {
+  if (unlock) {
+      popUp.classList.remove('open');
+      if(doUnlock) {
+          bodyUnlock();
+      }
+  }    
+}
+
+function  bodyLock() {
+  body.style.paddingRight = window.innerWidth - document.querySelector('body').offsetWidth + 'px';
+  body.classList.add('body-overflow');
+}
+
+function  bodyUnlock() {
+  body.style.paddingRight = '0px';
+  body.classList.remove('body-overflow');
+}
+
 

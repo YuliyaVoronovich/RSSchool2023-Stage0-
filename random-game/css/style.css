@@ -175,10 +175,118 @@ body {
   margin-top: 10px;
   font-size: 30px;
   font-weight: 700;
-  color: rgb(64 66 67);;
+  color: rgb(64 66 67);
 
 }
 
+.modal-wrapper {
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  background: rgb(0, 0, 0, 0.5);
+  /* z-index: 1; */
+  transition: opacity 0.8s, transform 0.5s;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 100;
+}
+.modal-content {
+  max-width: 600px;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;    
+  opacity: 0;
+  visibility: hidden;
+  background: rgba(225, 217, 217, 0.7);
+  transform: translate(-50%, -100%) rotateX(45deg);
+  transition: opacity 0.8s, visibility 0.5s, transform 0.5s;
+}
+.modal-wrapper.open {
+  visibility: visible;
+}
+.modal-wrapper.open .modal-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) rotateX(0);
+}
+.modal-game-over {
+  display: flex;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(245, 245, 245,  0.9);
+  border-radius: 5px;
+  box-shadow: inset 0px 0 10px 0px rgba(206, 220, 7, 1);
+}
+.game-over-reluts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.modal-figure-tetramino {
+  max-width: 200px;
+  width: 100%;
+}
+.modal-results {
+  display: flex;
+  flex-direction: column;
+  gap:15px;
+  padding: 20px 0;
+}
+.modal-results-title {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 400;
+  gap: 15px;
+  line-height: 28px;
+}
+.modal-title { 
+  color: rgb(206, 220, 7);
+}
+.modal-score,
+.modal-time {
+  font-size: 28px;
+  color: rgb(64, 66, 67, 0.8);
+}
+.form-name {
+  position: relative;
+  margin-top: 30px;
+}
+.input-name { 
+  position: relative;
+  max-width: 200px;
+  padding: 10px; 
+  border: none;
+  border-radius: 15px;
+  box-shadow: inset 0px 0 10px 0px rgb(177, 173, 173);
+}
+.input-name:focus,
+.input-name:active {
+  border: 1px solid rgb(206, 220, 7, 0.5);
+  box-shadow: 0 0 2px 2px rgb(206, 220, 7, 0.5);
+  outline: 0;
+}
+.modal-button {
+  position: absolute;
+  right: 15px;
+  top: 7px;
+  border: none;
+  background: inherit;
+  font-size: 20px;
+  cursor: pointer;
+}
+.modal-button img {
+  width: 20px;
+  height: 20px;
+}
+.modal-button img:hover {
+  scale: 1.2;
+}
 
 .footer {
   color: #fff;
