@@ -1,10 +1,10 @@
-/* rubik-spray-paint-regular - latin */
+/* chelsea-market-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Rubik Spray Paint';
+  font-family: 'Chelsea Market';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/rubik-spray-paint-v1-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../fonts/chelsea-market-v13-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* sigmar-regular - latin */
 @font-face {
@@ -27,7 +27,7 @@ html {
 }
 body {
   background: #000000;
-  font-family: Rubik Spray Paint, Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Chelsea Market, Verdana, Geneva, Tahoma, sans-serif;;
   font-size: 20px;
   font-weight: 400;
   color: #0b0b0c;
@@ -52,7 +52,6 @@ body {
   padding: 50px 150px 0;
 }
 .title { 
-  font-family: 'Sigmar';
   margin: 0;
   text-align: center;
   /* background-color: rgb(166 75 144);
@@ -75,6 +74,7 @@ body {
 .button {
   width: 200px;
   height: 50px;
+  font-weight: 700;
   border: none;
   border-radius: 10px;
   background:linear-gradient(360deg,  rgba(241, 229, 4, 0.8) 0%,  rgba(222, 213, 91, 0.8) 50%,  rgba(230, 236, 189, 0.8) 100%);
@@ -222,7 +222,7 @@ body {
 .modal-records-wrap {
   display: flex;
   flex-direction: column;
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
   padding: 20px;
   background-color: rgba(245, 245, 245,  0.9);
@@ -243,7 +243,6 @@ body {
   text-align: center;
 }
 .record-table {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 5px;
   border-radius: 10px;
   box-shadow: inset 0px 0 10px 0px rgb(131, 131, 25);
@@ -265,7 +264,6 @@ body {
 .modal-about {
   width: 300px;
   padding-left: 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
