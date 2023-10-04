@@ -23,7 +23,8 @@
         </main>  
         <footer class="footer">футер</footer>            
      </div> 
-     <div class="modal-wrapper" id="modal-login-records">      
+     <!--Modals-->
+     <div class="modal-wrapper" id="modal-records">      
         <div class="modal-records-wrap modal-content">
             <h3 class="heading">The last 10 game's results</h3>
            <div class="modal-records">              
@@ -36,16 +37,43 @@
                         <th>Level</th>
                     </tr>
                 </thead>
-                <tbody>
-                  
+                <tbody>                  
                 </tbody>
              </table>         
             <div class="modal-figure">
               <img class="modal-figure-tetramino" src="./assets/img/tetramino.png" alt="Tetramino">
             </div>   
         </div>       
-        </div>
-    </div>
+      </div>
+     </div>
+     <div class="modal-wrapper" id="modal-about">      
+        <div class="modal-records-wrap modal-content">
+         <h3 class="heading">About</h3> 
+         <div class="modal-about"> 
+            <div class="modal-about-play">
+                <h4 class="heading">Score:</h4>
+                <ul class="modal-about-score">              
+                    <li>1 line — 100 score</li>
+                    <li>2 line — 300 score</li>
+                    <li>3 line — 700 score</li>
+                    <li>4 line — 1500 score</li>
+                </ul>
+                <h4 class="heading">How to play:</h4>
+                <ul class="modal-about-score">              
+                    <li class="item-play"><img src="./assets/img/up.jpg" alt="up"><span>ROTATE</span></li>
+                    <li class="item-play"><img src="./assets/img/left.jpg" alt="up"><span>LEFT</span></li>
+                    <li class="item-play"><img src="./assets/img/right.jpg" alt="up"><span>RIGHT</span></li>
+                    <li class="item-play"><img src="./assets/img/down.jpg" alt="up"><span>DOWN</span></li>
+                </ul>  
+            </div>                     
+            <div class="modal-figure">
+              <img class="modal-figure-tetramino" src="./assets/img/tetramino.png" alt="Tetramino">
+            </div>   
+        </div> 
+        </div>      
+      </div>
+     </div>
+     <!--End Modals-->
      <script src="./js/main.js"></script> 
      <script src="./js/popup.js"></script>     
 </body>

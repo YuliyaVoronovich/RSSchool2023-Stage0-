@@ -240,6 +240,7 @@ body {
   font-size: 30px;
   color: rgb(64, 66, 67, 0.6);
   text-shadow: 5px 0 10px rgb(165, 165, 151);
+  text-align: center;
 }
 .record-table {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -260,6 +261,40 @@ body {
 }
 .modal-records-wrap .modal-figure {
   align-self: self-end;
+}
+.modal-about {
+  width: 300px;
+  padding-left: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 20px auto 0;
+}
+.modal-about-score {
+  list-style: none;
+  font-weight: 700;
+  color: rgb(54, 54, 50);
+}
+.modal-about-score span {
+  margin-left: 10PX;
+}
+.modal-about-play >.heading {
+  padding: 10px;
+  font-size: 28px;
+  color: rgba(67, 69, 30, 0.6);
+  text-shadow: 5px 0 10px rgb(165, 165, 151);
+}
+.item-play {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5px;
+}
+.item-play img {
+  width: 30px;
+  height: auto;
 }
 .game-over-reluts {
   display: flex;

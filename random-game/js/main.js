@@ -7,10 +7,17 @@ const recordTableBody = document.querySelector('tbody');
 let currentPopUp = null;
 
 records.addEventListener('click', (event) => {
-    currentPopUp = document.querySelector('#modal-login-records');
+    currentPopUp = document.querySelector('#modal-records');
     isCloseOnClickBody = true;
     openPopUp(currentPopUp); 
     showRecords();
+ });
+
+ about.addEventListener('click', (event) => {
+    currentPopUp = document.querySelector('#modal-about');
+    isCloseOnClickBody = true;
+    openPopUp(currentPopUp); 
+    showAbout();
  });
 
  function showRecords() {
@@ -35,5 +42,8 @@ records.addEventListener('click', (event) => {
             elementTr.appendChild(elementTdLevel);
         });
     }
-    console.log(usersArray);
+ }
+
+ function  showAbout() {
+    
  }
