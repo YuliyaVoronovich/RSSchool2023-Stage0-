@@ -236,7 +236,8 @@ body {
   margin: 20px auto 0;
   text-align: center;
 }
-.modal-records-wrap >.heading {
+.modal-records-wrap >.heading,
+.modal-about-wrap >.heading {
   font-size: 30px;
   color: rgb(64, 66, 67, 0.6);
   text-shadow: 5px 0 10px rgb(165, 165, 151);
@@ -258,8 +259,19 @@ body {
 .record-table tbody {
   min-height: 200px;
 }
-.modal-records-wrap .modal-figure {
+.modal-records-wrap .modal-figure,
+.modal-about-wrap .modal-figure  {
   align-self: self-end;
+}
+.modal-about-wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(245, 245, 245,  0.9);
+  border-radius: 5px;
+  box-shadow: inset 0px 0 10px 0px rgba(206, 220, 7, 1);
 }
 .modal-about {
   width: 300px;
@@ -271,6 +283,7 @@ body {
   margin: 20px auto 0;
 }
 .modal-about-score {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   list-style: none;
   font-weight: 700;
   color: rgb(54, 54, 50);
