@@ -126,27 +126,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap:10px;
   max-width: 300px;
   width: 100%;
   background-color: rgba(245, 245, 245,  0.2);
   border-radius: 5px;
   box-shadow: inset 0px 0 10px 0px rgba(0, 0, 0, 1);
-}
-.buttons-exit {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: auto;
-  padding: 0 20px 20px;
-}
-.button-exit {
-  width: 100px;
-  height: 50px;
-  outline: none;
-  border: none;
-}
-.exit {
-  font-size: 16px;
 }
 .grid div {
   height: 40px;
@@ -162,7 +147,6 @@ body {
   width: 70%;
   height: 60%;
   margin-top: 20px;
-  margin-bottom: 5px;
   background-color: rgba(245, 245, 245,  0.3);
   border-radius: 5px;
   box-shadow: inset 0px 0 10px 0px rgba(0, 0, 0, 1);
@@ -249,6 +233,7 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin: 20px auto 0;
   text-align: center;
 }
 .modal-records-wrap >.heading {
@@ -258,15 +243,17 @@ body {
 }
 .record-table {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin: 20px auto 0;
   padding: 5px;
   border-radius: 10px;
-  box-shadow: inset 0 0 5px 5px rgb(131, 131, 25);
+  box-shadow: inset 0px 0 10px 0px rgb(131, 131, 25);
 }
 .record-table th,
 .record-table td  {
   padding: 10px;
   border-bottom: 1px dashed rgb(131, 131, 25);
+}
+.record-table tr:last-child td {
+  border: none;
 }
 .record-table tbody {
   min-height: 200px;

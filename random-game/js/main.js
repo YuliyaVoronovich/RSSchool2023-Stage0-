@@ -18,7 +18,7 @@ records.addEventListener('click', (event) => {
     if (usersArray) {
         JSON.parse(usersArray);
         recordTableBody.innerHTML = '';
-        JSON.parse(usersArray).slice(0,10).forEach((user) => {
+        JSON.parse(usersArray).reverse().slice(0,10).forEach((user) => {
             const elementTr = document.createElement('tr');
             recordTableBody.appendChild(elementTr);
             const elementTdName = document.createElement('td');
@@ -27,9 +27,12 @@ records.addEventListener('click', (event) => {
             elementTdScore.innerHTML = user.score;
             const elementTdTime = document.createElement('td');
             elementTdTime.innerHTML = user.time;
+            const elementTdLevel = document.createElement('td');
+            elementTdLevel.innerHTML = user.level;
             elementTr.appendChild(elementTdName);
             elementTr.appendChild(elementTdScore);
             elementTr.appendChild(elementTdTime);
+            elementTr.appendChild(elementTdLevel);
         });
     }
     console.log(usersArray);

@@ -306,7 +306,7 @@ formResult.addEventListener('submit', (event) => {
     // теперь можно извлечь данные
     const name = formData.get('name').toLowerCase().trim();
     if (name) {
-        let user = {"name":name, "score":modalScore.innerHTML, "time":modalTime.innerHTML};
+        let user = {"name":name, "score":modalScore.innerHTML, "time":modalTime.innerHTML, "level": levelValue.innerHTML};
         usersArray.push(user);
         localStorage.setItem('users', JSON.stringify(usersArray));
 
