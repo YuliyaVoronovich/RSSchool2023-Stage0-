@@ -1,4 +1,3 @@
-const body = document.querySelector('body');
 
 const grid = document.querySelector('.grid');
 let squares = Array.from(document.querySelectorAll('.grid div'));
@@ -7,6 +6,7 @@ const lineValue = document.querySelector('.line-value');
 const levelValue = document.querySelector('.level-value');
 const timelValue = document.querySelector('.time-value');
 const pause = document.querySelector('.pause');
+const restart = document.querySelector('.restart');
 const formResult = document.querySelector('.form-name');
 const modalScore = document.querySelector('.modal-score');
 const modalTime = document.querySelector('.modal-time');
@@ -105,6 +105,30 @@ const firstElement = [
     }
   });
 
+  restart.addEventListener('click', event => {
+
+    location.reload();
+    
+    //    isGameOver = true;
+    //    clearInterval(timeId);
+    //    timeId = null;    
+    // //  // clearInterval(timerId);
+    // //  // timerId = 0;
+    // //  // currentTime();
+    //  let i = 160;  
+    //  let timeGameOver = setInterval(function() {
+    //     i-=1;
+    //     const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
+    //     row.every(index => squares[index].classList.add('bottom'));          
+    //     row.every(index => squares[index].style.backgroundImage = '');
+    //     row.every(index => squares[index].classList.add('element'));
+
+    //     if (i == 0) {
+    //       location.reload();         
+    //     }
+    //   }, 10); 
+  });
+
   function show() {
     currentElement.forEach(item => {      
       squares[currentPosition + item].classList.add('element');
@@ -166,8 +190,7 @@ const firstElement = [
       currentPosition += ceil;
       show();
       stop();
-    }
-    
+    }    
   }
 
   function rotate() {
@@ -282,12 +305,15 @@ formResult.addEventListener('submit', (event) => {
   const formData = new FormData(formResult);
     // теперь можно извлечь данные
     const name = formData.get('name').toLowerCase().trim();
-    
-    let user = {"name":name, "score":modalScore.innerHTML, "time":modalTime.innerHTML};
-    usersArray.push(user);
-    localStorage.setItem('users', JSON.stringify(usersArray));
+    if (name) {
+        let user = {"name":name, "score":modalScore.innerHTML, "time":modalTime.innerHTML};
+        usersArray.push(user);
+        localStorage.setItem('users', JSON.stringify(usersArray));
 
-    closePopUp(currentPopUp, false);
+        closePopUp(currentPopUp, false);
+    }   
+   
+    //exit сделать
 });
 
 
@@ -299,62 +325,11 @@ formResult.addEventListener('submit', (event) => {
     document.addEventListener('keyup', control);
 });
 
- //modal windows
-
- let unlock = true;
-
- function showResults () {
-    currentPopUp = document.querySelector('#modal-login-gameover');
-    modalScore.innerHTML = scoreValue.innerHTML;
-    modalTime.innerHTML = timelValue.innerHTML;
-    openPopUp(currentPopUp); 
- }
-
- // закрытие поп-ап
-
-// closes.forEach((close, i) => {
-//   close.addEventListener('click', event => {
-//       closePopUp(event.target.closest('.modal-wrapper'));  
-//       event.preventDefault();  
-//   });
-// });
-
-function openPopUp(popUp) {
-
-  if (popUp && unlock) {
-    const popupActive = document.querySelector('.modal-wrapper.open');   
-      if (popupActive) {
-          closePopUp(popupActive, false);
-      } else {
-          bodyLock();
-      }
-      popUp.classList.add('open');
-
-      // popUp.addEventListener('click', event => {
-      //       if (!event.target.closest('.modal-content')) {
-      //         closePopUp(event.target.closest('.modal-wrapper'));
-      //     }
-      // });          
-  }     
+function showResults () {
+  currentPopUp = document.querySelector('#modal-login-gameover');
+  modalScore.innerHTML = scoreValue.innerHTML;
+  modalTime.innerHTML = timelValue.innerHTML;
+  isCloseOnClickBody = false;
+  openPopUp(currentPopUp); 
 }
-
-function closePopUp(popUp, doUnlock = true) {
-  if (unlock) {
-      popUp.classList.remove('open');
-      if(doUnlock) {
-          bodyUnlock();
-      }
-  }    
-}
-
-function  bodyLock() {
-  body.style.paddingRight = window.innerWidth - document.querySelector('body').offsetWidth + 'px';
-  body.classList.add('body-overflow');
-}
-
-function  bodyUnlock() {
-  body.style.paddingRight = '0px';
-  body.classList.remove('body-overflow');
-}
-
 

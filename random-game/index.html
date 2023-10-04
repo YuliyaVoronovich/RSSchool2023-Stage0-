@@ -15,13 +15,37 @@
                 <h1 class="title">TETRIS</h1>
                 <section class="buttons">
                     <a href="./tetris.html" class="button-link"><button class="button">PLAY</button></a>
-                    <button class="button">SETTING</button>
-                    <button class="button">RECORDS</button>
-                    <button class="button">ABOUT</button>
+                    <button class="button settings">SETTING</button>
+                    <button class="button records">RECORDS</button>
+                    <button class="button about">ABOUT</button>
                 </section> 
             </div> 
         </main>  
         <footer class="footer">футер</footer>            
-     </div>       
+     </div> 
+     <div class="modal-wrapper" id="modal-login-records">      
+        <div class="modal-records-wrap modal-content">
+            <h3 class="heading">The last 10 game's results</h3>
+           <div class="modal-records">              
+             <table class="record-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+             </table>         
+            <div class="modal-figure">
+              <img class="modal-figure-tetramino" src="./assets/img/tetramino.png" alt="Tetramino">
+            </div>   
+        </div>       
+        </div>
+    </div>
+     <script src="./js/main.js"></script> 
+     <script src="./js/popup.js"></script>     
 </body>
 </html>
