@@ -139,7 +139,7 @@ const firstElement = [
   function show() {
     currentElement.forEach(item => {      
       squares[currentPosition + item].classList.add('element');
-      squares[currentPosition + item].style.backgroundImage = `url('../assets/img/${colors[randomColor]}.jpg')`;
+      squares[currentPosition + item].style.backgroundImage = `url('./assets/img/${colors[randomColor]}.jpg')`;
     })
   }
 
@@ -355,7 +355,7 @@ formResult.addEventListener('submit', (event) => {
    
    smallTetrominoes[nextRandom].forEach(index => {    
      displaySquares[displayIndex + index].classList.add('element');
-     displaySquares[displayIndex + index].style.backgroundImage = `url('../assets/img/lightblue.jpg')`;
+     displaySquares[displayIndex + index].style.backgroundImage = `url('./assets/img/lightblue.jpg')`;
    })
  }
 
