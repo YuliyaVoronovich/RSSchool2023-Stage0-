@@ -99,11 +99,13 @@ const firstElement = [
   }  
   pause.addEventListener('click', event => {
     if (timeId) {
+      audioPlay.pause();
       clearInterval(timeId);
       clearInterval(timerId);
       timeId = null;
       pause.innerHTML = 'PLAY';
     } else {
+      audioPlay.play();
       timeId = setInterval(moveDown, time);
       currentTime();
       pause.innerHTML = 'PAUSE';

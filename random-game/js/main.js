@@ -1,6 +1,7 @@
 const records = document.querySelector('.records');
 const settings = document.querySelector('.settings');
 const about = document.querySelector('.about');
+const deleteIcons = document.querySelectorAll('.img-delete');
 
 const recordTableBody = document.querySelector('tbody');
 
@@ -19,6 +20,13 @@ records.addEventListener('click', (event) => {
     openPopUp(currentPopUp); 
     showAbout();
  });
+
+ deleteIcons.forEach((deleteIcon, i) => {
+    deleteIcon.addEventListener('click', event => {
+        closePopUp(event.target.closest('.modal-wrapper'));  
+        event.preventDefault();  
+    });
+});
 
  function showRecords() {
     let usersArray = localStorage.getItem('users');

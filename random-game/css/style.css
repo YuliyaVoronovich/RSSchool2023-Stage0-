@@ -204,6 +204,7 @@ body {
   z-index: 100;
 }
 .modal-content {
+  position: relative;
   max-width: 700px;
   width: 100%;
   position: absolute;
@@ -214,6 +215,14 @@ body {
   background: rgba(225, 217, 217, 0.7);
   transform: translate(-50%, -100%);
   transition: opacity 0.8s, visibility 0.5s, transform 0.5s;
+}
+.img-delete {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top:8px;
+  right: 8px;
+  cursor: pointer;
 }
 .modal-wrapper.open {
   visibility: visible;
