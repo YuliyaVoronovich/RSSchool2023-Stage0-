@@ -15,6 +15,11 @@ const ceil = 10;
 const constlineNextLevel = 10;
 
 let isGameOver = false;
+const audio = new Audio();
+audio.currentTime = 0; 
+
+const audioPlay = new Audio();
+audioPlay.currentTime = 0; 
 
 const colors = [
       'yellow',
@@ -151,10 +156,10 @@ const firstElement = [
       nextRandom = Math.floor(Math.random() * arrayElements.length);
       randomColor = Math.floor(Math.random() * colors.length);
       currentElement = arrayElements[random][currentRotation];
-      currentPosition = 2;
-     
+      currentPosition = 2;     
       addScore();
       show();
+      displayShape();     
       gameOver();
     }
   }
@@ -186,22 +191,28 @@ const firstElement = [
 
   function moveDown() {
     if (!isGameOver) {
+      audio.src = `./assets/audio/down.wav`;
+      audio.play();
       hide();
       currentPosition += ceil;
-      show();
+      show();      
+      displayShape();      
       stop();
     }    
   }
 
   function rotate() {
     if (!isGameOver) {
+      audio.src = `./assets/audio/rotate.wav`;
+      audio.play();
       hide();
       currentRotation +=1;
       if(currentRotation === currentElement.length) {
         currentRotation = 0;
       }
       currentElement = arrayElements[random][currentRotation];
-      show();
+     
+      show();      
     }
   }
 
@@ -210,6 +221,8 @@ function gameOver() {
       clearInterval(timeId);//остановить игру
       clearInterval(timerId);//остановить время игры
       isGameOver = true;
+      audio.src = `./assets/audio/gameover.wav`;
+      audio.play();
       //вывести модалку с результатом и сохранить с именем в LS     
 
       let i = 160;  
@@ -250,6 +263,8 @@ function addScore() {
           levelValue.innerHTML = level; 
           nextLevel();
         }     
+        audio.src = `./assets/audio/clear.wav`;
+        audio.play();
         const squaresRemoved = squares.splice(i, ceil);
         squares = squaresRemoved.concat(squares);        
         squares.forEach(cell => grid.appendChild(cell));        
@@ -316,8 +331,35 @@ formResult.addEventListener('submit', (event) => {
     //exit сделать
 });
 
+//next element
+ //show previous tetromino in scoreDisplay
+ const displayWidth = 4;
+ const displaySquares = document.querySelectorAll('.next-grid div');
+ let displayIndex = 0;
+
+ const smallTetrominoes = [
+   [1, displayWidth + 1, displayWidth * 2 + 1, 2], /* lTetromino */
+   [5, displayWidth+5, displayWidth + 6, displayWidth * 2 + 6], /* zTetromino */
+   [6, displayWidth+5, displayWidth + 6, displayWidth + 7], /* tTetromino */
+   [5, 6, displayWidth+5, displayWidth + 6], /* oTetromino */
+   [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1] /* iTetromino */
+ ]
+
+ function displayShape() {
+   displaySquares.forEach(square => {
+     square.classList.remove('element');
+     square.style.backgroundImage = 'none';
+   })
+   
+   smallTetrominoes[nextRandom].forEach(index => {    
+     displaySquares[displayIndex + index].classList.add('element');
+     displaySquares[displayIndex + index].style.backgroundImage = `url('../assets/img/lightblue.jpg')`;
+   })
+ }
 
   document.addEventListener('DOMContentLoaded', () => {
+    audioPlay.src = `./assets/audio/play.mp3`;
+    audioPlay.play();
     show();
     currentTime ();
     timeId = setInterval(moveDown, time);

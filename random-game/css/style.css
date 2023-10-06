@@ -147,9 +147,22 @@ body {
   width: 70%;
   height: 60%;
   margin-top: 20px;
+  padding-top: 50px;
   background-color: rgba(245, 245, 245,  0.3);
   border-radius: 5px;
   box-shadow: inset 0px 0 10px 0px rgba(0, 0, 0, 1);
+  text-align: center;
+}
+.next-grid {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px auto;
+}
+.next-grid div {
+  height: 30px;
+  width: 30px;
 }
 .results {
   display: flex;
