@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/img/favicon.ico">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">    
+    <title>Tetris</title>
+</head>
+<body>
+    <div class="wrapper">
+        <main>
+            <div class="container">
+                <h1 class="title">TETRIS</h1>
+                <section class="buttons">
+                    <a href="./tetris.html" class="button-link"><button class="button">PLAY</button></a>
+                    <!-- <button class="button settings">SETTING</button> -->
+                    <button class="button records">RECORDS</button>
+                    <button class="button about">ABOUT</button>
+                </section> 
+            </div> 
+        </main>  
+        <footer class="footer">
+                <div class="footer-wrapper">
+                    <a class="footer-span link-github" href="https://github.com/YuliyaVoronovich" target="_blank">GitHub</span></a>
+                    <span class="footer-span year">2023</span>
+                    <a class="footer-span logo-img" href="https://rs.school/js-stage0/" target="_blank"><img src="./assets/img/rs_school_js.svg" alt="Логотип"></a>
+                </div>                     
+        </footer>           
+     </div> 
+     <!--Modals-->
+     <div class="modal-wrapper" id="modal-records">      
+        <div class="modal-records-wrap modal-content">
+            <img class="img-delete" src="./assets/img/delete.svg" alt="delete">
+            <h3 class="heading">The last 10 game's results</h3>
+           <div class="modal-records">              
+             <table class="record-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Time</th>
+                        <th>Level</th>
+                    </tr>
+                </thead>
+                <tbody>                  
+                </tbody>
+             </table>         
+            <div class="modal-figure">
+              <img class="modal-figure-tetramino" src="./assets/img/tetramino.png" alt="Tetramino">
+            </div>   
+        </div>       
+      </div>
+     </div>
+     <div class="modal-wrapper" id="modal-about">      
+        <div class="modal-about-wrap modal-content">
+         <img class="img-delete" src="./assets/img/delete.svg" alt="delete">
+         <h3 class="heading">About</h3> 
+         <div class="modal-about"> 
+            <div class="modal-about-play">
+                <h4 class="heading">Score:</h4>
+                <ul class="modal-about-score">              
+                    <li>1 line — 100 score</li>
+                    <li>2 line — 300 score</li>
+                    <li>3 line — 700 score</li>
+                    <li>4 line — 1500 score</li>
+                </ul>
+                <h4 class="heading">How to play:</h4>
+                <ul class="modal-about-score">              
+                    <li class="item-play"><img src="./assets/img/up.jpg" alt="up"><span>ROTATE</span></li>
+                    <li class="item-play"><img src="./assets/img/left.jpg" alt="up"><span>LEFT</span></li>
+                    <li class="item-play"><img src="./assets/img/right.jpg" alt="up"><span>RIGHT</span></li>
+                    <li class="item-play"><img src="./assets/img/down.jpg" alt="up"><span>DOWN</span></li>
+                </ul>  
+            </div>                     
+            <div class="modal-figure">
+              <img class="modal-figure-tetramino" src="./assets/img/tetramino.png" alt="Tetramino">
+            </div>   
+        </div> 
+        </div>      
+      </div>
+     </div>
+     <!--End Modals-->
+     <script src="./js/main.js"></script> 
+     <script src="./js/popup.js"></script>     
+</body>
+</html>
