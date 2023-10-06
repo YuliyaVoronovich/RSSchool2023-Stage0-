@@ -29,7 +29,7 @@ records.addEventListener('click', (event) => {
 });
 
  function showRecords() {
-    let usersArray = localStorage.getItem('users');
+    let usersArray = localStorage.getItem('users-random-game');
     if (usersArray) {
         JSON.parse(usersArray);
         recordTableBody.innerHTML = '';

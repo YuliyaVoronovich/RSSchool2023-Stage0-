@@ -325,7 +325,7 @@ formResult.addEventListener('submit', (event) => {
     if (name) {
         let user = {"name":name, "score":modalScore.innerHTML, "time":modalTime.innerHTML, "level": levelValue.innerHTML};
         usersArray.push(user);
-        localStorage.setItem('users', JSON.stringify(usersArray));
+        localStorage.setItem('users-random-game', JSON.stringify(usersArray));
 
         closePopUp(currentPopUp, false);
     }   
