@@ -87,6 +87,7 @@ const firstElement = [
   let currentElement = arrayElements[random][currentRotation];
 
   function control(e) {
+    
     if(e.keyCode === 37) {
       moveLeft();
     } else if (e.keyCode === 38) {
@@ -94,6 +95,9 @@ const firstElement = [
     } else if (e.keyCode === 39) {
       moveRight();
     } else if (e.keyCode === 40) {
+      moveDown();
+    } else if (e.keyCode === 40 && e.repeat === true) {
+      console.log(time);
       moveDown();
     }
   }  
@@ -367,6 +371,12 @@ formResult.addEventListener('submit', (event) => {
     timeId = setInterval(moveDown, time);
 
     document.addEventListener('keyup', control);
+
+    document.addEventListener('keydown', (e) => {
+    if (e.keyCode === 40 && e.repeat === true) {
+        moveDown();
+      }
+    });
 });
 
 function showResults () {
