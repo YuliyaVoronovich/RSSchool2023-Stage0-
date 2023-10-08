@@ -370,10 +370,18 @@ formResult.addEventListener('submit', (event) => {
     currentTime ();
     timeId = setInterval(moveDown, time);
 
-    document.addEventListener('keyup', control);
-
     document.addEventListener('keydown', (e) => {
-    if (e.keyCode === 40 && e.repeat === true) {
+
+      if(e.keyCode === 37) {
+        moveLeft();
+      } else if (e.keyCode === 38) {
+        rotate();
+      } else if (e.keyCode === 39) {
+        moveRight();
+      } else if (e.keyCode === 40) {
+        moveDown();
+      } else if (e.keyCode === 40 && e.repeat === true) {
+        e.preventDefault();
         moveDown();
       }
     });
