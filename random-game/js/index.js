@@ -97,8 +97,7 @@ const firstElement = [
     } else if (e.keyCode === 40) {
       moveDown();
     } else if (e.keyCode === 40 && e.repeat === true) {
-      console.log(time);
-      moveDown();
+       moveDown();
     }
   }  
   pause.addEventListener('click', event => {
@@ -217,8 +216,26 @@ const firstElement = [
         currentRotation = 0;
       }
       currentElement = arrayElements[random][currentRotation];
-     
+      checkRotatePosition();
       show();      
+    }
+  }
+  
+  function checkRotatePosition(position) {
+    position = position || currentPosition;
+
+    if ((position+1) % ceil < 4) { 
+      if (currentElement.some(item => (currentPosition + item + 1) % ceil === 0)) {
+        currentPosition += 1 ;
+        checkRotatePosition(position);
+        }
+    }
+    else if (position % ceil > 5) {
+
+      if (currentElement.some(item => (currentPosition + item) % ceil === 0)) {
+        currentPosition -= 1;
+        checkRotatePosition(position);
+      }
     }
   }
 
