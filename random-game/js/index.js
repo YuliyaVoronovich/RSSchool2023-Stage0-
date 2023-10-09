@@ -1,6 +1,6 @@
 
-const grid = document.querySelector('.grid');
-let squares = Array.from(document.querySelectorAll('.grid div'));
+const fieldGame = document.querySelector('.field-game');
+let squares = Array.from(document.querySelectorAll('.field-game div'));
 const scoreValue = document.querySelector('.score-value');
 const lineValue = document.querySelector('.line-value');
 const levelValue = document.querySelector('.level-value');
@@ -15,6 +15,7 @@ const ceil = 10;
 const constlineNextLevel = 10;
 
 let isGameOver = false;
+
 const audio = new Audio();
 audio.currentTime = 0; 
 
@@ -40,66 +41,78 @@ let level = 1;
 let timeId;//игра
 let timerId;//текущее время игры
 let time = 1000;
-let d = +new Date(2023, 1, 1);
+let date = Number(new Date(0));
 
 const firstElement = [
     [1, ceil+1, ceil*2+1, 2],
     [ceil, ceil+1, ceil+2, ceil*2+2],
     [1, ceil+1, ceil*2+1, ceil*2],
     [ceil, ceil*2, ceil*2+1, ceil*2+2]
-  ]
+  ];
 
   const secondElement = [
     [0,ceil,ceil+1,ceil*2+1],
     [ceil+1, ceil+2,ceil*2,ceil*2+1],
     [0,ceil,ceil+1,ceil*2+1],
     [ceil+1, ceil+2,ceil*2,ceil*2+1]
-  ]
+  ];
 
   const thirdElement = [
     [1,ceil,ceil+1,ceil+2],
     [1,ceil+1,ceil+2,ceil*2+1],
     [ceil,ceil+1,ceil+2,ceil*2+1],
     [1,ceil,ceil+1,ceil*2+1]
-  ]
+  ];
 
   const fourElement = [
     [0,1,ceil,ceil+1],
     [0,1,ceil,ceil+1],
     [0,1,ceil,ceil+1],
     [0,1,ceil,ceil+1]
-  ]
+  ];
 
   const fiveElement = [
     [1,ceil+1,ceil*2+1,ceil*3+1],
     [ceil,ceil+1,ceil+2,ceil+3],
     [1,ceil+1,ceil*2+1,ceil*3+1],
     [ceil,ceil+1,ceil+2,ceil+3]
-  ]
+  ];
 
-  const arrayElements = [firstElement, secondElement, thirdElement, fourElement, fiveElement];
+  const sixElement = [
+    [0, 1, ceil+1, ceil*2+1],
+    [2, ceil, ceil+1, ceil+2],
+    [1, ceil+1, ceil*2+1, ceil*2+2],
+    [0, 1, 2, ceil]
+  ];
+
+  const sevenElement = [
+    [1,ceil,ceil+1,ceil*2],
+    [ceil, ceil+1,ceil*2+1,ceil*2+2],
+    [1,ceil,ceil+1,ceil*2],
+    [ceil, ceil+1,ceil*2+1,ceil*2+2]
+  ];
+  const arrayElements = [firstElement, secondElement, thirdElement, fourElement, fiveElement, sixElement, sevenElement];
 
   let currentPosition = 2;
   let currentRotation = 0;
 
-  let random = Math.floor(Math.random()*arrayElements.length);
-  let randomColor = Math.floor(Math.random()*colors.length);
-  let currentElement = arrayElements[random][currentRotation];
+ let random = Math.floor(Math.random()*arrayElements.length);
+ let randomColor = Math.floor(Math.random()*colors.length);
+ let currentElement = arrayElements[random][currentRotation];
 
-  function control(e) {
-    
-    if(e.keyCode === 37) {
-      moveLeft();
-    } else if (e.keyCode === 38) {
-      rotate();
-    } else if (e.keyCode === 39) {
-      moveRight();
-    } else if (e.keyCode === 40) {
-      moveDown();
-    } else if (e.keyCode === 40 && e.repeat === true) {
-       moveDown();
+  function playMusic(audio) {
+    let playPromise = audio.play();
+ 
+    if (playPromise !== undefined) {
+       playPromise.then(e => {
+       //audio.play();
+      })
+      .catch(error => {
+        console.log(error);
+      });
     }
-  }  
+  }
+
   pause.addEventListener('click', event => {
     if (timeId) {
       audioPlay.pause();
@@ -164,7 +177,7 @@ const firstElement = [
       currentPosition = 2;     
       addScore();
       show();
-      displayShape();     
+      displayNext();     
       gameOver();
     }
   }
@@ -197,11 +210,11 @@ const firstElement = [
   function moveDown() {
     if (!isGameOver) {
       audio.src = `./assets/audio/down.wav`;
-      audio.play();
+      playMusic(audio);
       hide();
       currentPosition += ceil;
       show();      
-      displayShape();      
+      displayNext();      
       stop();
     }    
   }
@@ -209,7 +222,7 @@ const firstElement = [
   function rotate() {
     if (!isGameOver) {
       audio.src = `./assets/audio/rotate.wav`;
-      audio.play();
+      playMusic(audio);
       hide();
       currentRotation +=1;
       if(currentRotation === currentElement.length) {
@@ -222,15 +235,16 @@ const firstElement = [
   }
   
   function checkRotatePosition(position) {
-    position = position || currentPosition;
-
-    if ((position+1) % ceil < 4) { 
+    if (!position) {
+      position = currentPosition;
+    }
+    if ((position + 1) % ceil < 4) { 
       if (currentElement.some(item => (currentPosition + item + 1) % ceil === 0)) {
-        currentPosition += 1 ;
+        currentPosition +=1;
         checkRotatePosition(position);
         }
     }
-    else if (position % ceil > 5) {
+    else if (position % ceil >= 5) {
 
       if (currentElement.some(item => (currentPosition + item) % ceil === 0)) {
         currentPosition -= 1;
@@ -245,7 +259,7 @@ function gameOver() {
       clearInterval(timerId);//остановить время игры
       isGameOver = true;
       audio.src = `./assets/audio/gameover.wav`;
-      audio.play();
+      playMusic(audio);
       //вывести модалку с результатом и сохранить с именем в LS     
 
       let i = 160;  
@@ -287,10 +301,10 @@ function addScore() {
           nextLevel();
         }     
         audio.src = `./assets/audio/clear.wav`;
-        audio.play();
-        const squaresRemoved = squares.splice(i, ceil);
-        squares = squaresRemoved.concat(squares);        
-        squares.forEach(cell => grid.appendChild(cell));        
+        playMusic(audio);
+        const squaresRemove = squares.splice(i, ceil);
+        squares = squaresRemove.concat(squares);        
+        squares.forEach(cell => fieldGame.appendChild(cell));        
       }            
     }
     countScore(lineScore);  
@@ -319,16 +333,16 @@ function nextLevel() {
 function currentTime () {   
 
     timerId = setInterval(function() {
-      let time = new Date;
-      time.setTime(d += 1000);
+      let currentDate = new Date;
+      currentDate.setTime(date+=time);
   
-      let second = time.getSeconds();
+      let second = currentDate.getSeconds();
       if (second < 10) {
         second = `0${second}`;
       }
-      let minute = time.getMinutes();
+      let minute = currentDate.getMinutes();
   
-      timelValue.innerHTML =  minute + ':' + second
+      timelValue.innerHTML =  minute + ':' + second;
     }, 1000);
 }
 
@@ -355,28 +369,29 @@ formResult.addEventListener('submit', (event) => {
 });
 
 //next element
- //show previous tetromino in scoreDisplay
  const displayWidth = 4;
- const displaySquares = document.querySelectorAll('.next-grid div');
+ const displayNexts = document.querySelectorAll('.next-grid div');
  let displayIndex = 0;
 
  const smallTetrominoes = [
-   [1, displayWidth + 1, displayWidth * 2 + 1, 2], /* lTetromino */
-   [5, displayWidth+5, displayWidth + 6, displayWidth * 2 + 6], /* zTetromino */
-   [6, displayWidth+5, displayWidth + 6, displayWidth + 7], /* tTetromino */
-   [5, 6, displayWidth+5, displayWidth + 6], /* oTetromino */
-   [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1] /* iTetromino */
+   [1, displayWidth + 1, displayWidth * 2 + 1, 2], /* l */
+   [5, displayWidth+5, displayWidth + 6, displayWidth * 2 + 6], /* z */
+   [6, displayWidth+5, displayWidth + 6, displayWidth + 7], /* t */
+   [5, 6, displayWidth+5, displayWidth + 6], /* o*/
+   [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1],/* i */
+   [1, 2, displayWidth + 2, displayWidth * 2 + 2], /* l reverse */
+   [6, displayWidth+5, displayWidth + 6, displayWidth * 2 + 5] /* z reverse*/
  ]
 
- function displayShape() {
-   displaySquares.forEach(square => {
+ function displayNext() {
+  displayNexts.forEach(square => {
      square.classList.remove('element');
      square.style.backgroundImage = 'none';
    })
    
    smallTetrominoes[nextRandom].forEach(index => {    
-     displaySquares[displayIndex + index].classList.add('element');
-     displaySquares[displayIndex + index].style.backgroundImage = `url('./assets/img/lightblue.jpg')`;
+     displayNexts[displayIndex + index].classList.add('element');
+     displayNexts[displayIndex + index].style.backgroundImage = `url('./assets/img/lightblue.jpg')`;
    })
  }
 
