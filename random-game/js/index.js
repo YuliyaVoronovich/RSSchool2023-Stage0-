@@ -48,44 +48,57 @@ const firstElement = [
     [ceil, ceil+1, ceil+2, ceil*2+2],
     [1, ceil+1, ceil*2+1, ceil*2],
     [ceil, ceil*2, ceil*2+1, ceil*2+2]
-  ]
+  ];
 
   const secondElement = [
     [0,ceil,ceil+1,ceil*2+1],
     [ceil+1, ceil+2,ceil*2,ceil*2+1],
     [0,ceil,ceil+1,ceil*2+1],
     [ceil+1, ceil+2,ceil*2,ceil*2+1]
-  ]
+  ];
 
   const thirdElement = [
     [1,ceil,ceil+1,ceil+2],
     [1,ceil+1,ceil+2,ceil*2+1],
     [ceil,ceil+1,ceil+2,ceil*2+1],
     [1,ceil,ceil+1,ceil*2+1]
-  ]
+  ];
 
   const fourElement = [
     [0,1,ceil,ceil+1],
     [0,1,ceil,ceil+1],
     [0,1,ceil,ceil+1],
     [0,1,ceil,ceil+1]
-  ]
+  ];
 
   const fiveElement = [
     [1,ceil+1,ceil*2+1,ceil*3+1],
     [ceil,ceil+1,ceil+2,ceil+3],
     [1,ceil+1,ceil*2+1,ceil*3+1],
     [ceil,ceil+1,ceil+2,ceil+3]
-  ]
+  ];
 
-  const arrayElements = [firstElement, secondElement, thirdElement, fourElement, fiveElement];
+  const sixElement = [
+    [0, 1, ceil+1, ceil*2+1],
+    [2, ceil, ceil+1, ceil+2],
+    [1, ceil+1, ceil*2+1, ceil*2+2],
+    [0, 1, 2, ceil]
+  ];
+
+  const sevenElement = [
+    [1,ceil,ceil+1,ceil*2],
+    [ceil, ceil+1,ceil*2+1,ceil*2+2],
+    [1,ceil,ceil+1,ceil*2],
+    [ceil, ceil+1,ceil*2+1,ceil*2+2]
+  ];
+  const arrayElements = [firstElement, secondElement, thirdElement, fourElement, fiveElement, sixElement, sevenElement];
 
   let currentPosition = 2;
   let currentRotation = 0;
 
-  let random = Math.floor(Math.random()*arrayElements.length);
-  let randomColor = Math.floor(Math.random()*colors.length);
-  let currentElement = arrayElements[random][currentRotation];
+ let random = Math.floor(Math.random()*arrayElements.length);
+ let randomColor = Math.floor(Math.random()*colors.length);
+ let currentElement = arrayElements[random][currentRotation];
 
   function playMusic(audio) {
     let playPromise = audio.play();
@@ -365,7 +378,9 @@ formResult.addEventListener('submit', (event) => {
    [5, displayWidth+5, displayWidth + 6, displayWidth * 2 + 6], /* z */
    [6, displayWidth+5, displayWidth + 6, displayWidth + 7], /* t */
    [5, 6, displayWidth+5, displayWidth + 6], /* o*/
-   [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1] /* i */
+   [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1],/* i */
+   [1, 2, displayWidth + 2, displayWidth * 2 + 2], /* l reverse */
+   [6, displayWidth+5, displayWidth + 6, displayWidth * 2 + 5] /* z reverse*/
  ]
 
  function displayNext() {
