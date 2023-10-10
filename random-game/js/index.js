@@ -185,8 +185,12 @@ const firstElement = [
   function moveLeft() {
     if (!isGameOver) {
       hide();
-      const isLeft = currentElement.some(item => (currentPosition + item) % ceil === 0);
-
+      let isLeft = false;
+      currentElement.some(item => {
+        if ((currentPosition + item) % ceil === 0) {
+          isLeft = true;
+        }
+      });
       if(!isLeft) currentPosition -=1;
       if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
         currentPosition +=1;
@@ -198,7 +202,12 @@ const firstElement = [
   function moveRight() {
     if (!isGameOver) {
       hide();
-      const isRight = currentElement.some(item => (currentPosition + item) % ceil === ceil -1)
+      let isRight = false;
+      currentElement.some(item => {
+        if ((currentPosition + item) % ceil === ceil -1) {
+          isRight = true;
+        }
+      });
       if(!isRight) currentPosition +=1;
       if(currentElement.some(item => squares[currentPosition + item].classList.contains('bottom'))) {
         currentPosition -=1;
