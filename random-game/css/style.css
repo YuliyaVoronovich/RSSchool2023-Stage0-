@@ -14,22 +14,6 @@
   font-weight: 400;
   src: url('../fonts/sigmar-v7-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* pixelify-sans-regular - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Pixelify Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/pixelify-sans-v1-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* pixelify-sans-700 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Pixelify Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../fonts/pixelify-sans-v1-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
 html {
   box-sizing: border-box;
   scroll-behavior: smooth; 
@@ -68,7 +52,7 @@ body {
   padding: 50px 150px 0;
 }
 .title { 
-  font-family: Pixelify Sans;
+
   margin: 0;
   text-align: center;
   /* background-color: rgb(166 75 144);
