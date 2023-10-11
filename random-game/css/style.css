@@ -331,9 +331,11 @@ body {
   height: auto;
 }
 .game-over-reluts {
+  min-height: 200px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+  gap: 10px;
 }
 .modal-figure-tetramino {
   max-width: 200px;
