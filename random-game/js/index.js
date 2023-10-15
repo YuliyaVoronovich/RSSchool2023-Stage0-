@@ -1,4 +1,3 @@
-
 const fieldGame = document.querySelector('.field-game');
 let squares = Array.from(document.querySelectorAll('.field-game div'));
 const scoreValue = document.querySelector('.score-value');
@@ -10,6 +9,11 @@ const restart = document.querySelector('.restart');
 const formResult = document.querySelector('.form-name');
 const modalScore = document.querySelector('.modal-score');
 const modalTime = document.querySelector('.modal-time');
+
+const mobileLeft = document.querySelector('.mobile-left');
+const mobileUp = document.querySelector('.mobile-up');
+const mobileDown = document.querySelector('.mobile-down');
+const mobileRight = document.querySelector('.mobile-right');
 
 const ceil = 10;
 const constlineNextLevel = 10;
@@ -435,4 +439,20 @@ function showResults () {
   isCloseOnClickBody = false;
   openPopUp(currentPopUp); 
 }
+
+mobileLeft.addEventListener('click', event => {
+  moveLeft ();
+});
+
+mobileRight.addEventListener('click', event => {
+  moveRight ();
+});
+
+mobileUp.addEventListener('click', event => {
+  rotate ();
+});
+
+mobileDown.addEventListener('click', event => {
+  moveDown ();
+});
 
