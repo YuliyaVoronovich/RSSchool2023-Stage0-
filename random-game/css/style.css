@@ -110,6 +110,11 @@ body {
 .results {
   max-width: 200px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
   background-color: rgba(245, 245, 245,  0.3);
   border-radius: 5px;
   box-shadow: inset 0px 0 10px 0px rgba(0, 0, 0, 1);
@@ -133,6 +138,11 @@ body {
   background-color: rgba(245, 245, 245,  0.2);
   border-radius: 5px;
   box-shadow: inset 0px 0 10px 0px rgba(0, 0, 0, 1);
+}
+.mobile-buttons {
+  display: flex;
+  flex-direction: column;
+  display: none;
 }
 .field-game div {
   height: 40px;
@@ -165,16 +175,9 @@ body {
   height: 30px;
   width: 30px;
 }
-.results {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding-top: 20px;
-}
 .window-result {
   width: 70%;
-  height: calc((100% - 80px) / 4);
+  height: calc((100% - 60px) / 4);
   padding: 10px;
   text-align: center;
   border-radius: 5px;
@@ -433,9 +436,32 @@ body {
 }
 @media  (max-width: 968px) {
   .game {
-    flex-direction: column-reverse;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     gap: 5px;
+    justify-content: center;
+  }
+  .results {
+    order: 1;
+  }
+  .right-grid {
+    order: 2;
+    min-height: 542px;
+  }
+  .field-game {
+    order: 3;
+  }
+  .mobile-buttons {
+    order: 4;
+    display: flex;
+    flex-direction: row;
+    min-width: 600px;
+    align-items: center;
+    justify-content: center;
+  }
+  .mobile-buttons > div {
+    cursor: pointer;
   }
 }
 @media  (max-width: 760px) {
