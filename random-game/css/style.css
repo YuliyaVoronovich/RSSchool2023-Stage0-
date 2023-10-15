@@ -459,6 +459,7 @@ body {
     min-width: 600px;
     align-items: center;
     justify-content: center;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 }
 @media  (max-width: 760px) {
