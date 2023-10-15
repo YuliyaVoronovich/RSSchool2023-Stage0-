@@ -460,9 +460,6 @@ body {
     align-items: center;
     justify-content: center;
   }
-  .mobile-buttons > div {
-    cursor: pointer;
-  }
 }
 @media  (max-width: 760px) {
   .container {
