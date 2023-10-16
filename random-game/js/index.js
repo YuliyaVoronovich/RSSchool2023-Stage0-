@@ -362,7 +362,7 @@ function currentTime () {
 formResult.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  let usersArray = localStorage.getItem('users');
+  let usersArray = localStorage.getItem('users-random-game');
   if (usersArray) {
     usersArray = JSON.parse(usersArray);
   } else usersArray = [];
